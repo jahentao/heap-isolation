@@ -1,0 +1,5 @@
+# Project exclude paths
+/framework/target/
+/validation/tenant01/target/
+/validation/tenant02/target/
+/validation/validator/target/

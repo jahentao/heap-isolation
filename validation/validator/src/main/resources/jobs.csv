@@ -1,0 +1,4 @@
+1,tenant01,tenant01.DefaultTimeZoneSetter
+3,tenant02,tenant02.DefaultTimeZoneSetter
+5,tenant01,tenant01.DefaultTimeZonePrinter
+8,tenant02,tenant02.DefaultTimeZonePrinter
