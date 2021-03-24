@@ -86,12 +86,6 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
     }
 
     @Override
-    protected String findLibrary(String libname) {
-        System.out.println(String.format("Finding %s library...", libname));
-        return System.mapLibraryName(libname);
-    }
-
-    @Override
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         /*if (INIT_CLASSES.containsKey(name)) {
             return INIT_CLASSES.get(name);

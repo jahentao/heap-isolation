@@ -27,8 +27,8 @@ public class JobExecutor {
             Class runnableClass = tenantRegistry.getTenantClassLoader(tenantId).loadClass(runnableClassName);
             Constructor constructor = runnableClass.getConstructor();
             return (Runnable) constructor.newInstance();
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
         return null;
     }
