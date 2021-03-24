@@ -87,7 +87,10 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
 
     @Override
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
-        if (INIT_CLASSES.containsKey(name)) {
+        /*if (INIT_CLASSES.containsKey(name)) {
+            return INIT_CLASSES.get(name);
+        }*/
+        if ("java.lang.Runnable".equals(name)) {
             return INIT_CLASSES.get(name);
         }
         synchronized (getClassLoadingLock(name)) {
