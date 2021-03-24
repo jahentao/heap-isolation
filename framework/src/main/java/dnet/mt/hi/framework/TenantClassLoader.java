@@ -102,6 +102,7 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         Class result = null;
         for (FileSystem fs : sharedFileSystems) {
+            System.out.println(String.format("%s loading %s...", this.getName(), name));
             result = findClass(name, fs);
             if (result != null) {
                 return result;
