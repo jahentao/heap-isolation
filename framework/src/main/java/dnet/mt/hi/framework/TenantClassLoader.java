@@ -32,7 +32,6 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
                     INIT_CLASSES.putIfAbsent(className,
                             TenantClassLoader.class.getClassLoader().loadClass(className));
                 } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             });
 
