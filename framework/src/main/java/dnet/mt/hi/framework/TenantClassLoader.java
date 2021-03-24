@@ -18,6 +18,11 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
     private ProtectionDomain pd;
 
+    // TODO this class loader should use two other class loaders: one for the tenant code with
+    //  tenant protection domain and one for the shared code with a AllPermissions protection
+    //  domain. Otherwise, privileged blocks of the shared code will fail in many occasions
+
+
     public static void init(Set<String> initClassNames, Path[] sharedJarPaths) {
 
         SecurityManager securityManager = System.getSecurityManager();

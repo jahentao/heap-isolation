@@ -8,6 +8,7 @@ import dnet.mt.hi.framework.TenantRegistry;
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class Validator {
@@ -22,6 +23,9 @@ public class Validator {
                     "\t\t4) relative path to tenant02.jar file\n" +
                     "\t\t5) relative path to jobs.csv file\n");
         }
+
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
+        System.out.println(TimeZone.getDefault().getID());
 
         int argIndex = 0;
 
