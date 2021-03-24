@@ -104,7 +104,6 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
         for (FileSystem fs : sharedFileSystems) {
             result = findClass(name, fs);
             if (result != null) {
-                System.out.println(String.format("%s loaded %s.", this.getName(), name));
                 return result;
             }
         }
@@ -130,6 +129,7 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
              * In case of classes in packages starting with 'java.', the following statement only works on custom JVM's
              * which do not throw SecurityException in the latter case.
              */
+            System.out.println(String.format("%s defining %s...", this.getName(), name));
             return defineClass(name, bytes, 0, bytes.length, pd);
         } catch (IOException e) {
             //e.printStackTrace();
