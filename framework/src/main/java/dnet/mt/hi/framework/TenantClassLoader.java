@@ -90,9 +90,9 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
         /*if (INIT_CLASSES.containsKey(name)) {
             return INIT_CLASSES.get(name);
         }*/
-        if (INIT_CLASSES.containsKey(name) && name.startsWith("java.")) {
+        /*if (INIT_CLASSES.containsKey(name) && name.startsWith("java.")) {
             return INIT_CLASSES.get(name);
-        }
+        }*/
         synchronized (getClassLoadingLock(name)) {
             Class<?> c = loadedClasses.get(name);
             if (c == null) {
