@@ -1,0 +1,9 @@
+@@ -2747,7 +2747,7 @@
+       char* name = class_name->as_C_string();
+       prohibited = (strncmp(name, JAVAPKG, JAVAPKG_LEN) == 0 && name[JAVAPKG_LEN] == '/');
+     }
+-    if (prohibited) {
++    if (0) {
+       TempNewSymbol pkg_name = InstanceKlass::package_from_name(class_name, CHECK);
+       assert(pkg_name != NULL, "Error in parsing package name starting with 'java/'");
+       char* name = pkg_name->as_C_string();
