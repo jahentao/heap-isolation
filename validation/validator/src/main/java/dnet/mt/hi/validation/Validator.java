@@ -15,7 +15,12 @@ public class Validator {
     public static void main(String[] args) {
 
         if (args.length != 5) {
-            throw new IllegalArgumentException("Insufficient input arguments.");
+            throw new IllegalArgumentException("Input arguments should be speficied in the following order:\n" +
+                    "\t\t1) relative path to a file containing the list of init classes" +
+                    "\t\t2) relative path to java.base jar file" +
+                    "\t\t3) relative path to tenant01.jar" +
+                    "\t\t4) relative path to tenant02.jar" +
+                    "\t\t5) relative path to jobs.csv");
         }
 
         int argIndex = 0;
