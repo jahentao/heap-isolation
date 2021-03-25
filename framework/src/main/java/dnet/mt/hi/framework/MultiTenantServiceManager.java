@@ -1,5 +1,8 @@
 package dnet.mt.hi.framework;
 
+import dnet.mt.hi.framework.cl.MultiTenantBootstrapClassLoader;
+import dnet.mt.hi.framework.cl.TenantClassLoader;
+
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -20,17 +23,21 @@ public class MultiTenantServiceManager {
             Set<String> initClassNames = new HashSet<>();
             Files.lines(Path.of(initClassesFile)).forEach(initClassNames::add);
             Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
-            TenantClassLoader.init(initClassNames, sharedJarPaths, (new AllPermission()).newPermissionCollection());
+            MultiTenantBootstrapClassLoader.init(sharedJarPaths, (new AllPermission()).newPermissionCollection());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void registerTenant(String tenantId, URI tenantJar) {
-        classLoaders.putIfAbsent(tenantId,
-                new TenantClassLoader(tenantId.concat("ClassLoader"),
-                        this.getClass().getClassLoader(),
-                        Path.of(tenantJar), null, null));
+        if (!classLoaders.containsKey(tenantId)) {
+            MultiTenantBootstrapClassLoader bootstrapClassLoader = new MultiTenantBootstrapClassLoader(
+                    tenantId.concat("_BootstrapLoader"),
+                    MultiTenantServiceManager.class.getClassLoader(), null);
+            TenantClassLoader tenantClassLoader = new TenantClassLoader(tenantId.concat("_ClassLoader"),
+                    bootstrapClassLoader, Path.of(tenantJar), null, null); // TODO fix permissions
+            classLoaders.put(tenantId, tenantClassLoader);
+        }
     }
 
     public TenantClassLoader getTenantClassLoader(String tenantId) {
