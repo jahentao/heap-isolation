@@ -4,22 +4,23 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.AllPermission;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TenantRegistry {
+public class MultiTenantServiceManager {
 
     private Map<String, TenantClassLoader> classLoaders = new ConcurrentHashMap<>();
 
-    public TenantRegistry(URI initClassesFile, URI... sharedJars) {
+    public MultiTenantServiceManager(URI initClassesFile, URI... sharedJars) {
         try {
             Set<String> initClassNames = new HashSet<>();
             Files.lines(Path.of(initClassesFile)).forEach(initClassNames::add);
-            Path[] sharedJarPaths = Arrays.stream(sharedJars).map(u -> Path.of(u)).toArray(Path[]::new);
-            TenantClassLoader.init(initClassNames, sharedJarPaths);
+            Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
+            TenantClassLoader.init(initClassNames, sharedJarPaths, (new AllPermission()).newPermissionCollection());
         } catch (IOException e) {
             e.printStackTrace();
         }

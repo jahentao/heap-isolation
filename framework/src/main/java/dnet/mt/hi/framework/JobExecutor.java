@@ -10,10 +10,10 @@ import java.util.concurrent.TimeUnit;
 public class JobExecutor {
 
     private ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(4);
-    private TenantRegistry tenantRegistry;
+    private MultiTenantServiceManager multiTenantServiceManager;
 
-    public JobExecutor(TenantRegistry tenantRegistry) {
-        this.tenantRegistry = tenantRegistry;
+    public JobExecutor(MultiTenantServiceManager multiTenantServiceManager) {
+        this.multiTenantServiceManager = multiTenantServiceManager;
     }
 
     public void submit(List<Job> jobs) {
@@ -24,11 +24,11 @@ public class JobExecutor {
 
     private Runnable createRunnable(String tenantId, String runnableClassName) {
         try {
-            Class runnableClass = tenantRegistry.getTenantClassLoader(tenantId).loadClass(runnableClassName);
+            Class runnableClass = multiTenantServiceManager.getTenantClassLoader(tenantId).loadClass(runnableClassName);
             Constructor constructor = runnableClass.getConstructor();
             return (Runnable) constructor.newInstance();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
         }
         return null;
     }

@@ -3,7 +3,7 @@ package dnet.mt.hi.validation;
 import dnet.mt.hi.framework.Job;
 import dnet.mt.hi.framework.JobExecutor;
 import dnet.mt.hi.framework.JobLoader;
-import dnet.mt.hi.framework.TenantRegistry;
+import dnet.mt.hi.framework.MultiTenantServiceManager;
 
 import java.net.URI;
 import java.nio.file.Paths;
@@ -35,14 +35,14 @@ public class Validator {
         String tenant02JarPath = args[argIndex++];
         String jobsCSVPath = args[argIndex++];
 
-        TenantRegistry tenantRegistry = new TenantRegistry(buildURI(initClassNamesPath), buildURI(javaBaseJarPath));
-        tenantRegistry.registerTenant("tenant01", buildURI(tenant01JarPath));
-        tenantRegistry.registerTenant("tenant02", buildURI(tenant02JarPath));
+        MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(buildURI(initClassNamesPath), buildURI(javaBaseJarPath));
+        multiTenantServiceManager.registerTenant("tenant01", buildURI(tenant01JarPath));
+        multiTenantServiceManager.registerTenant("tenant02", buildURI(tenant02JarPath));
 
         JobLoader jobLoader = new JobLoader();
         List<Job> jobs = jobLoader.loadJobs(buildURI(jobsCSVPath));
 
-        JobExecutor jobExecutor = new JobExecutor(tenantRegistry);
+        JobExecutor jobExecutor = new JobExecutor(multiTenantServiceManager);
         jobExecutor.submit(jobs);
         jobExecutor.shutdownAfterTerminationOrTimeout(10, TimeUnit.SECONDS);
 
