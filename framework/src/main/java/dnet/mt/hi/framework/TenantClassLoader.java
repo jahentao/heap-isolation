@@ -81,9 +81,11 @@ final class TenantClassLoader extends ClassLoader implements Closeable {
                 Class<?> c = loadedClasses.get(name);
                 if (c == null) {
                     c = findClass(name);
-                    loadedClasses.put(name, c);
+                    if (c != null) {
+                        loadedClasses.put(name, c);
+                    }
                 }
-                if (resolve) {
+                if (c != null && resolve) {
                     resolveClass(c);
                 }
                 return c;
