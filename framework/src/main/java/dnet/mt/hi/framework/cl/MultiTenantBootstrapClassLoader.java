@@ -1,6 +1,7 @@
 package dnet.mt.hi.framework.cl;
 
 import dnet.mt.hi.framework.NativeLibraryLoader;
+import jdk.internal.loader.ClassLoaders;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -66,7 +67,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
         try {
             Field field = ClassLoader.class.getDeclaredField(NATIVE_LIBRARIES_FIELD_NAME);
             field.setAccessible(true);
-            ClassLoader cl = MultiTenantBootstrapClassLoader.class.getClassLoader();
+            ClassLoader cl = ClassLoaders.appClassLoader();
             field.set(this, field.get(cl));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
