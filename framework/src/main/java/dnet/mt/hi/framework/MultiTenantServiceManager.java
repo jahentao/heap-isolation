@@ -18,12 +18,13 @@ public class MultiTenantServiceManager {
 
     private Map<String, TenantClassLoader> classLoaders = new ConcurrentHashMap<>();
 
-    public MultiTenantServiceManager(URI initClassesFile, URI... sharedJars) {
+    public MultiTenantServiceManager(URI initClassesFile, URI[] sharedJars, URI[] nativeLibraries) {
         try {
             Set<String> initClassNames = new HashSet<>();
             Files.lines(Path.of(initClassesFile)).forEach(initClassNames::add);
             Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
-            MultiTenantBootstrapClassLoader.init(sharedJarPaths, (new AllPermission()).newPermissionCollection());
+            Path[] nativeLibraryPaths = Arrays.stream(nativeLibraries).map(Path::of).toArray(Path[]::new);
+            MultiTenantBootstrapClassLoader.init(sharedJarPaths, nativeLibraryPaths, (new AllPermission()).newPermissionCollection());
         } catch (IOException e) {
             e.printStackTrace();
         }

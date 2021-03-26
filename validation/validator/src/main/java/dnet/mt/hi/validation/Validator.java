@@ -8,7 +8,6 @@ import dnet.mt.hi.framework.MultiTenantServiceManager;
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class Validator {
@@ -19,23 +18,25 @@ public class Validator {
             throw new IllegalArgumentException("Input arguments should be speficied in the following order:\n" +
                     "\t\t1) relative path to a file containing the list of init classes\n" +
                     "\t\t2) relative path to java.base.jar file\n" +
-                    "\t\t3) relative path to tenant01.jar file\n" +
-                    "\t\t4) relative path to tenant02.jar file\n" +
-                    "\t\t5) relative path to jobs.csv file\n");
+                    "\t\t3) relative path to libjava.so file\n" +
+                    "\t\t4) relative path to tenant01.jar file\n" +
+                    "\t\t5) relative path to tenant02.jar file\n" +
+                    "\t\t6) relative path to jobs.csv file\n");
         }
-
-        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
-        System.out.println(TimeZone.getDefault().getID());
 
         int argIndex = 0;
 
         String initClassNamesPath = args[argIndex++];
         String javaBaseJarPath = args[argIndex++];
+        String nativeLibraryPath = args[argIndex++];
         String tenant01JarPath = args[argIndex++];
         String tenant02JarPath = args[argIndex++];
         String jobsCSVPath = args[argIndex++];
 
-        MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(buildURI(initClassNamesPath), buildURI(javaBaseJarPath));
+        MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(
+                buildURI(initClassNamesPath),
+                new URI[] {buildURI(javaBaseJarPath)},
+                new URI[]{buildURI(nativeLibraryPath)});
         multiTenantServiceManager.registerTenant("tenant01", buildURI(tenant01JarPath));
         multiTenantServiceManager.registerTenant("tenant02", buildURI(tenant02JarPath));
 
