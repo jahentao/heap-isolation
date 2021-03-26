@@ -22,7 +22,7 @@ public class Validator {
         }
 
         MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(
-                new NativeLibraryLoaderImpl(props.getProperty("java.native.lib")),
+                new NativeLibraryLoaderImpl(buildURI(props.getProperty("java.native.lib"))),
                 buildURI(props.getProperty("java.base.jar")));
         multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));
         multiTenantServiceManager.registerTenant("tenant02", buildURI(props.getProperty("tenants.02.jar")));
@@ -42,15 +42,15 @@ public class Validator {
 
     private static class NativeLibraryLoaderImpl implements NativeLibraryLoader {
 
-        private String path;
+        private URI uri;
 
-        private NativeLibraryLoaderImpl(String path) {
-            this.path = path;
+        private NativeLibraryLoaderImpl(URI uri) {
+            this.uri = uri;
         }
 
         @Override
         public void load() {
-            System.load(path);
+            System.load(uri.toString());
         }
     }
 
