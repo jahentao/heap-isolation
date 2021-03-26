@@ -71,6 +71,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
             Field field = ClassLoader.class.getDeclaredField(NATIVE_LIBRARIES_FIELD_NAME);
             field.setAccessible(true);
             ClassLoader cl = MultiTenantBootstrapClassLoader.class.getClassLoader();
+            System.out.println(cl);
             field.set(this, field.get(cl));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
