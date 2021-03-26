@@ -19,14 +19,13 @@ public class Validator {
 
         Properties props = new Properties();
         try {
-            props.load(new FileInputStream(Validator.class.getClassLoader().
-                    getResource("config.properties").toString()));
+            props.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(
-                new URI[] {buildURI(props.getProperty("java.base.jar"))},
+                new URI[]{buildURI(props.getProperty("java.base.jar"))},
                 new URI[]{buildURI(props.getProperty("java.native.lib"))});
         multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));
         multiTenantServiceManager.registerTenant("tenant02", buildURI(props.getProperty("tenants.02.jar")));
