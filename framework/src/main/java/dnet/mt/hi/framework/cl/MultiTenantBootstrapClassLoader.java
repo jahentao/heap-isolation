@@ -1,5 +1,7 @@
 package dnet.mt.hi.framework.cl;
 
+import dnet.mt.hi.framework.NativeLibraryLoader;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URI;
@@ -22,7 +24,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
     private ProtectionDomain pd;
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
 
-    public static void init(Path[] sharedJarPaths, Path[] nativeLibraries, PermissionCollection permissions) {
+    public static void init(Path[] sharedJarPaths, NativeLibraryLoader nativeLibraryLoader, PermissionCollection permissions) {
 
         SecurityManager securityManager = System.getSecurityManager();
         if (securityManager != null) {
@@ -31,16 +33,10 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
 
         if (trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
             createTrustedCodeFileSystem(sharedJarPaths);
-            loadNativeLibraries(nativeLibraries);
+            nativeLibraryLoader.load();
             systemPermissions = permissions;
         }
 
-    }
-
-    private static void loadNativeLibraries(Path[] nativeLibraries) {
-        for (Path nativeLibrary : nativeLibraries) {
-            System.load(nativeLibrary.toString());
-        }
     }
 
     private static void createTrustedCodeFileSystem(Path[] sharedJarPaths) {
@@ -71,7 +67,6 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
             Field field = ClassLoader.class.getDeclaredField(NATIVE_LIBRARIES_FIELD_NAME);
             field.setAccessible(true);
             ClassLoader cl = MultiTenantBootstrapClassLoader.class.getClassLoader();
-            System.out.println(cl);
             field.set(this, field.get(cl));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
