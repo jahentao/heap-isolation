@@ -1,7 +1,6 @@
 package dnet.mt.hi.framework.cl;
 
 import dnet.mt.hi.framework.NativeLibraryLoader;
-import jdk.internal.loader.ClassLoaders;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -67,8 +66,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
         try {
             Field field = ClassLoader.class.getDeclaredField(NATIVE_LIBRARIES_FIELD_NAME);
             field.setAccessible(true);
-            ClassLoader cl = ClassLoaders.appClassLoader();
-            field.set(this, field.get(cl));
+            field.set(this, field.get(ClassLoader.getSystemClassLoader()));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
@@ -94,9 +92,8 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
 
     @Override
     protected Class<?> findClass(String name) {
-        Class result = null;
         for (FileSystem fs : trustedCodeFileSystems) {
-            result = findClass(name, fs, pd);
+            Class result = findClass(name, fs, pd);
             if (result != null) {
                 return result;
             }
