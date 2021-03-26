@@ -16,7 +16,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
 
     private static final String NATIVE_LIBRARIES_FIELD_NAME = "nativeLibraries";
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
-    private static final List<String> bypassList = new LinkedList<>();
+    private static final Map<String, Class> bypass = new HashMap<>();
     private static PermissionCollection systemPermissions;
 
     private ProtectionDomain pd;
@@ -30,11 +30,17 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
             securityManager.checkCreateClassLoader();
         }
 
-        if (trustedCodeFileSystems.isEmpty() && bypassList.isEmpty() && systemPermissions == null) {
+        if (trustedCodeFileSystems.isEmpty() && bypass.isEmpty() && systemPermissions == null) {
             createTrustedCodeFileSystem(sharedJarPaths);
             nativeLibraryLoader.load();
             systemPermissions = permissions;
-            bypassList.addAll(Arrays.asList(bypassClassNames));
+            try {
+                for (String className : bypassClassNames) {
+                    bypass.put(className, Class.forName(className));
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -74,10 +80,10 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
 
 
     @Override
-    protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+    protected Class<?> loadClass(String name, boolean resolve) {
         synchronized (getClassLoadingLock(name)) {
-            if (bypassList.contains(name)) {
-                return super.loadClass(name, resolve);
+            if (bypass.containsKey(name)) {
+                return bypass.get(name);
             } else {
                 Class<?> c = loadedClasses.get(name);
                 if (c == null) {
@@ -118,7 +124,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
             }
         });
         trustedCodeFileSystems.clear();
-        bypassList.clear();
+        bypass.clear();
         systemPermissions = null;
     }
 
