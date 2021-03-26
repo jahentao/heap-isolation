@@ -45,7 +45,6 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
 
         try {
             for (Path jarPath : sharedJarPaths) {
-                System.out.println(URI.create(String.format("jar:%s", jarPath.toUri().toString())));
                 trustedCodeFileSystems.add(FileSystems.
                         newFileSystem(URI.create(String.format("jar:%s", jarPath.toUri().toString())), env));
             }

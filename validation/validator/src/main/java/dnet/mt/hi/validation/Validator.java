@@ -22,8 +22,8 @@ public class Validator {
         }
 
         MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(
-                new NativeLibraryLoaderImpl(props.getProperty("java.base.jar")),
-                buildURI(props.getProperty("java.native.lib")));
+                new NativeLibraryLoaderImpl(props.getProperty("java.native.lib")),
+                buildURI(props.getProperty("java.base.jar")));
         multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));
         multiTenantServiceManager.registerTenant("tenant02", buildURI(props.getProperty("tenants.02.jar")));
 
