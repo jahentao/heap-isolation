@@ -12,7 +12,7 @@ import java.security.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader {
+public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoader {
 
     private static final String NATIVE_LIBRARIES_FIELD_NAME = "nativeLibraries";
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
@@ -59,7 +59,7 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
         }
     }
 
-    public MultiTenantBootstrapClassLoader(String name, ClassLoader parent, Principal[] principals) {
+    public TenantSpecificBootstrapClassLoader(String name, ClassLoader parent, Principal[] principals) {
         super(name, parent);
 
         if (trustedCodeFileSystems.isEmpty() || systemPermissions == null) {
@@ -80,10 +80,11 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
 
 
     @Override
-    protected Class<?> loadClass(String name, boolean resolve) {
+    protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
-            if (bypass.containsKey(name)) {
-                return bypass.get(name);
+            String pkg = extractPackageName(name);
+            if ("java.lang".equals(pkg) || "java.lang.invoke".equals(pkg) || "java.lang.reflect".equals(pkg)) {
+                return super.loadClass(name, resolve);
             } else {
                 Class<?> c = loadedClasses.get(name);
                 if (c == null) {
@@ -98,6 +99,11 @@ public final class MultiTenantBootstrapClassLoader extends FileSystemClassLoader
                 return c;
             }
         }
+    }
+
+    private String extractPackageName(String name) {
+        int lastIndex = name.lastIndexOf('.');
+        return name.substring(0, lastIndex);
     }
 
     @Override

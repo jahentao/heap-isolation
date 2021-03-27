@@ -18,17 +18,17 @@ public final class TenantClassLoader extends FileSystemClassLoader implements Cl
     private FileSystem tenantFileSystem;
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
     private ProtectionDomain pd;
-    private MultiTenantBootstrapClassLoader parent;
+    private TenantSpecificBootstrapClassLoader parent;
 
     public TenantClassLoader(String name, ClassLoader parent, Path tenantJarPath, PermissionCollection permissions, Principal[] principals) {
 
         super(name, parent);
 
-        if (parent instanceof MultiTenantBootstrapClassLoader) {
-            this.parent = (MultiTenantBootstrapClassLoader) parent;
+        if (parent instanceof TenantSpecificBootstrapClassLoader) {
+            this.parent = (TenantSpecificBootstrapClassLoader) parent;
         } else {
             throw new IllegalArgumentException(String.format("Parent should be an instance of %s.",
-                    MultiTenantBootstrapClassLoader.class.getName()));
+                    TenantSpecificBootstrapClassLoader.class.getName()));
         }
 
         try {

@@ -1,6 +1,6 @@
 package dnet.mt.hi.framework;
 
-import dnet.mt.hi.framework.cl.MultiTenantBootstrapClassLoader;
+import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 import dnet.mt.hi.framework.cl.TenantClassLoader;
 
 import java.net.URI;
@@ -16,14 +16,14 @@ public class MultiTenantServiceManager {
 
     public MultiTenantServiceManager(NativeLibraryLoader nativeLibraryLoader, URI... sharedJars) {
         Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
-        MultiTenantBootstrapClassLoader.init(sharedJarPaths, nativeLibraryLoader,
+        TenantSpecificBootstrapClassLoader.init(sharedJarPaths, nativeLibraryLoader,
                 (new AllPermission()).newPermissionCollection(),
                 Runnable.class.getCanonicalName());
     }
 
     public void registerTenant(String tenantId, URI tenantJar) {
         if (!classLoaders.containsKey(tenantId)) {
-            MultiTenantBootstrapClassLoader bootstrapClassLoader = new MultiTenantBootstrapClassLoader(
+            TenantSpecificBootstrapClassLoader bootstrapClassLoader = new TenantSpecificBootstrapClassLoader(
                     tenantId.concat("_BootstrapLoader"),
                     MultiTenantServiceManager.class.getClassLoader(), null);
             TenantClassLoader tenantClassLoader = new TenantClassLoader(tenantId.concat("_ClassLoader"),
