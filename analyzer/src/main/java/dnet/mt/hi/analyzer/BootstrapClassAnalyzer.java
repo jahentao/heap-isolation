@@ -41,6 +41,7 @@ public class BootstrapClassAnalyzer {
             Set<String> bootstrapClassNames = loadBootstrapClassNames(bootstrapClassesFile);
             init(input);
             analyze(bootstrapClassNames);
+            persist(outputBase.concat("native_classes.list"));
             persist(outputBase.concat("sfp_arrays.csv"), sfp -> sfp.isArray);
             persist(outputBase.concat("sfp_primitives.csv"), sfp -> isPrimitive(sfp));
             persist(outputBase.concat("sfp_privates.csv"), sfp -> !sfp.isArray && !isPrimitive(sfp) && sfp.access.equals(FieldAccess.PRIVATE));
@@ -63,9 +64,16 @@ public class BootstrapClassAnalyzer {
         Files.write(Paths.get(output), sb.toString().getBytes());
     }
 
+    private static void persist(String output) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        NativeClassDetector.nativeClassNames.stream().forEach(sb::append);
+        Files.write(Paths.get(output), sb.toString().getBytes());
+    }
+
     private static void analyze(Set<String> bootstrapClassNames) {
         sourceRoot.getCompilationUnits().parallelStream().forEach(cu -> {
             cu.accept(new StaticFieldPropertiesExtractor(bootstrapClassNames), null);
+            cu.accept(new NativeClassDetector(), null);
         });
     }
 
