@@ -83,8 +83,8 @@ public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoa
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
             if (name != null) {
-                if (name.startsWith("java.lang.") || name.startsWith("jdk.internal.") ||
-                        name.startsWith("com.sun.") || name.startsWith("sun.")) {
+                if (name.startsWith("java.lang.") /*|| name.startsWith("jdk.internal.") ||
+                        name.startsWith("com.sun.") || name.startsWith("sun.")*/) {
                     return super.loadClass(name, resolve);
                 } else {
                     Class<?> c = loadedClasses.get(name);
