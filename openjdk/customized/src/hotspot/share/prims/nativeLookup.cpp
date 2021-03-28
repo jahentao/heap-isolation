@@ -511,7 +511,7 @@ address NativeLookup::lookup_base(const methodHandle& method, bool& in_base_libr
   ResourceMark rm(THREAD);
 
   if (!in_base_library) { // first lookup the base native libraries
-    entry = lookup_entry(method, true, THREAD);
+    entry = lookup_entry(method, !in_base_library, THREAD);
     if (entry != NULL) return entry;
   }
 
