@@ -261,7 +261,7 @@ address NativeLookup::lookup_style(const methodHandle& method, char* pure_name, 
   // gets found the first time around - otherwise an infinite loop can occure. This is
   // another VM/library dependency
   Handle loader(THREAD, method->method_holder()->class_loader());
-  if (loader.is_null()) {
+  // if (loader.is_null()) { TenantSpecificBootstrapClassLoader also requires looking up native Java library
     entry = lookup_special_native(jni_name);
     if (entry == NULL) {
        entry = (address) os::dll_lookup(os::native_java_library(), jni_name);
@@ -270,7 +270,7 @@ address NativeLookup::lookup_style(const methodHandle& method, char* pure_name, 
       in_base_library = true;
       return entry;
     }
-  }
+  //}
 
   // Otherwise call static method findNative in ClassLoader
   Klass*   klass = SystemDictionary::ClassLoader_klass();
@@ -509,11 +509,6 @@ address NativeLookup::lookup_entry_prefixed(const methodHandle& method, bool& in
 address NativeLookup::lookup_base(const methodHandle& method, bool& in_base_library, TRAPS) {
   address entry = NULL;
   ResourceMark rm(THREAD);
-
-  if (!in_base_library) { // first lookup the base native libraries
-    entry = lookup_entry(method, !in_base_library, THREAD);
-    if (entry != NULL) return entry;
-  }
 
   entry = lookup_entry(method, in_base_library, THREAD);
   if (entry != NULL) return entry;

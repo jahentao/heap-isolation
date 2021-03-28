@@ -1,7 +1,5 @@
 package dnet.mt.hi.framework.cl;
 
-import dnet.mt.hi.framework.NativeLibraryLoader;
-
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.FileSystem;
@@ -16,33 +14,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoader {
 
-    private static final String NATIVE_LIBRARIES_FIELD_NAME = "nativeLibraries";
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
-    private static final Map<String, Class> bypass = new HashMap<>();
     private static PermissionCollection systemPermissions;
 
     private ProtectionDomain pd;
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
 
-    public static void init(Path[] sharedJarPaths, NativeLibraryLoader nativeLibraryLoader,
-                            PermissionCollection permissions, String... bypassClassNames) {
+    public static void init(Path[] sharedJarPaths, PermissionCollection permissions) {
 
         SecurityManager securityManager = System.getSecurityManager();
         if (securityManager != null) {
             securityManager.checkCreateClassLoader();
         }
 
-        if (trustedCodeFileSystems.isEmpty() && bypass.isEmpty() && systemPermissions == null) {
+        if (trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
             createTrustedCodeFileSystem(sharedJarPaths);
-            //nativeLibraryLoader.load();
             systemPermissions = permissions;
-            try {
-                for (String className : bypassClassNames) {
-                    bypass.put(className, Class.forName(className));
-                }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
         }
 
     }
@@ -70,14 +57,6 @@ public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoa
 
         CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
         pd = new ProtectionDomain(cs, systemPermissions, this, principals);
-
-        /*try {
-            Field field = ClassLoader.class.getDeclaredField(NATIVE_LIBRARIES_FIELD_NAME);
-            field.setAccessible(true); // This implies that the framework should be loaded as a patch to java.base
-            field.set(this, field.get(ClassLoader.getSystemClassLoader()));
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }*/
     }
 
 
@@ -130,7 +109,6 @@ public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoa
             }
         });
         trustedCodeFileSystems.clear();
-        bypass.clear();
         systemPermissions = null;
     }
 

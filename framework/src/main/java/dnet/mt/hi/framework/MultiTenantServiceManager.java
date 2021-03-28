@@ -14,11 +14,9 @@ public class MultiTenantServiceManager {
 
     private Map<String, TenantClassLoader> classLoaders = new ConcurrentHashMap<>();
 
-    public MultiTenantServiceManager(NativeLibraryLoader nativeLibraryLoader, URI... sharedJars) {
+    public MultiTenantServiceManager(URI... sharedJars) {
         Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
-        TenantSpecificBootstrapClassLoader.init(sharedJarPaths, nativeLibraryLoader,
-                (new AllPermission()).newPermissionCollection(),
-                Runnable.class.getCanonicalName());
+        TenantSpecificBootstrapClassLoader.init(sharedJarPaths, (new AllPermission()).newPermissionCollection());
     }
 
     public void registerTenant(String tenantId, URI tenantJar) {
