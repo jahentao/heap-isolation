@@ -3,13 +3,15 @@ package dnet.mt.hi.framework.cl;
 import dnet.mt.hi.framework.NativeLibraryLoader;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.net.URI;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.security.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoader {
@@ -32,7 +34,7 @@ public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoa
 
         if (trustedCodeFileSystems.isEmpty() && bypass.isEmpty() && systemPermissions == null) {
             createTrustedCodeFileSystem(sharedJarPaths);
-            nativeLibraryLoader.load();
+            //nativeLibraryLoader.load();
             systemPermissions = permissions;
             try {
                 for (String className : bypassClassNames) {
@@ -69,13 +71,13 @@ public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoa
         CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
         pd = new ProtectionDomain(cs, systemPermissions, this, principals);
 
-        try {
+        /*try {
             Field field = ClassLoader.class.getDeclaredField(NATIVE_LIBRARIES_FIELD_NAME);
             field.setAccessible(true); // This implies that the framework should be loaded as a patch to java.base
             field.set(this, field.get(ClassLoader.getSystemClassLoader()));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 
