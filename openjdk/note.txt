@@ -3,19 +3,5 @@ Successful and necessary changes:
      check_prohibited_package
  - classfile/systemDictionary.cpp
      check_constraints
- - interpreter/linkResolver.cpp
-     check_method_loader_constraints
-     check_field_loader_constraints
  - prims/nativeLookup.cpp
      lookup_style
-
-Not sure if they following changes are tested properly:
- - ci/ciKlass.cpp
-     is_subtype_of
- - oops/klass.hpp
-     identical_in_name
- - oops/klass.cpp
-     identical_in_name
-     is_subtype_of
-     is_subclass_of
-     search_secondary_supers
