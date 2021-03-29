@@ -9,7 +9,7 @@ Successful and necessary changes:
  - prims/nativeLookup.cpp
      lookup_style
 
-Not sure if they following changes are required:
+Not sure if they following changes are tested properly:
  - ci/ciKlass.cpp
      is_subtype_of
  - oops/klass.hpp

@@ -113,7 +113,19 @@ bool Klass::is_subtype_of(Klass* k) const {
 }
 
 bool Klass::identical_in_name(const Klass* k) const {
-    return k != NULL && !_name->fast_compare(k->name());
+    if (k == NULL) {
+        return false;
+    }
+
+    int this_length = _name->utf8_length();
+    char* this_c_string = NEW_RESOURCE_ARRAY(char, this_length + 1);
+    _name->as_C_string(this_c_string, this_length);
+
+    bool result = k->name()->equals(this_c_string, this_length);
+
+    FREE_RESOURCE_ARRAY(char, this_c_string, this_length + 1);
+
+    return result;
 }
 
 bool Klass::search_secondary_supers(Klass* k) const {
