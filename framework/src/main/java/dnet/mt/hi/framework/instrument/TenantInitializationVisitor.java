@@ -5,13 +5,27 @@ import jdk.internal.org.objectweb.asm.Label;
 import jdk.internal.org.objectweb.asm.MethodVisitor;
 import jdk.internal.org.objectweb.asm.Opcodes;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 public class TenantInitializationVisitor extends ClassVisitor implements Opcodes {
 
-    private String tenantHome;
+    private static final String systemProperties;
+    private String tenantId;
 
-    public TenantInitializationVisitor(int api, ClassVisitor cv, String tenantHome) {
+    static {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            System.getProperties().store(baos, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        systemProperties = baos.toString();
+    }
+
+    public TenantInitializationVisitor(int api, ClassVisitor cv, String tenantId) {
         super(api, cv);
-        this.tenantHome = tenantHome;
+        this.tenantId = tenantId;
     }
 
     // ASM code is gerenated using the TenantInitializer class in the asmifier module
@@ -22,10 +36,17 @@ public class TenantInitializationVisitor extends ClassVisitor implements Opcodes
         methodVisitor.visitCode();
         Label label0 = new Label();
         methodVisitor.visitLabel(label0);
-        methodVisitor.visitLdcInsn(tenantHome);
-        methodVisitor.visitFieldInsn(PUTSTATIC, name, "tenantHome", "Ljava/lang/String;");
+        methodVisitor.visitLineNumber(8, label0);
+        methodVisitor.visitLdcInsn(tenantId);
+        methodVisitor.visitFieldInsn(PUTSTATIC, "dnet/mt/hi/init/TenantInitializer", "tenantId", "Ljava/lang/String;");
         Label label1 = new Label();
         methodVisitor.visitLabel(label1);
+        methodVisitor.visitLineNumber(9, label1);
+        methodVisitor.visitLdcInsn(systemProperties);
+        methodVisitor.visitFieldInsn(PUTSTATIC, "dnet/mt/hi/init/TenantInitializer", "systemProperties", "Ljava/lang/String;");
+        Label label2 = new Label();
+        methodVisitor.visitLabel(label2);
+        methodVisitor.visitLineNumber(10, label2);
         methodVisitor.visitInsn(RETURN);
         methodVisitor.visitMaxs(1, 0);
         methodVisitor.visitEnd();

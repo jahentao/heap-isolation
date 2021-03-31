@@ -19,7 +19,6 @@ abstract class AbstractMTClassLoader extends ClassLoader {
 
     protected String tenantId;
 
-
     AbstractMTClassLoader(String name, ClassLoader parent) {
         super(name, parent);
     }
