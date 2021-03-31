@@ -10,16 +10,22 @@ import jdk.internal.org.objectweb.asm.Opcodes;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.security.ProtectionDomain;
+import java.util.Enumeration;
+import java.util.stream.Stream;
 
-abstract class FileSystemClassLoader extends ClassLoader {
+abstract class AbstractMTClassLoader extends ClassLoader {
 
     protected String tenantId;
 
-    FileSystemClassLoader(String name, ClassLoader parent) {
+    private static final String EXCEPTION_MESSAGE = "This class loader is merely responsible for isolating tenant code" +
+            " from the rest of the execution environment.";
+
+    AbstractMTClassLoader(String name, ClassLoader parent) {
         super(name, parent);
     }
 
@@ -64,6 +70,31 @@ abstract class FileSystemClassLoader extends ClassLoader {
         ClassVisitor cv = new TenantInitializationVisitor(Opcodes.ASM6, cw, tenantHome);
         cr.accept(cv, 0);
         return cw.toByteArray();
+    }
+
+    protected URL findResource(String moduleName, String name) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+    }
+
+    public URL getResource(String name) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+    }
+
+
+    public Enumeration<URL> getResources(String name) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+    }
+
+    public Stream<URL> resources(String name) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+    }
+
+    protected URL findResource(String name) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+    }
+
+    protected Enumeration<URL> findResources(String name) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
     }
 
 }

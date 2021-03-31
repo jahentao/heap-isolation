@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class TenantClassLoader extends FileSystemClassLoader implements Closeable {
+public final class TenantClassLoader extends AbstractMTClassLoader implements Closeable {
 
     private static final RuntimePermission CLOSE_CLASS_LOADER_PERMISSION = new RuntimePermission("closeClassLoader");
 

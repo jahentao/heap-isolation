@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoader {
+public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoader {
 
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
     private static PermissionCollection systemPermissions;
@@ -65,7 +65,7 @@ public final class TenantSpecificBootstrapClassLoader extends FileSystemClassLoa
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
             if (name != null) {
-                if (name.equals(Runnable.class.getCanonicalName())) {
+                if (name.startsWith("java.lang.")) {
                     return super.loadClass(name, resolve);
                 } else {
                     Class<?> c = loadedClasses.get(name);

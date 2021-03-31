@@ -3,14 +3,8 @@ package dnet.mt.hi.framework;
 import dnet.mt.hi.framework.cl.TenantClassLoader;
 import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.AllPermission;
 import java.util.Arrays;
 import java.util.Map;
@@ -33,26 +27,6 @@ public class MultiTenantServiceManager {
             TenantClassLoader tenantClassLoader = new TenantClassLoader(tenantId, bootstrapClassLoader,
                     Path.of(tenantJar), null, null); // TODO fix permissions
             classLoaders.put(tenantId, tenantClassLoader);
-            initTenant(tenantId, bootstrapClassLoader);
-        }
-    }
-
-    private void initTenant(String tenantId, TenantSpecificBootstrapClassLoader bootstrapClassLoader) {
-        try {
-
-            Path tenantDirectory = Paths.get(System.getProperty("user.home"), tenantId);
-            Files.createDirectories(tenantDirectory);
-            Path tenantProperties = Paths.get(tenantDirectory.toString(), String.format("%s_system.properties", tenantId));
-            System.getProperties().store(new FileOutputStream(tenantProperties.toFile()), null);
-
-            Class clazz = bootstrapClassLoader.loadClass(TENANT_INITIALIZER_CLASS_NAME);
-            Constructor constructor = clazz.getConstructor();
-            Runnable initializer = (Runnable) constructor.newInstance();
-            initializer.run();
-
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException |
-                IllegalAccessException | InvocationTargetException | IOException e) {
-            e.printStackTrace();
         }
     }
 
