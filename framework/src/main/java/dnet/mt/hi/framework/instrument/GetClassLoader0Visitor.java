@@ -4,12 +4,13 @@ import jdk.internal.org.objectweb.asm.Label;
 import jdk.internal.org.objectweb.asm.MethodVisitor;
 import jdk.internal.org.objectweb.asm.Opcodes;
 
-class IsolationMethodVisitor extends MethodVisitor implements Opcodes {
+class GetClassLoader0Visitor extends MethodVisitor implements Opcodes {
 
-    IsolationMethodVisitor(int api, MethodVisitor mv) {
+    GetClassLoader0Visitor(int api, MethodVisitor mv) {
         super(api, mv);
     }
 
+    // ASM code is generated using the GetClassLoader0 in the asmifier module
     public void visitCode() {
         Label label0 = new Label();
         mv.visitLabel(label0);

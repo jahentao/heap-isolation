@@ -14,6 +14,7 @@ public class TenantInitializationVisitor extends ClassVisitor implements Opcodes
         this.tenantId = tenantId;
     }
 
+    // ASM code is gerenated using the TenantInitializer class in the asmifier module
     public void visit(int version, int access, String name, String signature,
                       String superName, String[] interfaces) {
         cv.visit(version, access, name, signature, superName, interfaces);

@@ -9,7 +9,7 @@ public class ASMCodeGenerator {
     public static void main(String[] args) {
         try {
             ASMifier.main(new String[] {
-                    TenantInitializer.class.getCanonicalName()
+                    SetProperties.class.getCanonicalName()
             });
         } catch (IOException e) {
             e.printStackTrace();

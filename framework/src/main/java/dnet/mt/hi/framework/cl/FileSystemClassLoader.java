@@ -1,7 +1,8 @@
 package dnet.mt.hi.framework.cl;
 
 import dnet.mt.hi.framework.MultiTenantServiceManager;
-import dnet.mt.hi.framework.instrument.IsolationClassVisitor;
+import dnet.mt.hi.framework.instrument.JavaLangClassVisitor;
+import dnet.mt.hi.framework.instrument.JavaLangSystemVisitor;
 import dnet.mt.hi.framework.instrument.TenantInitializationVisitor;
 import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.ClassVisitor;
@@ -27,15 +28,7 @@ abstract class FileSystemClassLoader extends ClassLoader {
         try {
             InputStream is = Files.newInputStream(fs.getPath(name.replace('.', '/').concat(".class")),
                     StandardOpenOption.READ);
-            byte[] bytes;
-            if (name.equals(Class.class.getCanonicalName())) {
-                bytes = instrumentClass(is);
-            } else if (name.equals(MultiTenantServiceManager.TENANT_INITIALIZER_CLASS_NAME)) {
-                bytes = instrumentTenantInitializer(is, tenantId);
-            }
-            else {
-                bytes = is.readAllBytes();
-            }
+            byte[] bytes = getBytecode(name, is);
             /**
              * In case of classes in packages starting with 'java.', the following statement only works on custom JVM's
              * which do not throw SecurityException in the latter case. See the patch folder in this project.
@@ -47,10 +40,30 @@ abstract class FileSystemClassLoader extends ClassLoader {
         return null;
     }
 
-    private byte[] instrumentClass(InputStream is) throws IOException {
+    private byte[] getBytecode(String name, InputStream is) throws IOException {
+        if (name.equals(Class.class.getCanonicalName())) {
+            return instrumentJavaLangClass(is);
+        } else if (name.equals(System.class.getCanonicalName())) {
+            return instrumentJavaLangSystem(is);
+        } else if (name.equals(MultiTenantServiceManager.TENANT_INITIALIZER_CLASS_NAME)) {
+            return instrumentTenantInitializer(is, tenantId);
+        } else {
+            return is.readAllBytes();
+        }
+    }
+
+    private byte[] instrumentJavaLangSystem(InputStream is) throws IOException {
         ClassReader cr = new ClassReader(is);
         ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
-        ClassVisitor cv = new IsolationClassVisitor(Opcodes.ASM6, cw);
+        ClassVisitor cv = new JavaLangSystemVisitor(Opcodes.ASM6, cw);
+        cr.accept(cv, 0);
+        return cw.toByteArray();
+    }
+
+    private byte[] instrumentJavaLangClass(InputStream is) throws IOException {
+        ClassReader cr = new ClassReader(is);
+        ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
+        ClassVisitor cv = new JavaLangClassVisitor(Opcodes.ASM6, cw);
         cr.accept(cv, 0);
         return cw.toByteArray();
     }
