@@ -33,7 +33,7 @@ abstract class AbstractMTClassLoader extends ClassLoader {
         try {
             InputStream is = Files.newInputStream(fs.getPath(name.replace('.', '/').concat(".class")),
                     StandardOpenOption.READ);
-            byte[] bytes = getBytecode(name, is);
+            byte[] bytes = is.readAllBytes();
             /**
              * In case of classes in packages starting with 'java.', the following statement only works on custom JVM's
              * which do not throw SecurityException in the latter case. See the patch folder in this project.
