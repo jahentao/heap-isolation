@@ -3,6 +3,8 @@ package dnet.mt.hi.framework;
 import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 import dnet.mt.hi.framework.cl.TenantClassLoader;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.security.AllPermission;
@@ -27,6 +29,15 @@ public class MultiTenantServiceManager {
             TenantClassLoader tenantClassLoader = new TenantClassLoader(tenantId.concat("_ClassLoader"),
                     bootstrapClassLoader, Path.of(tenantJar), null, null); // TODO fix permissions
             classLoaders.put(tenantId, tenantClassLoader);
+            try {
+                Class clazz = bootstrapClassLoader.loadClass("dnet.mt.hi.init.TenantInitializer");
+                Constructor constructor = clazz.getConstructor(String.class);
+                Runnable initializer = (Runnable) constructor.newInstance(
+                        String.format("%s/%s", System.getProperty("user.home"), tenantId));
+                initializer.run();
+            } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
         }
     }
 

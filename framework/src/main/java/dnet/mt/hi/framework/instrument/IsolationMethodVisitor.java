@@ -1,6 +1,5 @@
 package dnet.mt.hi.framework.instrument;
 
-import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 import jdk.internal.org.objectweb.asm.Label;
 import jdk.internal.org.objectweb.asm.MethodVisitor;
 import jdk.internal.org.objectweb.asm.Opcodes;
@@ -12,16 +11,17 @@ class IsolationMethodVisitor extends MethodVisitor implements Opcodes {
     }
 
     public void visitCode() {
+        Label label0 = new Label();
+        mv.visitLabel(label0);
         mv.visitVarInsn(ALOAD, 0);
-        mv.visitFieldInsn(GETFIELD, "java/lang/Class", "classLoader", "Ljava/lang/ClassLoader;");
-        mv.visitTypeInsn(INSTANCEOF, TenantSpecificBootstrapClassLoader.class.getCanonicalName());
-        Label label = new Label();
-        mv.visitJumpInsn(IFEQ, label);
-        mv.visitInsn(ACONST_NULL);
+        mv.visitFieldInsn(GETFIELD, "java/lang/Class", "packageName", "Ljava/lang/String;");
+        mv.visitMethodInsn(INVOKESTATIC, "dnet/mt/hi/init/ClassLoaderFacade", "getClassLoader",
+                "(Ljava/lang/String;)Ljava/lang/ClassLoader;", false);
         mv.visitInsn(ARETURN);
-        mv.visitLabel(label);
+        Label label1 = new Label();
+        mv.visitLabel(label1);
+        mv.visitLocalVariable("this", "Ljava/lang/Class;", null, label0, label1, 0);
         mv.visitMaxs(1, 1);
-        mv.visitCode();
     }
 
 }

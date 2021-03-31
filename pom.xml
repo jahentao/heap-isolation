@@ -18,6 +18,8 @@
         <module>framework</module>
         <module>validation</module>
         <module>analyzer</module>
+        <module>tenant-initializer</module>
+        <module>asmifier</module>
     </modules>
 
 </project>
