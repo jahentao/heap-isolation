@@ -7,7 +7,6 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Properties;
 
 /**
  * This class should implement the Runnable interface as the latter is the only common interface between the tenant
@@ -79,16 +78,7 @@ public class TenantInitializer implements Runnable {
     }
 
     private void initProps() {
-        try {
-            Properties props = new Properties(84);
-            Method method = System.class.getDeclaredMethod("initProperties", Properties.class);
-            method.setAccessible(true);
-            method.invoke(null, props);
-            method.setAccessible(false);
-            System.setProperties(props);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        System.setProperties(null); // Passing null argument triggers the initialization of props by the VM
         System.setProperty("user.home", String.format("%s/%s", System.getProperty("user.home"), tenantId));
         VM.saveAndRemoveProperties(System.getProperties());
         setLineSeparator(System.getProperty("line.separator"));
