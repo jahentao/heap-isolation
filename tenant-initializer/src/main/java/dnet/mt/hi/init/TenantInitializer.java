@@ -80,10 +80,12 @@ public class TenantInitializer implements Runnable {
 
     private void initProps() {
         try {
+            Properties props = new Properties(84);
             Method method = System.class.getDeclaredMethod("initProperties", Properties.class);
             method.setAccessible(true);
-            method.invoke(null, System.getProperties());
+            method.invoke(null, props);
             method.setAccessible(false);
+            System.setProperties(props);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
