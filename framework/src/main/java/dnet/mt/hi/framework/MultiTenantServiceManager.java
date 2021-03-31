@@ -3,7 +3,6 @@ package dnet.mt.hi.framework;
 import dnet.mt.hi.framework.cl.TenantClassLoader;
 import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -40,10 +39,8 @@ public class MultiTenantServiceManager {
     private void initTenant(String tenantId, TenantSpecificBootstrapClassLoader bootstrapClassLoader) {
         try {
 
-            Path tenantDirectory = Paths.get(System.getProperty("user.home"), tenantId);
+            Path tenantDirectory = Paths.get(System.getProperty("user.dir"), tenantId);
             Files.createDirectories(tenantDirectory);
-            Path tenantProperties = Paths.get(tenantDirectory.toString(), String.format("%s_system.properties", tenantId));
-            System.getProperties().store(new FileOutputStream(tenantProperties.toFile()), null);
 
             Class clazz = bootstrapClassLoader.loadClass(TENANT_INITIALIZER_CLASS_NAME);
             Constructor constructor = clazz.getConstructor();

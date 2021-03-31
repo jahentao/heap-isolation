@@ -25,7 +25,7 @@ public class TenantInitializer implements Runnable {
     @Override
     public void run() {
         initProps();
-        initIO(); // This should be after initProps as it relies on a tenant-specific user.home property
+        initIO(); // This should be after initProps as it relies on a tenant-specific user.dir property
         setJavaLangAccess();
         VM.initLevel(4);
         initSecurityManager(); // This should be the last one. Otherwise, the others may face IllegalAccessException.
@@ -38,7 +38,7 @@ public class TenantInitializer implements Runnable {
             props.load(bais);
             bais.close();
 
-            props.setProperty("user.home", String.format("%s/%s", props.get("user.home"), tenantId));
+            props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
             System.setProperties(props);
 
             VM.saveAndRemoveProperties(props);

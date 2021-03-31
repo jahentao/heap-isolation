@@ -43,7 +43,7 @@ abstract class AbstractMTClassLoader extends ClassLoader {
         if (name.equals(Class.class.getCanonicalName())) {
             return instrumentJavaLangClass(is);
         } else if (name.equals(MultiTenantServiceManager.TENANT_INITIALIZER_CLASS_NAME)) {
-            return instrumentTenantInitializer(is, tenantId);
+            return instrumentTenantInitializer(is);
         } else {
             return is.readAllBytes();
         }
@@ -57,11 +57,10 @@ abstract class AbstractMTClassLoader extends ClassLoader {
         return cw.toByteArray();
     }
 
-    private byte[] instrumentTenantInitializer(InputStream is, String tenantId) throws IOException {
+    private byte[] instrumentTenantInitializer(InputStream is) throws IOException {
         ClassReader cr = new ClassReader(is);
         ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
-        String tenantHome = String.format("%s/%s", System.getProperty("user.home"), tenantId);
-        ClassVisitor cv = new TenantInitializationVisitor(Opcodes.ASM6, cw, tenantHome);
+        ClassVisitor cv = new TenantInitializationVisitor(Opcodes.ASM6, cw, tenantId);
         cr.accept(cv, 0);
         return cw.toByteArray();
     }
