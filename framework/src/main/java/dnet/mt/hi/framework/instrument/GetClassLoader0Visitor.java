@@ -14,9 +14,7 @@ class GetClassLoader0Visitor extends MethodVisitor implements Opcodes {
     public void visitCode() {
         Label label0 = new Label();
         mv.visitLabel(label0);
-        mv.visitVarInsn(ALOAD, 0);
-        mv.visitMethodInsn(INVOKEVIRTUAL, "java/lang/Class", "getPackageName", "()Ljava/lang/String;", false);
-        mv.visitMethodInsn(INVOKESTATIC, "dnet/mt/hi/init/ClassLoaderFacade", "getClassLoader", "(Ljava/lang/String;)Ljava/lang/ClassLoader;", false);
+        mv.visitInsn(ACONST_NULL);
         mv.visitInsn(ARETURN);
         Label label1 = new Label();
         mv.visitLabel(label1);

@@ -16,5 +16,6 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:9.1" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:9.1" level="project" />
     <orderEntry type="module" module-name="tenantinitializer" />
+    <orderEntry type="module" module-name="framework" />
   </component>
 </module>

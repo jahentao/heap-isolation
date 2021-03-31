@@ -65,7 +65,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
             if (name != null) {
-                if (name.startsWith("java.lang.")) {
+                if (name.equals(Runnable.class.getCanonicalName())) {
                     return super.loadClass(name, resolve);
                 } else {
                     Class<?> c = loadedClasses.get(name);
