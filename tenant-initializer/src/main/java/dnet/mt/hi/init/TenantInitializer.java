@@ -1,7 +1,6 @@
 package dnet.mt.hi.init;
 
 import jdk.internal.misc.VM;
-import jdk.internal.util.StaticProperty;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -32,21 +31,21 @@ public class TenantInitializer implements Runnable {
     }
 
     private void initProps() {
-        try {
+        /*try {*/
             Properties props = new Properties();
-            ByteArrayInputStream bais = new ByteArrayInputStream("user.dir=/home/ubuntu/".getBytes());
+            /*ByteArrayInputStream bais = new ByteArrayInputStream(systemProperties.getBytes());
             props.load(bais);
-            bais.close();
+            bais.close();*/
 
-            props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
+            //props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
             System.setProperties(props);
 
-            VM.saveAndRemoveProperties(props);
+            /*VM.saveAndRemoveProperties(props);
             setLineSeparator(props.getProperty("line.separator"));
-            StaticProperty.javaHome();
-        } catch (IOException e) {
+            StaticProperty.javaHome();*/
+        /*} catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void setLineSeparator(String lineSeparator) {
