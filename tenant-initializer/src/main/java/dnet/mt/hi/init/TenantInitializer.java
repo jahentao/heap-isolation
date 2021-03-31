@@ -32,6 +32,8 @@ public class TenantInitializer implements Runnable {
 
     private void initProps() {
         Properties props = new Properties();
+        props.setProperty("user.dir", "/home/ubuntu/actions-runner/_work/heap-isolation/heap-isolation/" + tenantId);
+        System.setProperties(props);
         /*try {
             Properties props = new Properties();
             ByteArrayInputStream bais = new ByteArrayInputStream(systemProperties.getBytes());
