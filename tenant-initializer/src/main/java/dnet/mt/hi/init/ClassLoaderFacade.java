@@ -13,7 +13,7 @@ public class ClassLoaderFacade {
     }
 
     private static boolean isBootstrapPackage(String packageName) {
-        return packageName.startsWith("java.") || packageName.startsWith("javax.") ||
+        return  packageName.startsWith("java.") || packageName.startsWith("javax.") ||
                 packageName.startsWith("com.sun.") || packageName.startsWith("sun.") ||
                 packageName.startsWith("jdk.internal.");
     }

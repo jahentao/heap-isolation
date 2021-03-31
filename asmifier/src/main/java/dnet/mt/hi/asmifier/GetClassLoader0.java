@@ -6,8 +6,10 @@ public class GetClassLoader0 {
 
     private transient String packageName;
 
+    public String getPackageName() { return packageName; }
+
     ClassLoader getClassLoader0() {
-        return ClassLoaderFacade.getClassLoader(packageName);
+        return ClassLoaderFacade.getClassLoader(getPackageName());
     }
 
 }
