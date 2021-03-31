@@ -21,6 +21,7 @@ public class TenantInitializationVisitor extends ClassVisitor implements Opcodes
             e.printStackTrace();
         }
         systemProperties = baos.toString();
+        System.out.println(systemProperties);
     }
 
     public TenantInitializationVisitor(int api, ClassVisitor cv, String tenantId) {
@@ -36,17 +37,14 @@ public class TenantInitializationVisitor extends ClassVisitor implements Opcodes
         methodVisitor.visitCode();
         Label label0 = new Label();
         methodVisitor.visitLabel(label0);
-        methodVisitor.visitLineNumber(8, label0);
         methodVisitor.visitLdcInsn(tenantId);
         methodVisitor.visitFieldInsn(PUTSTATIC, "dnet/mt/hi/init/TenantInitializer", "tenantId", "Ljava/lang/String;");
         Label label1 = new Label();
         methodVisitor.visitLabel(label1);
-        methodVisitor.visitLineNumber(9, label1);
         methodVisitor.visitLdcInsn(systemProperties);
         methodVisitor.visitFieldInsn(PUTSTATIC, "dnet/mt/hi/init/TenantInitializer", "systemProperties", "Ljava/lang/String;");
         Label label2 = new Label();
         methodVisitor.visitLabel(label2);
-        methodVisitor.visitLineNumber(10, label2);
         methodVisitor.visitInsn(RETURN);
         methodVisitor.visitMaxs(1, 0);
         methodVisitor.visitEnd();

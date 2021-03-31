@@ -44,7 +44,6 @@ public class TenantInitializer implements Runnable {
             VM.saveAndRemoveProperties(props);
             setLineSeparator(props.getProperty("line.separator"));
             StaticProperty.javaHome();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
