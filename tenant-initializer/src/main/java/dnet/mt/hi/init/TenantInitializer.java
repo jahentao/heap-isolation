@@ -34,7 +34,7 @@ public class TenantInitializer implements Runnable {
         try {
             Properties props = new Properties();
             ByteArrayInputStream bais = new ByteArrayInputStream(systemProperties.getBytes());
-            props.load(bais);
+            //props.load(bais);
             bais.close();
 
             /*props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
