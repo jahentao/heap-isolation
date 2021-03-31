@@ -31,21 +31,22 @@ public class TenantInitializer implements Runnable {
     }
 
     private void initProps() {
-        try {
+        Properties props = new Properties();
+        /*try {
             Properties props = new Properties();
-            ByteArrayInputStream bais = new ByteArrayInputStream("test".getBytes());
-            //props.load(bais);
+            ByteArrayInputStream bais = new ByteArrayInputStream(systemProperties.getBytes());
+            props.load(bais);
             bais.close();
 
-            /*props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
+            props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
             System.setProperties(props);
 
             VM.saveAndRemoveProperties(props);
             setLineSeparator(props.getProperty("line.separator"));
-            StaticProperty.javaHome();*/
+            StaticProperty.javaHome();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void setLineSeparator(String lineSeparator) {
