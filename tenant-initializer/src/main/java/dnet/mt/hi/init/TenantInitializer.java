@@ -33,7 +33,7 @@ public class TenantInitializer implements Runnable {
     private void initProps() {
         try {
             Properties props = new Properties();
-            ByteArrayInputStream bais = new ByteArrayInputStream(systemProperties.getBytes());
+            ByteArrayInputStream bais = new ByteArrayInputStream("test".getBytes());
             //props.load(bais);
             bais.close();
 
@@ -64,13 +64,13 @@ public class TenantInitializer implements Runnable {
         System.setIn(null);
 
         try {
-            File outFile = Paths.get(tenantId, "jvm.out").toFile();
+            File outFile = Paths.get(System.getProperty("user.dir"), "jvm.out").toFile();
             outFile.delete();
             outFile.createNewFile();
             FileOutputStream fosOut = new FileOutputStream(outFile);
             System.setOut(new PrintStream(fosOut));
 
-            File errFile = Paths.get(tenantId, "jvm.err").toFile();
+            File errFile = Paths.get(System.getProperty("user.dir"), "jvm.err").toFile();
             errFile.delete();
             errFile.createNewFile();
             FileOutputStream fosErr = new FileOutputStream(errFile);
