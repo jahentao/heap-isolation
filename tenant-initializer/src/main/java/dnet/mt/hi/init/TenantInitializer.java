@@ -7,6 +7,8 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Paths;
+import java.util.Properties;
 
 /**
  * This class should implement the Runnable interface as the latter is the only common interface between the tenant
@@ -15,7 +17,7 @@ import java.lang.reflect.Method;
 public class TenantInitializer implements Runnable {
 
     // This will be set by a static block generated on the fly while loading this class for a specific tenant
-    private static String tenantId;
+    private static String tenantHome;
 
     /**
      * This performs a subset of operations implemented in initPhase1, initPhase2, and initPhase3 of the System class.
@@ -33,17 +35,14 @@ public class TenantInitializer implements Runnable {
 
         System.setIn(null);
 
-        File tenantDirectory = new File(System.getProperty("user.home"));
-        tenantDirectory.mkdir();
-
         try {
-            File outFile = new File(tenantDirectory, "jvm.out");
+            File outFile = Paths.get(tenantHome, "jvm.out").toFile();
             outFile.delete();
             outFile.createNewFile();
             FileOutputStream fosOut = new FileOutputStream(outFile);
             System.setOut(new PrintStream(fosOut));
 
-            File errFile = new File(tenantDirectory, "jvm.err");
+            File errFile = Paths.get(tenantHome, "jvm.err").toFile();
             errFile.delete();
             errFile.createNewFile();
             FileOutputStream fosErr = new FileOutputStream(errFile);
@@ -78,11 +77,23 @@ public class TenantInitializer implements Runnable {
     }
 
     private void initProps() {
-        System.setProperties(null); // Passing null argument triggers the initialization of props by the VM
-        System.setProperty("user.home", String.format("%s/%s", System.getProperty("user.home"), tenantId));
-        VM.saveAndRemoveProperties(System.getProperties());
-        setLineSeparator(System.getProperty("line.separator"));
-        StaticProperty.javaHome();
+        try {
+
+            Properties props = new Properties();
+            FileInputStream fis = new FileInputStream(tenantHome);
+            props.load(fis);
+            fis.close();
+
+            props.setProperty("user.home", tenantHome);
+            System.setProperties(props);
+
+            VM.saveAndRemoveProperties(props);
+            setLineSeparator(props.getProperty("line.separator"));
+            StaticProperty.javaHome();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setLineSeparator(String lineSeparator) {

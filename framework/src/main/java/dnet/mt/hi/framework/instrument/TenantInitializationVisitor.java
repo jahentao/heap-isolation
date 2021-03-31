@@ -7,11 +7,11 @@ import jdk.internal.org.objectweb.asm.Opcodes;
 
 public class TenantInitializationVisitor extends ClassVisitor implements Opcodes {
 
-    private String tenantId;
+    private String tenantHome;
 
-    public TenantInitializationVisitor(int api, ClassVisitor cv, String tenantId) {
+    public TenantInitializationVisitor(int api, ClassVisitor cv, String tenantHome) {
         super(api, cv);
-        this.tenantId = tenantId;
+        this.tenantHome = tenantHome;
     }
 
     // ASM code is gerenated using the TenantInitializer class in the asmifier module
@@ -22,8 +22,8 @@ public class TenantInitializationVisitor extends ClassVisitor implements Opcodes
         methodVisitor.visitCode();
         Label label0 = new Label();
         methodVisitor.visitLabel(label0);
-        methodVisitor.visitLdcInsn(tenantId);
-        methodVisitor.visitFieldInsn(PUTSTATIC, name, "tenantId", "Ljava/lang/String;");
+        methodVisitor.visitLdcInsn(tenantHome);
+        methodVisitor.visitFieldInsn(PUTSTATIC, name, "tenantHome", "Ljava/lang/String;");
         Label label1 = new Label();
         methodVisitor.visitLabel(label1);
         methodVisitor.visitInsn(RETURN);

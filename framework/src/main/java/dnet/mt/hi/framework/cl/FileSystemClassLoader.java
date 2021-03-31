@@ -2,7 +2,6 @@ package dnet.mt.hi.framework.cl;
 
 import dnet.mt.hi.framework.MultiTenantServiceManager;
 import dnet.mt.hi.framework.instrument.JavaLangClassVisitor;
-import dnet.mt.hi.framework.instrument.JavaLangSystemVisitor;
 import dnet.mt.hi.framework.instrument.TenantInitializationVisitor;
 import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.ClassVisitor;
@@ -43,21 +42,11 @@ abstract class FileSystemClassLoader extends ClassLoader {
     private byte[] getBytecode(String name, InputStream is) throws IOException {
         if (name.equals(Class.class.getCanonicalName())) {
             return instrumentJavaLangClass(is);
-        } else if (name.equals(System.class.getCanonicalName())) {
-            return instrumentJavaLangSystem(is);
         } else if (name.equals(MultiTenantServiceManager.TENANT_INITIALIZER_CLASS_NAME)) {
             return instrumentTenantInitializer(is, tenantId);
         } else {
             return is.readAllBytes();
         }
-    }
-
-    private byte[] instrumentJavaLangSystem(InputStream is) throws IOException {
-        ClassReader cr = new ClassReader(is);
-        ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
-        ClassVisitor cv = new JavaLangSystemVisitor(Opcodes.ASM6, cw);
-        cr.accept(cv, 0);
-        return cw.toByteArray();
     }
 
     private byte[] instrumentJavaLangClass(InputStream is) throws IOException {
@@ -71,7 +60,8 @@ abstract class FileSystemClassLoader extends ClassLoader {
     private byte[] instrumentTenantInitializer(InputStream is, String tenantId) throws IOException {
         ClassReader cr = new ClassReader(is);
         ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
-        ClassVisitor cv = new TenantInitializationVisitor(Opcodes.ASM6, cw, tenantId);
+        String tenantHome = String.format("%s/%s", System.getProperty("user.home"), tenantId);
+        ClassVisitor cv = new TenantInitializationVisitor(Opcodes.ASM6, cw, tenantHome);
         cr.accept(cv, 0);
         return cw.toByteArray();
     }

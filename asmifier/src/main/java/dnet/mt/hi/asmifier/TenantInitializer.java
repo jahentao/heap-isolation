@@ -2,10 +2,10 @@ package dnet.mt.hi.asmifier;
 
 public class TenantInitializer implements Runnable {
 
-    private static String tenantId;
+    private static String tenantHome;
 
     static {
-        tenantId = "pass-as-argument-to-code-generator";
+        tenantHome = "pass-as-argument-to-code-generator";
     }
 
     @Override
