@@ -14,11 +14,8 @@ import java.lang.reflect.Method;
  */
 public class TenantInitializer implements Runnable {
 
-    private String tenantDirectoryPath;
-
-    public TenantInitializer(String tenantDirectoryPath) {
-        this.tenantDirectoryPath = tenantDirectoryPath;
-    }
+    // This will be set by a static block generated on the fly while loading this class for a specific tenant
+    private static String tenantId;
 
     /**
      * This performs a subset of operations implemented in initPhase1, initPhase2, and initPhase3 of the System class.
@@ -26,7 +23,7 @@ public class TenantInitializer implements Runnable {
     @Override
     public void run() {
         initProps();
-        initIO();
+        initIO(); // This should be after initProps as it relies on a tenant-specific user.home property
         setJavaLangAccess();
         VM.initLevel(4);
         initSecurityManager(); // This should be the last one. Otherwise, the others may face IllegalAccessException.
@@ -36,7 +33,7 @@ public class TenantInitializer implements Runnable {
 
         System.setIn(null);
 
-        File tenantDirectory = new File(tenantDirectoryPath);
+        File tenantDirectory = new File(System.getProperty("user.home"));
         tenantDirectory.mkdir();
 
         try {
@@ -82,7 +79,7 @@ public class TenantInitializer implements Runnable {
 
     private void initProps() {
         System.setProperties(null); // Passing null will trigger the VM to initialize system properties
-        System.setProperty("user.home", tenantDirectoryPath);
+        System.setProperty("user.home", String.format("%s/%s", System.getProperty("user.home"), tenantId));
         VM.saveAndRemoveProperties(System.getProperties());
         setLineSeparator(System.getProperty("line.separator"));
         StaticProperty.javaHome();

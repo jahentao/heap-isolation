@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MultiTenantServiceManager {
 
+    public static final String TENANT_INITIALIZER_CLASS_NAME = "dnet.mt.hi.init.TenantInitializer";
     private Map<String, TenantClassLoader> classLoaders = new ConcurrentHashMap<>();
 
     public MultiTenantServiceManager(URI... sharedJars) {
@@ -30,10 +31,9 @@ public class MultiTenantServiceManager {
                     bootstrapClassLoader, Path.of(tenantJar), null, null); // TODO fix permissions
             classLoaders.put(tenantId, tenantClassLoader);
             try {
-                Class clazz = bootstrapClassLoader.loadClass("dnet.mt.hi.init.TenantInitializer");
-                Constructor constructor = clazz.getConstructor(String.class);
-                Runnable initializer = (Runnable) constructor.newInstance(
-                        String.format("%s/%s", System.getProperty("user.home"), tenantId));
+                Class clazz = bootstrapClassLoader.loadClass(TENANT_INITIALIZER_CLASS_NAME);
+                Constructor constructor = clazz.getConstructor();
+                Runnable initializer = (Runnable) constructor.newInstance();
                 initializer.run();
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
