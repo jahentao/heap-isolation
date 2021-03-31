@@ -21,7 +21,6 @@ public class TenantInitializationVisitor extends ClassVisitor implements Opcodes
             e.printStackTrace();
         }
         systemProperties = baos.toString();
-        System.out.println(systemProperties);
     }
 
     public TenantInitializationVisitor(int api, ClassVisitor cv, String tenantId) {
