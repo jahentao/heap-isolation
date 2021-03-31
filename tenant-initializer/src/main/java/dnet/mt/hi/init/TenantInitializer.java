@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 /**
  * This class should implement the Runnable interface as the latter is the only common interface between the tenant
@@ -30,22 +31,21 @@ public class TenantInitializer implements Runnable {
     }
 
     private void initProps() {
-        /*try {
+        try {
             Properties props = new Properties();
             ByteArrayInputStream bais = new ByteArrayInputStream(systemProperties.getBytes());
             props.load(bais);
             bais.close();
 
-            props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
+            /*props.setProperty("user.dir", String.format("%s/%s", props.get("user.dir"), tenantId));
             System.setProperties(props);
 
             VM.saveAndRemoveProperties(props);
             setLineSeparator(props.getProperty("line.separator"));
-            StaticProperty.javaHome();
+            StaticProperty.javaHome();*/
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-        String var = systemProperties;
+        }
     }
 
     private void setLineSeparator(String lineSeparator) {
