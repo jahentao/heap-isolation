@@ -25,10 +25,9 @@ public class MultiTenantServiceManager {
     public void registerTenant(String tenantId, URI tenantJar) {
         if (!classLoaders.containsKey(tenantId)) {
             TenantSpecificBootstrapClassLoader bootstrapClassLoader = new TenantSpecificBootstrapClassLoader(
-                    tenantId.concat("_BootstrapLoader"),
-                    MultiTenantServiceManager.class.getClassLoader(), null);
-            TenantClassLoader tenantClassLoader = new TenantClassLoader(tenantId.concat("_ClassLoader"),
-                    bootstrapClassLoader, Path.of(tenantJar), null, null); // TODO fix permissions
+                    tenantId, MultiTenantServiceManager.class.getClassLoader(), null);
+            TenantClassLoader tenantClassLoader = new TenantClassLoader(tenantId, bootstrapClassLoader,
+                    Path.of(tenantJar), null, null); // TODO fix permissions
             classLoaders.put(tenantId, tenantClassLoader);
             try {
                 Class clazz = bootstrapClassLoader.loadClass(TENANT_INITIALIZER_CLASS_NAME);

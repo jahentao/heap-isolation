@@ -20,9 +20,11 @@ public final class TenantClassLoader extends FileSystemClassLoader implements Cl
     private ProtectionDomain pd;
     private TenantSpecificBootstrapClassLoader parent;
 
-    public TenantClassLoader(String name, ClassLoader parent, Path tenantJarPath, PermissionCollection permissions, Principal[] principals) {
+    public TenantClassLoader(String tenantId, ClassLoader parent, Path tenantJarPath, PermissionCollection permissions, Principal[] principals) {
 
-        super(name, parent);
+        super(tenantId.concat("_ClassLoader"), parent);
+
+        this.tenantId = tenantId;
 
         if (parent instanceof TenantSpecificBootstrapClassLoader) {
             this.parent = (TenantSpecificBootstrapClassLoader) parent;

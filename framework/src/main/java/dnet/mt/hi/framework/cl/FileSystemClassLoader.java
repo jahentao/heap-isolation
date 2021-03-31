@@ -17,11 +17,13 @@ import java.security.ProtectionDomain;
 
 abstract class FileSystemClassLoader extends ClassLoader {
 
+    protected String tenantId;
+
     FileSystemClassLoader(String name, ClassLoader parent) {
         super(name, parent);
     }
 
-    Class<?> findClass(String name, FileSystem fs, ProtectionDomain pd, String tenantId) {
+    Class<?> findClass(String name, FileSystem fs, ProtectionDomain pd) {
         try {
             InputStream is = Files.newInputStream(fs.getPath(name.replace('.', '/').concat(".class")),
                     StandardOpenOption.READ);
