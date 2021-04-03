@@ -44,6 +44,7 @@ class TypeHierarchyInfoExtractor {
             if (elements[2].equals("java.base")) {
                 String className = extractTypeName(elements);
                 try {
+                    System.out.format("Loading %s...%n", className);
                     Class clazz = Class.forName(className);
                     if (clazz != null) {
                         nameToClassMap.put(className, clazz);
