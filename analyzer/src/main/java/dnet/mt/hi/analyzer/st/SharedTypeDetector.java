@@ -24,9 +24,13 @@ public class SharedTypeDetector {
         String output = args[argIndex++];
 
         try {
+            System.out.println("Loading the initial seed...");
             Set<String> initialSeed = loadInitialSeed(initialSeedFile);
+            System.out.println("Building the class hierarchy...");
             hierarchyExtractor.extract();
+            System.out.println("Initializing the expander...");
             listExpander.init(initialSeed);
+            System.out.println("Expanding...");
             listExpander.expand();
             persist(output);
         } catch (IOException e) {
