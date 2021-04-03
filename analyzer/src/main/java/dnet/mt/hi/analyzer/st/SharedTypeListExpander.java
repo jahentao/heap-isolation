@@ -9,12 +9,13 @@ class SharedTypeListExpander {
 
     void init(Set<String> initialSeed) {
         initialSeed.forEach(s -> {
-            sharedTypes.add(TypeHierarchyInfoExtractor.nameToClassMap.get(s));
+            sharedTypes.add(Initializer.nameToClassMap.get(s));
         });
     }
 
     void expand() {
 
+        addAllAnnotations();
         ListIterator<Class> itr = sharedTypes.listIterator();
         Class clazz;
         while (itr.hasNext()) {
@@ -25,6 +26,14 @@ class SharedTypeListExpander {
             }
         }
 
+    }
+
+    private void addAllAnnotations() {
+        for (Class clazz : Initializer.classToNameMap.keySet()) {
+            if (clazz.isAnnotation() && !Modifier.isPrivate(clazz.getModifiers())) {
+                sharedTypes.add(clazz);
+            }
+        }
     }
 
     private Set<Class> findNewReachableTypes(Class clazz) {
@@ -109,12 +118,12 @@ class SharedTypeListExpander {
         Class clazz;
         if (genericType instanceof ParameterizedType) {
             ParameterizedType pt = (ParameterizedType) genericType;
-            clazz = TypeHierarchyInfoExtractor.nameToClassMap.get(pt.getRawType().getTypeName());
+            clazz = Initializer.nameToClassMap.get(pt.getRawType().getTypeName());
             for (Type t : pt.getActualTypeArguments()) {
                 result.addAll(extractClasses(t));
             }
         } else {
-            clazz = TypeHierarchyInfoExtractor.nameToClassMap.get(genericType.getTypeName());
+            clazz = Initializer.nameToClassMap.get(genericType.getTypeName());
         }
 
         if (clazz != null) {

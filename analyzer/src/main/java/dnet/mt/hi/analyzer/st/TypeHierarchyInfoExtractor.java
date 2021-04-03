@@ -1,33 +1,15 @@
 package dnet.mt.hi.analyzer.st;
 
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Stream;
 
 class TypeHierarchyInfoExtractor {
 
     static Map<Class, TypeNode> allTypeNodes = new ConcurrentHashMap<>();
-    static Map<String, Class> nameToClassMap = new ConcurrentHashMap<>();
-    static Map<Class, String> classToNameMap = new ConcurrentHashMap<>();
 
     void extract() {
 
-        FileSystem fs = FileSystems.getFileSystem(URI.create("jrt:/"));
-        Path top = fs.getPath("/");
-
-        try (Stream<Path> stream = Files.walk(top)) {
-            stream.forEach(path -> loadType(path.toString()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for (Class clazz : classToNameMap.keySet()) {
+        for (Class clazz : Initializer.classToNameMap.keySet()) {
             TypeNode node = new TypeNode(clazz);
             processParent(node, clazz.getSuperclass());
             for (Class i : clazz.getInterfaces()) {
@@ -36,35 +18,6 @@ class TypeHierarchyInfoExtractor {
             allTypeNodes.put(clazz, node);
         }
 
-    }
-
-    private void loadType(String path) {
-        if (path.endsWith(".class")) {
-            String[] elements = path.split("/");
-            if (elements[2].equals("java.base")) {
-                String className = extractTypeName(elements);
-                try {
-                    Class clazz = Class.forName(className, false, null);
-                    if (clazz != null) {
-                        nameToClassMap.put(className, clazz);
-                        classToNameMap.put(clazz, className);
-                    }
-                } catch (Throwable t) {
-                    System.err.println(String.format("Unable to load %s.", className));
-                }
-            }
-        }
-    }
-
-    private static String extractTypeName(String[] elements) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 3; i < elements.length; i++) {
-            sb.append(elements[i]);
-            if (i != elements.length - 1) {
-                sb.append(".");
-            }
-        }
-        return sb.toString().replace(".class", "");
     }
 
     void processParent(TypeNode childNode, Class parentClazz) {

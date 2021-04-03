@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class SharedTypeDetector {
 
+    private static Initializer initializer = new Initializer();
     private static TypeHierarchyInfoExtractor hierarchyExtractor = new TypeHierarchyInfoExtractor();
     private static SharedTypeListExpander listExpander = new SharedTypeListExpander();
 
@@ -26,6 +27,8 @@ public class SharedTypeDetector {
         try {
             System.out.println("Loading the initial seed...");
             Set<String> initialSeed = loadInitialSeed(initialSeedFile);
+            System.out.println("Loading classes...");
+            initializer.init();
             System.out.println("Building the class hierarchy...");
             hierarchyExtractor.extract();
             System.out.println("Initializing the expander...");
@@ -42,7 +45,7 @@ public class SharedTypeDetector {
     private static void persist(String output) throws IOException {
         StringBuilder sb = new StringBuilder();
         SharedTypeListExpander.sharedTypes.forEach(c -> {
-            sb.append(TypeHierarchyInfoExtractor.classToNameMap.get(c));
+            sb.append(Initializer.classToNameMap.get(c));
             sb.append("\n");
         });
         Files.write(Paths.get(output), sb.toString().getBytes());
