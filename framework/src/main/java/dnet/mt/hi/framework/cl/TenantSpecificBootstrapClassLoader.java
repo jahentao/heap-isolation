@@ -6,28 +6,27 @@ import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.security.*;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoader {
 
+    private static Set<String> systemClasses;
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
     private static PermissionCollection systemPermissions;
 
     private ProtectionDomain pd;
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
 
-    public static void init(Path[] sharedJarPaths, PermissionCollection permissions) {
+    public static void init(Set<String> sharedClassNames, Path[] sharedJarPaths, PermissionCollection permissions) {
 
         SecurityManager securityManager = System.getSecurityManager();
         if (securityManager != null) {
             securityManager.checkCreateClassLoader();
         }
 
-        if (trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
+        if (systemClasses == null && trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
+            systemClasses = sharedClassNames;
             createTrustedCodeFileSystem(sharedJarPaths);
             systemPermissions = permissions;
         }
@@ -65,21 +64,22 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(name)) {
             if (name != null) {
-                if (name.equals(Runnable.class.getCanonicalName())) {
-                    return super.loadClass(name, resolve);
-                } else {
-                    Class<?> c = loadedClasses.get(name);
+                Class<?> c = loadedClasses.get(name);
+                if (c == null) {
+                    if (systemClasses.contains(name)) {
+                        c = super.loadClass(name, resolve);
+                    }
                     if (c == null) {
                         c = findClass(name);
-                        if (c != null) {
-                            loadedClasses.put(name, c);
-                        }
                     }
-                    if (c != null && resolve) {
-                        resolveClass(c);
+                    if (c != null) {
+                        loadedClasses.put(name, c);
                     }
-                    return c;
                 }
+                if (c != null && resolve) {
+                    resolveClass(c);
+                }
+                return c;
             }
         }
         throw new ClassNotFoundException(String.format("Couldn't find class file for %s.", name));

@@ -2,9 +2,9 @@ package dnet.mt.hi.framework;
 
 public class Job {
 
-    public long delayInSeconds;
-    public String tenantId;
-    public String runnableClassName;
+    long delayInSeconds;
+    String tenantId;
+    String runnableClassName;
 
     Job(String[] array) {
         if (array.length != 3) {
