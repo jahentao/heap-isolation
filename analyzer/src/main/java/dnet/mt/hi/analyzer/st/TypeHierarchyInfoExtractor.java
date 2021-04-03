@@ -40,6 +40,7 @@ class TypeHierarchyInfoExtractor {
                 try {
                     System.out.println(String.format("Loading %s...", className));
                     Class clazz = Class.forName(className);
+                    System.out.println(String.format("%s loaded.", className));
                     nameToClassMap.put(className, clazz);
                     classToNameMap.put(clazz, className);
                     if (clazz != null) {
