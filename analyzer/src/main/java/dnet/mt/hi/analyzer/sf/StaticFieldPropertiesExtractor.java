@@ -1,4 +1,4 @@
-package dnet.mt.hi.analyzer;
+package dnet.mt.hi.analyzer.sf;
 
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;

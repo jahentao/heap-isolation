@@ -1,4 +1,4 @@
-package dnet.mt.hi.analyzer;
+package dnet.mt.hi.analyzer.sf;
 
 class StaticFieldProperties {
 
