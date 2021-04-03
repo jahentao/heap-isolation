@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
-public class TypeHierarchyInfoExtractor {
+class TypeHierarchyInfoExtractor {
 
     static Map<Class, TypeNode> allTypeNodes = new ConcurrentHashMap<>();
     static Map<String, Class> nameToClassMap = new ConcurrentHashMap<>();
@@ -38,6 +38,7 @@ public class TypeHierarchyInfoExtractor {
 
                 String className = extractTypeName(elements);
                 try {
+                    System.out.println(String.format("Loading %s...", className));
                     Class clazz = Class.forName(className);
                     nameToClassMap.put(className, clazz);
                     classToNameMap.put(clazz, className);
