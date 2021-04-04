@@ -4,10 +4,12 @@ import java.util.TimeZone;
 
 public class DefaultTimeZoneSetter implements Runnable {
 
-    static String DEFAULT_TIME_ZONE_ID = "America/Sao_Paulo";
-
     public void run() {
-        TimeZone.setDefault(TimeZone.getTimeZone(DEFAULT_TIME_ZONE_ID));
+        try {
+            TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
 }
