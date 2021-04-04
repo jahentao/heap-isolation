@@ -20,6 +20,7 @@ public class SharedTypeListExpander {
         Class clazz;
         while (itr.hasNext()) {
             clazz = itr.next();
+            System.out.println(clazz);
             if (!Modifier.isPrivate(clazz.getModifiers())) {
                 Set<Class> newlyFoundReachableTypes = findNewReachableTypes(clazz);
                 newlyFoundReachableTypes.forEach(itr::add);
