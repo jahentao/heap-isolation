@@ -1,4 +1,4 @@
-package dnet.mt.hi.analyzer.st;
+package dnet.mt.hi.analyzer.processors;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,12 +10,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
-class Initializer {
+public class Initializer {
 
-    static Map<String, Class> nameToClassMap = new ConcurrentHashMap<>();
-    static Map<Class, String> classToNameMap = new ConcurrentHashMap<>();
+    public static Map<String, Class> nameToClassMap = new ConcurrentHashMap<>();
+    public static Map<Class, String> classToNameMap = new ConcurrentHashMap<>();
 
-    void init() {
+    public void init() {
         FileSystem fs = FileSystems.getFileSystem(URI.create("jrt:/"));
         Path top = fs.getPath("/");
 

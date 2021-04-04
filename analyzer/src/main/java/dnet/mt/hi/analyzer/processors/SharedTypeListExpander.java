@@ -1,19 +1,19 @@
-package dnet.mt.hi.analyzer.st;
+package dnet.mt.hi.analyzer.processors;
 
 import java.lang.reflect.*;
 import java.util.*;
 
-class SharedTypeListExpander {
+public class SharedTypeListExpander {
 
-    static List<Class> sharedTypes = new LinkedList<>();
+    public static List<Class> sharedTypes = new LinkedList<>();
 
-    void init(Set<String> initialSeed) {
+    public void init(Set<String> initialSeed) {
         initialSeed.forEach(s -> {
             sharedTypes.add(Initializer.nameToClassMap.get(s));
         });
     }
 
-    void expand() {
+    public void expand() {
 
         addAllAnnotations();
         ListIterator<Class> itr = sharedTypes.listIterator();
@@ -51,8 +51,8 @@ class SharedTypeListExpander {
 
         initialSet.forEach(c -> {
             result.add(c);
-            Set<Class> allInHierarchy = TypeHierarchyInfoExtractor.allTypeNodes.get(c).getAllParents();
-            allInHierarchy.addAll(TypeHierarchyInfoExtractor.allTypeNodes.get(c).getAllChildren());
+            Set<Class> allInHierarchy = TypeHierarchyBuilder.allTypeNodes.get(c).getAllParents();
+            allInHierarchy.addAll(TypeHierarchyBuilder.allTypeNodes.get(c).getAllChildren());
             allInHierarchy.forEach(aih -> {
                 if (!sharedTypes.contains(aih)) {
                     result.add(aih);

@@ -1,20 +1,19 @@
-package dnet.mt.hi.analyzer.st;
+package dnet.mt.hi.analyzer.model;
 
 import java.util.HashSet;
 import java.util.Set;
 
-class TypeNode {
+public class TypeNode {
 
-    Set<TypeNode> directParents = new HashSet<>();
-    Set<TypeNode> directChildren = new HashSet<>();
+    public Class type;
+    public Set<TypeNode> directParents = new HashSet<>();
+    public Set<TypeNode> directChildren = new HashSet<>();
 
-    Class type;
-
-    TypeNode(Class type) {
+    public TypeNode(Class type) {
         this.type = type;
     }
 
-    Set<Class> getAllParents() {
+    public Set<Class> getAllParents() {
         Set<Class> result = new HashSet<>();
 
         for (TypeNode directParent : directParents) {
@@ -25,7 +24,7 @@ class TypeNode {
         return result;
     }
 
-    Set<Class> getAllChildren() {
+    public Set<Class> getAllChildren() {
         Set<Class> result = new HashSet<>();
 
         for (TypeNode directChild : directChildren) {
