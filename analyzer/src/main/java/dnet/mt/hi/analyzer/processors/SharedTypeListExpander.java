@@ -55,9 +55,8 @@ public class SharedTypeListExpander {
 
         initialSet.forEach(c -> {
             result.add(c);
-            Set<Class> allInHierarchy = TypeHierarchyBuilder.allTypeNodes.get(c).getAllParents();
-            allInHierarchy.addAll(TypeHierarchyBuilder.allTypeNodes.get(c).getAllChildren());
-            allInHierarchy.forEach(aih -> {
+            Set<Class> allParents = TypeHierarchyBuilder.allTypeNodes.get(c).getAllParents();
+            allParents.forEach(aih -> {
                 if (!sharedTypes.contains(aih)) {
                     result.add(aih);
                 }

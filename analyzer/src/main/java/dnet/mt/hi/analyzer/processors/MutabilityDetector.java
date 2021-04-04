@@ -15,11 +15,11 @@ public class MutabilityDetector {
         if (clazz.isPrimitive()) {
             return MutabilityStatus.IMMUTABLE;
         }
-        if (clazz.isArray()) {
-            return MutabilityStatus.MUTABLE;
-        }
         if (KNOWN_IMMUTABLE_CLASSES.contains(clazz)) {
             return MutabilityStatus.IMMUTABLE;
+        }
+        if (clazz.isArray()) {
+            return detect(clazz.getComponentType());
         }
         return MutabilityStatus.UNKNOWN;
     }

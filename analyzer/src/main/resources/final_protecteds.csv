@@ -1,5 +1,1 @@
 Owner;Name;Type;Final;Mutability;Array;Access
-sun.net.www.http.HttpClient;kac;sun.net.www.http.KeepAliveCache;false;unknown;false;protected
-sun.net.NetworkClient;defaultConnectTimeout;int;false;immutable;false;protected
-sun.net.NetworkClient;encoding;java.lang.String;false;immutable;false;protected
-sun.net.NetworkClient;defaultSoTimeout;int;false;immutable;false;protected
