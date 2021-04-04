@@ -1,0 +1,38 @@
+Owner;Name;Type;Final;Mutability;Array;Access
+java.nio.Buffer;UNSAFE;jdk.internal.misc.Unsafe;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.reflect.AccessibleObject;reflectionFactory;jdk.internal.reflect.ReflectionFactory;true;unknown;false;package
+java.util.Arrays$NaturalOrder;INSTANCE;java.util.Arrays$NaturalOrder;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLILL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LILL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.util.ImmutableCollections$ListN;EMPTY_LIST;java.util.List<?>;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.ProcessBuilder$NullOutputStream;INSTANCE;java.lang.ProcessBuilder$NullOutputStream;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle;SPECIALIZER;java.lang.invoke.BoundMethodHandle$Specializer;true;unknown;false;package
+java.lang.System;bootLayer;java.lang.ModuleLayer;false;unknown;false;package
+java.net.InetAddress;impl;java.net.InetAddressImpl;true;unknown;false;package
+java.lang.StackWalker;DEFAULT_EMPTY_OPTION;java.util.EnumSet<java.lang.StackWalker$Option>;true;unknown;false;package
+java.lang.invoke.MemberName$Factory;INSTANCE;java.lang.invoke.MemberName$Factory;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLIIL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLIIL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.ref.ReferenceQueue;ENQUEUED;java.lang.ref.ReferenceQueue<java.lang.Object>;true;unknown;false;package
+java.lang.invoke.VarHandle$AccessMode;methodNameToAccessMode;java.util.Map<java.lang.String, java.lang.invoke.VarHandle$AccessMode>;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.ProcessBuilder$NullInputStream;INSTANCE;java.lang.ProcessBuilder$NullInputStream;true;unknown;false;package
+java.util.Collections$EmptyIterator;EMPTY_ITERATOR;java.util.Collections$EmptyIterator<java.lang.Object>;true;unknown;false;package
+java.lang.invoke.LambdaForm$NamedFunction;INVOKER_METHOD_TYPE;java.lang.invoke.MethodType;true;unknown;false;package
+java.net.URL;handlers;java.util.Hashtable<java.lang.String, java.net.URLStreamHandler>;false;unknown;false;package
+java.lang.invoke.VarHandle;AIOOBE_SUPPLIER;java.util.function.BiFunction<java.lang.String, java.util.List<java.lang.Integer>, java.lang.ArrayIndexOutOfBoundsException>;true;unknown;false;package
+java.lang.invoke.MethodType;internTable;java.lang.invoke.MethodType$ConcurrentWeakInternSet<java.lang.invoke.MethodType>;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.ref.ReferenceQueue;NULL;java.lang.ref.ReferenceQueue<java.lang.Object>;true;unknown;false;package
+javax.crypto.CryptoAllPermission;INSTANCE;javax.crypto.CryptoAllPermission;true;unknown;false;package
+jdk.internal.logger.SimpleConsoleLogger;DEFAULT_LEVEL;java.lang.System$Logger$Level;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLIIL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+jdk.internal.logger.SimpleConsoleLogger;DEFAULT_PLATFORM_LEVEL;sun.util.logging.PlatformLogger$Level;true;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLII;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLI;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
