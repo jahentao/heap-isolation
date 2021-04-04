@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoader {
 
-    private static Set<Class> systemClasses = new HashSet<>();
+    private static Map<String, Class> systemClasses = new ConcurrentHashMap<>();
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
     private static PermissionCollection systemPermissions;
 
@@ -36,7 +36,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
     private static void loadSystemClasses(Set<String> sharedClassNames) {
         sharedClassNames.forEach(name -> {
             try {
-                systemClasses.add(getSystemClassLoader().loadClass(name));
+                systemClasses.put(name, getSystemClassLoader().loadClass(name));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -69,7 +69,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
         CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
         pd = new ProtectionDomain(cs, systemPermissions, this, principals);
 
-        systemClasses.forEach(clazz -> loadedClasses.put(clazz.getCanonicalName(), clazz));
+        loadedClasses.putAll(systemClasses);
 
         Module unnamedModule = getUnnamedModule();
         Module javaBase = ClassLoader.class.getModule();
@@ -84,7 +84,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
     private Set<String> getSharedPackages() {
         Set<String> result = new HashSet<>();
-        systemClasses.forEach(clazz -> result.add(clazz.getPackageName()));
+        systemClasses.forEach((k, v) -> result.add(v.getPackageName()));
         return result;
     }
 
