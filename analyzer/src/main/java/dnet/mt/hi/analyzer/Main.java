@@ -1,6 +1,6 @@
 package dnet.mt.hi.analyzer;
 
-import dnet.mt.hi.analyzer.enums.FieldAccess;
+import dnet.mt.hi.analyzer.enums.AccessModifier;
 import dnet.mt.hi.analyzer.enums.MutabilityStatus;
 import dnet.mt.hi.analyzer.model.StaticFieldProperties;
 import dnet.mt.hi.analyzer.processors.Initializer;
@@ -60,10 +60,10 @@ public class Main {
     private static void persistFieldProperties(String outputBase) throws IOException {
         persist(outputBase, "sfp_arrays.csv", sfp -> sfp.isArray);
         persist(outputBase, "sfp_immutables.csv", sfp -> !sfp.isArray && isImmutableFinal(sfp));
-        persist(outputBase, "sfp_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(FieldAccess.PRIVATE));
-        persist(outputBase,"sfp_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(FieldAccess.PACKAGE));
-        persist(outputBase,"sfp_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(FieldAccess.PROTECTED));
-        persist(outputBase,"sfp_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(FieldAccess.PUBLIC));
+        persist(outputBase, "sfp_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(AccessModifier.PRIVATE));
+        persist(outputBase,"sfp_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(AccessModifier.PACKAGE));
+        persist(outputBase,"sfp_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(AccessModifier.PROTECTED));
+        persist(outputBase,"sfp_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.access.equals(AccessModifier.PUBLIC));
     }
 
     private static boolean isImmutableFinal(StaticFieldProperties sfp) {

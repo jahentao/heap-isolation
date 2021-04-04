@@ -1,6 +1,6 @@
 package dnet.mt.hi.analyzer.model;
 
-import dnet.mt.hi.analyzer.enums.FieldAccess;
+import dnet.mt.hi.analyzer.enums.AccessModifier;
 import dnet.mt.hi.analyzer.enums.MutabilityStatus;
 
 public class StaticFieldProperties {
@@ -10,7 +10,7 @@ public class StaticFieldProperties {
     public String type;
     public boolean isFinal;
     public boolean isArray;
-    public FieldAccess access;
+    public AccessModifier access;
     public MutabilityStatus mutabilityStatus;
 
     @Override

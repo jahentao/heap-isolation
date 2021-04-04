@@ -1,7 +1,7 @@
 package dnet.mt.hi.analyzer.processors;
 
-import dnet.mt.hi.analyzer.enums.FieldAccess;
 import dnet.mt.hi.analyzer.model.StaticFieldProperties;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashSet;
@@ -11,6 +11,7 @@ public class StaticFieldPropertyExtractor {
 
     public static final Set<StaticFieldProperties> properties = new HashSet<>();
 
+    private AccessDetector accessDetector = new AccessDetector();
     private MutabilityDetector mutabilityDetector = new MutabilityDetector();
 
     public void extract() {
@@ -25,9 +26,7 @@ public class StaticFieldPropertyExtractor {
             if (Modifier.isStatic(modifier)) {
 
                 StaticFieldProperties sfp = new StaticFieldProperties();
-                sfp.access = Modifier.isPrivate(modifier) ? FieldAccess.PRIVATE :
-                        Modifier.isProtected(modifier) ? FieldAccess.PROTECTED :
-                                Modifier.isPublic(modifier) ? FieldAccess.PUBLIC : FieldAccess.PACKAGE;
+                sfp.access = accessDetector.detect(field);
                 sfp.name = field.getName();
                 sfp.owner = Initializer.classToNameMap.get(c);
                 sfp.type = field.getGenericType().getTypeName();
