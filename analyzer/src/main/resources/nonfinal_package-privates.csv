@@ -1,4 +1,4 @@
-Owner;Name;Type;Final;Mutability;Array;Access
-java.net.URL;handlers;java.util.Hashtable<java.lang.String, java.net.URLStreamHandler>;false;unknown;false;package
-java.lang.invoke.MemberName$Factory;INSTANCE;java.lang.invoke.MemberName$Factory;false;unknown;false;package
-java.lang.System;bootLayer;java.lang.ModuleLayer;false;unknown;false;package
+Owner;Name;Type
+java.net.URL;handlers;java.util.Hashtable<java.lang.String, java.net.URLStreamHandler>
+java.lang.invoke.MemberName$Factory;INSTANCE;java.lang.invoke.MemberName$Factory
+java.lang.System;bootLayer;java.lang.ModuleLayer
