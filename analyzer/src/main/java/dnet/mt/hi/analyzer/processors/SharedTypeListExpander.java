@@ -16,13 +16,17 @@ public class SharedTypeListExpander {
     public void expand() {
 
         addAllAnnotations();
-        ListIterator<Class> itr = sharedTypes.listIterator();
+        Queue<Class> queue = new LinkedList<>();
+        sharedTypes.forEach(queue::offer);
         Class clazz;
-        while (itr.hasNext()) {
-            clazz = itr.next();
+        while (!queue.isEmpty()) {
+            clazz = queue.poll();
             if (!Modifier.isPrivate(clazz.getModifiers())) {
                 Set<Class> newlyFoundReachableTypes = findNewReachableTypes(clazz);
-                newlyFoundReachableTypes.forEach(itr::add);
+                newlyFoundReachableTypes.forEach(queue::offer);
+            }
+            if (!sharedTypes.contains(clazz)) {
+                sharedTypes.add(clazz);
             }
         }
 
@@ -73,12 +77,8 @@ public class SharedTypeListExpander {
             if (!Modifier.isPrivate(method.getModifiers())) {
                 signatureTypes = new HashSet<>();
                 signatureTypes.add(method.getGenericReturnType());
-                for (Type parameterType : method.getGenericParameterTypes()) {
-                    signatureTypes.add(parameterType);
-                }
-                for (Type exceptionType : method.getGenericExceptionTypes()) {
-                    signatureTypes.add(exceptionType);
-                }
+                signatureTypes.addAll(Arrays.asList(method.getGenericParameterTypes()));
+                signatureTypes.addAll(Arrays.asList(method.getGenericExceptionTypes()));
                 Set<Class> signatureClasses = new HashSet<>();
                 signatureTypes.forEach(s -> signatureClasses.addAll(extractClasses(s)));
                 signatureClasses.forEach(t -> {

@@ -1,1 +1,2 @@
 Owner;Name;Type;Final;Mutability;Array;Access
+sun.net.www.http.HttpClient;kac;sun.net.www.http.KeepAliveCache;false;unknown;false;protected
