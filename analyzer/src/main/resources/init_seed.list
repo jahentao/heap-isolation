@@ -86,3 +86,4 @@ java.lang.Short
 java.lang.Integer
 java.lang.Long
 java.lang.Runnable
+jdk.internal.access.SharedSecrets
