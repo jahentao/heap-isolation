@@ -12,7 +12,7 @@ public class MutabilityDetector {
             Character.UnicodeScript.class);
 
     public MutabilityStatus detect(Class clazz) {
-        if (clazz.isPrimitive()) {
+        if (clazz.isPrimitive() || clazz.isEnum()) {
             return MutabilityStatus.IMMUTABLE;
         }
         if (KNOWN_IMMUTABLE_CLASSES.contains(clazz)) {
