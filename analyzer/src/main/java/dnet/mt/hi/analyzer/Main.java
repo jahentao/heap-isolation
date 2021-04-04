@@ -76,7 +76,7 @@ public class Main {
     }
 
     private static void persist(String outputBase, String outputFile, Predicate<StaticFieldProperties> predicate) throws IOException {
-        StringBuilder sb = new StringBuilder("Owner;Name;Type;Final;Mutability;Array;Access\n");
+        StringBuilder sb = new StringBuilder("Owner;Name;Type\n");
         StaticFieldPropertyExtractor.properties.stream().filter(predicate).forEach(sb::append);
         Files.write(Paths.get(outputBase, outputFile), sb.toString().getBytes());
     }

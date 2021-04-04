@@ -15,7 +15,7 @@ public class StaticFieldProperties {
 
     @Override
     public String toString() {
-        return String.format("%s;%s;%s;%b;%s;%b;%s\n", owner, name, type, isFinal, mutabilityStatus.value, isArray, access.value);
+        return String.format("%s;%s;%s\n", owner, name, type);
     }
 
 }
