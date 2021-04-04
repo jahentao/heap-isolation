@@ -9,11 +9,7 @@ public class SharedTypeListExpander {
 
     public void init(Set<String> initialSeed) {
         initialSeed.forEach(s -> {
-            Class clazz = Initializer.nameToClassMap.get(s);
-            if (clazz == null) {
-                System.out.println(s);
-            }
-            sharedTypes.add(clazz);
+            sharedTypes.add(Initializer.nameToClassMap.get(s));
         });
     }
 
