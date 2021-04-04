@@ -1966,8 +1966,8 @@ java.net.Authenticator$RequestorType
 java.net.PasswordAuthentication
 sun.net.www.protocol.http.AuthCacheValue$Type
 sun.security.ssl.BaseSSLSocketImpl
-javax.net.ssl.SSLSocket
 javax.net.ssl.SSLSession
+javax.net.ssl.SSLSocket
 javax.net.ssl.ExtendedSSLSession
 javax.net.SocketFactory
 java.security.IdentityScope

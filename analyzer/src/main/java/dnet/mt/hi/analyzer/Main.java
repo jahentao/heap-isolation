@@ -65,7 +65,7 @@ public class Main {
         persist(outputBase, "nonfinal_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
         persist(outputBase, "final_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
         persist(outputBase, "nonfinal_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
-        persist(outputBase, "final_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
+        persist(outputBase, "final_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
         persist(outputBase, "nonfinal_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
         persist(outputBase, "final_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
     }

@@ -1,0 +1,5 @@
+Owner;Name;Type;Final;Mutability;Array;Access
+sun.security.x509.AlgorithmId;pbeWithSHA1AndRC2_40_oid;sun.security.util.ObjectIdentifier;false;unknown;false;public
+sun.security.x509.InhibitAnyPolicyExtension;AnyPolicy_Id;sun.security.util.ObjectIdentifier;false;unknown;false;public
+sun.security.x509.AlgorithmId;pbeWithSHA1AndDESede_oid;sun.security.util.ObjectIdentifier;false;unknown;false;public
+sun.security.x509.NetscapeCertTypeExtension;NetscapeCertType_Id;sun.security.util.ObjectIdentifier;false;unknown;false;public

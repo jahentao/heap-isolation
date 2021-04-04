@@ -27,7 +27,6 @@ sun.security.ssl.CipherSuite;TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256;sun.security
 sun.security.ssl.CipherSuite;CS_C06E;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00BC;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_DH_anon_WITH_RC4_128_MD5;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_0068;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00C3;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$BasicType;F_TYPE;java.lang.invoke.LambdaForm$BasicType;true;unknown;false;package
@@ -47,7 +46,6 @@ sun.security.ssl.CipherSuite;CS_C03A;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.CipherSuite;TLS_ECDH_RSA_WITH_AES_256_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;LOOP;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.ProcessBuilder$NullInputStream;INSTANCE;java.lang.ProcessBuilder$NullInputStream;true;unknown;false;package
-com.sun.java.util.jar.pack.BandStructure;bandSequenceList;java.util.LinkedList<java.lang.String>;false;unknown;false;package
 java.util.stream.StreamOpFlag$Type;STREAM;java.util.stream.StreamOpFlag$Type;true;unknown;false;package
 java.lang.invoke.MethodHandleImpl$Intrinsic;NONE;java.lang.invoke.MethodHandleImpl$Intrinsic;true;unknown;false;package
 java.util.stream.StreamShape;LONG_VALUE;java.util.stream.StreamShape;true;unknown;false;package
@@ -85,13 +83,11 @@ sun.security.ssl.CipherSuite;TLS_DH_anon_WITH_AES_128_GCM_SHA256;sun.security.ss
 sun.security.ssl.CipherSuite;CS_00C1;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite$MacAlg;M_NULL;sun.security.ssl.CipherSuite$MacAlg;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;REINVOKER;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLILL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C04E;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00B4;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SSLHandshake;HELLO_REQUEST;sun.security.ssl.SSLHandshake;true;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_RSA_WITH_RC4_128_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SignatureScheme;RSA_PSS_RSAE_SHA256;sun.security.ssl.SignatureScheme;true;unknown;false;package
-java.util.regex.Pattern;lookbehindEnd;java.util.regex.Pattern$Node;false;unknown;false;package
 sun.security.ssl.SSLMasterKeyDerivation;SSL30;sun.security.ssl.SSLMasterKeyDerivation;true;unknown;false;package
 sun.security.ssl.SSLHandshake;CLIENT_KEY_EXCHANGE;sun.security.ssl.SSLHandshake;true;unknown;false;package
 sun.security.ssl.SSLMasterKeyDerivation;TLS12;sun.security.ssl.SSLMasterKeyDerivation;true;unknown;false;package
@@ -115,7 +111,6 @@ sun.security.ssl.SSLExtension;SERVER_CERT_TYPE;sun.security.ssl.SSLExtension;tru
 sun.security.ssl.ServerHandshakeContext;legacyAlgorithmConstraints;java.security.AlgorithmConstraints;true;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.NamedGroup;SECT283_K1;sun.security.ssl.NamedGroup;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_000E;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.time.format.DateTimeFormatterBuilder$SettingsParser;STRICT;java.time.format.DateTimeFormatterBuilder$SettingsParser;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_FFE0;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -133,7 +128,6 @@ java.lang.ref.ReferenceQueue;ENQUEUED;java.lang.ref.ReferenceQueue<java.lang.Obj
 sun.security.ssl.CipherSuite;CS_C0AD;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00C4;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.VarHandle;AIOOBE_SUPPLIER;java.util.function.BiFunction<java.lang.String, java.util.List<java.lang.Integer>, java.lang.ArrayIndexOutOfBoundsException>;true;unknown;false;package
-sun.net.www.http.KeepAliveCache;result;int;false;immutable;false;package
 java.util.stream.StreamOpFlag$Type;OP;java.util.stream.StreamOpFlag$Type;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C04C;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.Alert;NO_RENEGOTIATION;sun.security.ssl.Alert;true;unknown;false;package
@@ -148,7 +142,6 @@ sun.security.ssl.CipherSuite;CS_C087;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.SignatureScheme$SigAlgParamSpec;RSA_PSS_SHA384;sun.security.ssl.SignatureScheme$SigAlgParamSpec;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_000C;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_001F;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLIIL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DHE_DSS_WITH_AES_128_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.util.concurrent.LinkedTransferQueue;ITEM;java.lang.invoke.VarHandle;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C068;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -160,7 +153,6 @@ java.lang.invoke.LambdaForm$Kind;GET_BYTE;java.lang.invoke.LambdaForm$Kind;true;
 java.util.stream.StreamShape;DOUBLE_VALUE;java.util.stream.StreamShape;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C078;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLII;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.Alert;BAD_CERT_HASH_VALUE;sun.security.ssl.Alert;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_008F;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_001C;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -287,7 +279,6 @@ sun.security.ssl.CertStatusExtension$CertStatusRequestType;OCSP;sun.security.ssl
 sun.security.ssl.CipherSuite$KeyExchange;K_DH_ANON;sun.security.ssl.CipherSuite$KeyExchange;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DH_anon_WITH_AES_128_CBC_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.VarHandle$AccessType;COMPARE_AND_SET;java.lang.invoke.VarHandle$AccessType;true;unknown;false;package
-java.util.ImmutableCollections$ListN;EMPTY_LIST;java.util.List<?>;false;unknown;false;package
 sun.security.ssl.Alert;DECRYPT_ERROR;sun.security.ssl.Alert;true;unknown;false;package
 sun.security.ssl.SSLExtension;HRR_COOKIE;sun.security.ssl.SSLExtension;true;unknown;false;package
 sun.security.ssl.SSLHandshake;SUPPLEMENTAL_DATA;sun.security.ssl.SSLHandshake;true;unknown;false;package
@@ -332,10 +323,8 @@ sun.security.ssl.CipherSuite;CS_C06B;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.CipherSuite;CS_00A4;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_0026;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SSLHandshake;SERVER_KEY_EXCHANGE;sun.security.ssl.SSLHandshake;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_I;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.nio.fs.UnixFileStore$FeatureStatus;NOT_PRESENT;sun.nio.fs.UnixFileStore$FeatureStatus;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C04F;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C094;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C07F;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -401,7 +390,6 @@ sun.security.ssl.SSLCipher;B_AES_256_GCM;sun.security.ssl.SSLCipher;true;unknown
 java.lang.invoke.LambdaForm$Kind;GENERIC;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.ProtocolVersion;TLS13;sun.security.ssl.ProtocolVersion;true;unknown;false;package
 sun.security.ssl.DummyX509TrustManager;INSTANCE;javax.net.ssl.X509TrustManager;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite$KeyExchange;K_ECDH_RSA;sun.security.ssl.CipherSuite$KeyExchange;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C084;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SignatureScheme;ECDSA_SECP384R1_SHA384;sun.security.ssl.SignatureScheme;true;unknown;false;package
@@ -409,7 +397,6 @@ sun.security.ssl.NamedGroup;ARBITRARY_CHAR2;sun.security.ssl.NamedGroup;true;unk
 sun.security.ssl.ClientAuthType;CLIENT_AUTH_REQUIRED;sun.security.ssl.ClientAuthType;true;unknown;false;package
 sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator;GE;sun.security.util.DisabledAlgorithmConstraints$Constraint$Operator;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GENERIC_INVOKER;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
-java.lang.ClassLoader$NativeLibrary;nativeLibraryContext;java.util.Deque<java.lang.ClassLoader$NativeLibrary>;false;unknown;false;package
 sun.security.ssl.KeyUpdate$KeyUpdateRequest;NOTREQUESTED;sun.security.ssl.KeyUpdate$KeyUpdateRequest;true;unknown;false;package
 sun.security.ssl.SSLCipher;B_AES_256_GCM_IV;sun.security.ssl.SSLCipher;true;unknown;false;package
 com.sun.java.util.jar.pack.BandStructure;BYTE1;com.sun.java.util.jar.pack.Coding;true;unknown;false;package
@@ -440,7 +427,6 @@ java.lang.invoke.LambdaForm$Kind;VARHANDLE_INVOKER;java.lang.invoke.LambdaForm$K
 sun.security.ssl.SSLExtension;USER_MAPPING;sun.security.ssl.SSLExtension;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C049;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_RSA_WITH_DES_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.MemberName$Factory;INSTANCE;java.lang.invoke.MemberName$Factory;false;unknown;false;package
 java.nio.file.FileTreeWalker$EventType;ENTRY;java.nio.file.FileTreeWalker$EventType;true;unknown;false;package
 sun.security.ssl.SSLExtension;SH_EXTENDED_MASTER_SECRET;sun.security.ssl.SSLExtension;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00A8;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -465,7 +451,6 @@ sun.security.ssl.CipherSuite;CS_C051;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.CipherSuite;CS_00B9;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C096;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.nio.cs.EUC_JP$Decoder;DEC0212;sun.nio.cs.DoubleByte$Decoder;true;unknown;false;package
-java.util.Currency;dataVersion;int;false;immutable;false;package
 java.util.concurrent.LinkedTransferQueue;NEXT;java.lang.invoke.VarHandle;true;unknown;false;package
 sun.security.ssl.SSLExtension;CH_COOKIE;sun.security.ssl.SSLExtension;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C058;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -493,7 +478,6 @@ sun.security.ssl.Alert;BAD_CERT_STATUS_RESPONSE;sun.security.ssl.Alert;true;unkn
 sun.security.ssl.SSLExtension;HRR_SUPPORTED_VERSIONS;sun.security.ssl.SSLExtension;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_FFE1;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$NamedFunction;INVOKER_METHOD_TYPE;java.lang.invoke.MethodType;true;unknown;false;package
-sun.net.www.protocol.http.HttpURLConnection;HTTP_CONNECT;java.lang.String;false;immutable;false;package
 java.lang.invoke.LambdaForm$Kind;VARHANDLE_LINKER;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.NamedGroup;SECP160_R1;sun.security.ssl.NamedGroup;true;unknown;false;package
 com.sun.java.util.jar.pack.BandStructure;MDELTA5;com.sun.java.util.jar.pack.Coding;true;unknown;false;package
@@ -502,7 +486,6 @@ java.util.Comparators$NaturalOrderComparator;INSTANCE;java.util.Comparators$Natu
 sun.security.ssl.SignatureScheme;DSA_SHA1;sun.security.ssl.SignatureScheme;true;unknown;false;package
 sun.security.ssl.NamedGroup;SECP160_K1;sun.security.ssl.NamedGroup;true;unknown;false;package
 sun.security.ssl.SSLExtension;SH_STATUS_REQUEST;sun.security.ssl.SSLExtension;true;unknown;false;package
-java.net.URL;handlers;java.util.Hashtable<java.lang.String, java.net.URLStreamHandler>;false;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_CHACHA20_POLY1305_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C07D;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SSLExtension;CH_EXTENDED_MASTER_SECRET;sun.security.ssl.SSLExtension;true;unknown;false;package
@@ -519,14 +502,12 @@ java.lang.invoke.LambdaForm$Kind;PUT_INT;java.lang.invoke.LambdaForm$Kind;true;u
 sun.security.ssl.Alert;CERTIFICATE_EXPIRED;sun.security.ssl.Alert;true;unknown;false;package
 sun.security.ssl.NamedGroup$NamedGroupType;NAMED_GROUP_XDH;sun.security.ssl.NamedGroup$NamedGroupType;true;unknown;false;package
 sun.security.ssl.SSLExtension;SESSION_TICKET;sun.security.ssl.SSLExtension;true;unknown;false;package
-java.util.Currency;specialCasesList;java.util.List<java.util.Currency$SpecialCaseEntry>;false;unknown;false;package
 java.time.chrono.JapaneseDate;MEIJI_6_ISODATE;java.time.LocalDate;true;unknown;false;package
 java.lang.ClassLoader$NativeLibrary$Unloader;UNLOADER;java.lang.ClassLoader$NativeLibrary;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C085;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C057;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.NamedGroup;SECT571_R1;sun.security.ssl.NamedGroup;true;unknown;false;package
 java.util.concurrent.ThreadLocalRandom;instance;java.util.concurrent.ThreadLocalRandom;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00B3;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DHE_RSA_WITH_AES_128_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.Alert;INSUFFICIENT_SECURITY;sun.security.ssl.Alert;true;unknown;false;package
@@ -540,15 +521,12 @@ sun.security.ssl.SSLExtension;CH_KEY_SHARE;sun.security.ssl.SSLExtension;true;un
 sun.security.ssl.SSLHandshake;END_OF_EARLY_DATA;sun.security.ssl.SSLHandshake;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_0094;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C033;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.net.DatagramSocket;implClass;java.lang.Class<?>;false;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_RSA_EXPORT_WITH_RC4_40_MD5;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite$KeyExchange;K_DHE_RSA_EXPORT;sun.security.ssl.CipherSuite$KeyExchange;true;unknown;false;package
 sun.security.ssl.ProtocolVersion;DTLS12;sun.security.ssl.ProtocolVersion;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_0085;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.util.stream.StreamOpFlag;ORDERED;java.util.stream.StreamOpFlag;true;unknown;false;package
-java.lang.System;bootLayer;java.lang.ModuleLayer;false;unknown;false;package
-sun.net.www.http.KeepAliveStreamCleaner;MAX_CAPACITY;int;false;immutable;false;package
 sun.security.ssl.Alert;NO_APPLICATION_PROTOCOL;sun.security.ssl.Alert;true;unknown;false;package
 java.time.chrono.JapaneseChronology;LOCALE;java.util.Locale;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C040;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -595,7 +573,6 @@ sun.security.ssl.CipherSuite;CS_00B2;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.SignatureScheme;ED448;sun.security.ssl.SignatureScheme;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DHE_DSS_WITH_AES_256_GCM_SHA384;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_DH_anon_WITH_DES_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_FLOAT;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.SSLExtension;CR_STATUS_REQUEST;sun.security.ssl.SSLExtension;true;unknown;false;package
 java.lang.invoke.LambdaForm$BasicType;V_TYPE;java.lang.invoke.LambdaForm$BasicType;true;unknown;false;package
@@ -613,7 +590,6 @@ sun.security.ssl.CipherSuite;CS_00BA;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.CipherSuite;CS_C05A;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_AES_128_GCM_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SignatureScheme;RSA_PKCS1_SHA256;sun.security.ssl.SignatureScheme;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLI;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C07E;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.util.concurrent.ForkJoinPool;modifyThreadPermission;java.lang.RuntimePermission;true;unknown;false;package
 sun.security.ssl.SSLExtension;CH_SERVER_NAME;sun.security.ssl.SSLExtension;true;unknown;false;package
@@ -624,7 +600,6 @@ java.lang.invoke.LambdaForm$Kind;PUT_FLOAT_VOLATILE;java.lang.invoke.LambdaForm$
 sun.security.ssl.CipherSuite;CS_0022;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SignatureScheme;ECDSA_SECP521R1_SHA512;sun.security.ssl.SignatureScheme;true;unknown;false;package
 sun.security.ssl.SSLExtension;EE_ALPN;sun.security.ssl.SSLExtension;true;unknown;false;package
-sun.net.www.http.KeepAliveStreamCleaner;MAX_DATA_REMAINING;int;false;immutable;false;package
 sun.security.ssl.CipherSuite;CS_0062;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_OBJECT_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.Alert;CERT_UNOBTAINABLE;sun.security.ssl.Alert;true;unknown;false;package
@@ -639,7 +614,6 @@ java.lang.invoke.LambdaForm$Kind;PUT_BYTE;java.lang.invoke.LambdaForm$Kind;true;
 sun.security.ssl.CipherSuite;CS_0092;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C082;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00B5;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLI;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DHE_DSS_WITH_AES_256_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_LONG_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C09F;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -653,20 +627,13 @@ sun.security.ssl.SSLCipher;B_RC2_40;sun.security.ssl.SSLCipher;true;unknown;fals
 java.util.concurrent.ForkJoinPool$WorkQueue;BASE;java.lang.invoke.VarHandle;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$BasicType;L_TYPE;java.lang.invoke.LambdaForm$BasicType;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLI;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
-java.net.DatagramSocket;factory;java.net.DatagramSocketImplFactory;false;unknown;false;package
-java.util.Currency;formatVersion;int;false;immutable;false;package
 sun.security.ssl.CipherSuite;TLS_ECDH_ECDSA_WITH_RC4_128_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SignatureScheme;ECDSA_SHA224;sun.security.ssl.SignatureScheme;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_009A;sun.security.ssl.CipherSuite;true;unknown;false;package
 com.sun.java.util.jar.pack.Package;attrBootstrapMethodsEmpty;com.sun.java.util.jar.pack.Attribute$Layout;true;unknown;false;package
 sun.security.ssl.Alert;EXPORT_RESTRICTION;sun.security.ssl.Alert;true;unknown;false;package
-com.sun.java.util.jar.pack.BandStructure;dumpDir;java.io.File;false;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLII;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
-sun.security.ssl.SunJSSE;cryptoProvider;java.security.Provider;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C06C;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLI;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_00BB;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SSLCipher;B_AES_128_GCM;sun.security.ssl.SSLCipher;true;unknown;false;package
 sun.security.ssl.Alert;BAD_CERTIFICATE;sun.security.ssl.Alert;true;unknown;false;package
@@ -677,7 +644,6 @@ com.sun.java.util.jar.pack.BandStructure;BRANCH5;com.sun.java.util.jar.pack.Codi
 sun.security.ssl.RandomCookie;hrrRandom;sun.security.ssl.RandomCookie;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;DIRECT_INVOKE_SPECIAL;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_0036;sun.security.ssl.CipherSuite;true;unknown;false;package
-com.sun.java.util.jar.pack.Coding;verboseStringForDebug;boolean;false;immutable;false;package
 sun.security.ssl.CipherSuite;CS_00A5;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.Alert;NO_CERTIFICATE;sun.security.ssl.Alert;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C046;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -699,11 +665,9 @@ sun.security.ssl.CipherSuite;CS_C047;sun.security.ssl.CipherSuite;true;unknown;f
 sun.security.ssl.SSLExtension;SRP;sun.security.ssl.SSLExtension;true;unknown;false;package
 java.util.stream.StreamOpFlag;SORTED;java.util.stream.StreamOpFlag;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C04B;sun.security.ssl.CipherSuite;true;unknown;false;package
-com.sun.java.util.jar.pack.BandStructure;nextSeqForDebug;int;false;immutable;false;package
 sun.security.ssl.SSLCipher;B_AES_256;sun.security.ssl.SSLCipher;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_0029;sun.security.ssl.CipherSuite;true;unknown;false;package
 com.sun.java.util.jar.pack.Package;attrSourceFileSpecial;com.sun.java.util.jar.pack.Attribute$Layout;true;unknown;false;package
-java.util.Currency;otherCurrenciesList;java.util.List<java.util.Currency$OtherCurrencyEntry>;false;unknown;false;package
 sun.security.ssl.SignatureScheme;RSA_PSS_PSS_SHA384;sun.security.ssl.SignatureScheme;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C073;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C072;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -782,7 +746,6 @@ com.sun.java.util.jar.pack.Package;attrCodeEmpty;com.sun.java.util.jar.pack.Attr
 sun.security.ssl.CipherSuite;CS_C079;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.reflect.AccessibleObject;reflectionFactory;jdk.internal.reflect.ReflectionFactory;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C05C;sun.security.ssl.CipherSuite;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C052;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C05E;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SSLExtension;CERTIFICATE_AUTHORITIES;sun.security.ssl.SSLExtension;true;unknown;false;package
@@ -799,7 +762,6 @@ sun.security.ssl.SSLHandshake;CERTIFICATE_VERIFY;sun.security.ssl.SSLHandshake;t
 java.util.concurrent.CompletableFuture;NIL;java.util.concurrent.CompletableFuture$AltResult;true;unknown;false;package
 sun.security.ssl.SSLExtension;POST_HANDSHAKE_AUTH;sun.security.ssl.SSLExtension;true;unknown;false;package
 sun.security.ssl.SSLHandshake;SERVER_HELLO;sun.security.ssl.SSLHandshake;true;unknown;false;package
-java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLIILL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C064;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.NamedGroup;SECP384_R1;sun.security.ssl.NamedGroup;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DHE_DSS_WITH_AES_256_CBC_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
@@ -837,7 +799,6 @@ sun.security.ssl.NamedGroup;SECT193_R2;sun.security.ssl.NamedGroup;true;unknown;
 java.lang.invoke.VarHandle$AccessType;GET;java.lang.invoke.VarHandle$AccessType;true;unknown;false;package
 sun.security.ssl.CipherSuite;TLS_DHE_RSA_WITH_AES_128_GCM_SHA256;sun.security.ssl.CipherSuite;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;DIRECT_INVOKE_STATIC_INIT;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
-java.util.ImmutableCollections$MapN;EMPTY_MAP;java.util.Map<?, ?>;false;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_BOOLEAN;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 sun.security.ssl.CipherSuite;CS_C067;sun.security.ssl.CipherSuite;true;unknown;false;package
 sun.security.ssl.SignatureScheme$SigAlgParamSpec;RSA_PSS_SHA512;sun.security.ssl.SignatureScheme$SigAlgParamSpec;true;unknown;false;package

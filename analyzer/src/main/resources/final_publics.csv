@@ -133,7 +133,6 @@ java.time.OffsetTime;MAX;java.time.OffsetTime;true;unknown;false;public
 java.util.Locale;SIMPLIFIED_CHINESE;java.util.Locale;true;unknown;false;public
 sun.net.ProgressSource$State;NEW;sun.net.ProgressSource$State;true;unknown;false;public
 java.lang.annotation.RetentionPolicy;RUNTIME;java.lang.annotation.RetentionPolicy;true;unknown;false;public
-sun.security.x509.AlgorithmId;pbeWithSHA1AndRC2_40_oid;sun.security.util.ObjectIdentifier;false;unknown;false;public
 sun.nio.cs.ISO_8859_1;INSTANCE;sun.nio.cs.ISO_8859_1;true;unknown;false;public
 java.security.cert.CRLReason;AA_COMPROMISE;java.security.cert.CRLReason;true;unknown;false;public
 java.nio.charset.CodingErrorAction;REPLACE;java.nio.charset.CodingErrorAction;true;unknown;false;public
@@ -361,7 +360,6 @@ java.time.temporal.ChronoUnit;MILLIS;java.time.temporal.ChronoUnit;true;unknown;
 java.nio.file.StandardOpenOption;CREATE_NEW;java.nio.file.StandardOpenOption;true;unknown;false;public
 java.time.format.TextStyle;FULL;java.time.format.TextStyle;true;unknown;false;public
 java.nio.file.attribute.AclEntryPermission;READ_DATA;java.nio.file.attribute.AclEntryPermission;true;unknown;false;public
-sun.security.x509.InhibitAnyPolicyExtension;AnyPolicy_Id;sun.security.util.ObjectIdentifier;false;unknown;false;public
 javax.net.ssl.SSLEngineResult$HandshakeStatus;NOT_HANDSHAKING;javax.net.ssl.SSLEngineResult$HandshakeStatus;true;unknown;false;public
 sun.net.ftp.FtpReplyCode;ACTION_ABORTED;sun.net.ftp.FtpReplyCode;true;unknown;false;public
 sun.security.provider.certpath.OCSP$RevocationStatus$CertStatus;UNKNOWN;sun.security.provider.certpath.OCSP$RevocationStatus$CertStatus;true;unknown;false;public
@@ -533,7 +531,6 @@ java.time.temporal.ChronoUnit;DECADES;java.time.temporal.ChronoUnit;true;unknown
 java.lang.invoke.VarHandle$AccessMode;WEAK_COMPARE_AND_SET_RELEASE;java.lang.invoke.VarHandle$AccessMode;true;unknown;false;public
 java.time.DayOfWeek;THURSDAY;java.time.DayOfWeek;true;unknown;false;public
 java.util.jar.Attributes$Name;IMPLEMENTATION_VENDOR;java.util.jar.Attributes$Name;true;unknown;false;public
-sun.security.x509.AlgorithmId;pbeWithSHA1AndDESede_oid;sun.security.util.ObjectIdentifier;false;unknown;false;public
 java.util.Locale;ITALY;java.util.Locale;true;unknown;false;public
 java.io.ObjectInputFilter$Status;REJECTED;java.io.ObjectInputFilter$Status;true;unknown;false;public
 java.time.temporal.ChronoField;ERA;java.time.temporal.ChronoField;true;unknown;false;public
@@ -577,7 +574,6 @@ java.math.BigInteger;TWO;java.math.BigInteger;true;unknown;false;public
 sun.security.x509.AlgorithmId;sha512WithECDSA_oid;sun.security.util.ObjectIdentifier;true;unknown;false;public
 java.nio.file.attribute.PosixFilePermission;OTHERS_EXECUTE;java.nio.file.attribute.PosixFilePermission;true;unknown;false;public
 sun.net.www.protocol.http.AuthCacheValue$Type;Server;sun.net.www.protocol.http.AuthCacheValue$Type;true;unknown;false;public
-sun.security.x509.NetscapeCertTypeExtension;NetscapeCertType_Id;sun.security.util.ObjectIdentifier;false;unknown;false;public
 sun.security.x509.AlgorithmId;sha384WithECDSA_oid;sun.security.util.ObjectIdentifier;true;unknown;false;public
 sun.net.ftp.FtpReplyCode;INVALID_PARAMETER;sun.net.ftp.FtpReplyCode;true;unknown;false;public
 sun.security.x509.AlgorithmId;shaWithDSA_OIW_oid;sun.security.util.ObjectIdentifier;true;unknown;false;public
