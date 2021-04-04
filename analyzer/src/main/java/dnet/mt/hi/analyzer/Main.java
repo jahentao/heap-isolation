@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -51,10 +52,23 @@ public class Main {
             propertyExtractor.extract();
             System.out.println("Persisting static field properties...");
             persistFieldProperties(outputBase);
+            System.out.println("Persisting distinct types of static fields...");
+            persistDistinctTypes(outputBase);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private static void persistDistinctTypes(String outputBase) throws IOException {
+        Set<String> distinctTypes = StaticFieldPropertyExtractor.properties.stream().
+                map(sfp -> sfp.type).collect(Collectors.toSet());
+        StringBuilder sb = new StringBuilder();
+        distinctTypes.forEach(t -> {
+            sb.append(t);
+            sb.append("\n");
+        });
+        Files.write(Paths.get(outputBase, "distinct_field_types.list"), sb.toString().getBytes());
     }
 
     private static void persistFieldProperties(String outputBase) throws IOException {
