@@ -23,6 +23,7 @@ java.lang.VirtualMachineError
 java.lang.OutOfMemoryError
 java.lang.StackOverflowError
 java.lang.IllegalMonitorStateException
+java.lang.ref.Cleaner
 java.lang.ref.Reference
 java.lang.ref.SoftReference
 java.lang.ref.WeakReference
