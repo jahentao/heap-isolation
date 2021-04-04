@@ -36,7 +36,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
     private static void loadSystemClasses(Set<String> sharedClassNames) {
         sharedClassNames.forEach(name -> {
             try {
-                systemClasses.add(Class.forName(name));
+                systemClasses.add(getSystemClassLoader().loadClass(name));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
