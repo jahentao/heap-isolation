@@ -62,13 +62,14 @@ public class Main {
 
     private static void persistDistinctTypes(String outputBase) throws IOException {
         Set<String> distinctTypes = StaticFieldPropertyExtractor.properties.stream().
+                filter(sfp -> sfp.isFinal && !sfp.isArray && !sfp.mutabilityStatus.equals(MutabilityStatus.IMMUTABLE)).
                 map(sfp -> sfp.type).collect(Collectors.toSet());
         StringBuilder sb = new StringBuilder();
         distinctTypes.forEach(t -> {
             sb.append(t);
             sb.append("\n");
         });
-        Files.write(Paths.get(outputBase, "distinct_field_types.list"), sb.toString().getBytes());
+        Files.write(Paths.get(outputBase, "distinct_final_non_array_field_types.list"), sb.toString().getBytes());
     }
 
     private static void persistFieldProperties(String outputBase) throws IOException {
