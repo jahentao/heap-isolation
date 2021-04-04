@@ -75,8 +75,8 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
         Module javaBase = ClassLoader.class.getModule();
         Set<String> sharedPackages = getSharedPackages();
         sharedPackages.forEach(pkg -> {
-            if (!javaBase.isExported(pkg)) {
-                javaBase.addExports(pkg, unnamedModule);
+            if (!javaBase.isOpen(pkg)) {
+                javaBase.addOpens(pkg, unnamedModule);
             }
         });
 
