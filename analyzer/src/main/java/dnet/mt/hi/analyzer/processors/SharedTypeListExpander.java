@@ -9,7 +9,11 @@ public class SharedTypeListExpander {
 
     public void init(Set<String> initialSeed) {
         initialSeed.forEach(s -> {
-            sharedTypes.add(Initializer.nameToClassMap.get(s));
+            Class clazz = Initializer.nameToClassMap.get(s);
+            if (clazz == null) {
+                System.out.println(s);
+            }
+            sharedTypes.add(clazz);
         });
     }
 
@@ -20,7 +24,6 @@ public class SharedTypeListExpander {
         Class clazz;
         while (itr.hasNext()) {
             clazz = itr.next();
-            System.out.println(clazz);
             if (!Modifier.isPrivate(clazz.getModifiers())) {
                 Set<Class> newlyFoundReachableTypes = findNewReachableTypes(clazz);
                 newlyFoundReachableTypes.forEach(itr::add);
