@@ -19,6 +19,7 @@ java.lang.invoke.LambdaForm$Kind;DIRECT_INVOKE_INTERFACE;java.lang.invoke.Lambda
 java.lang.invoke.LambdaForm$Kind;PUT_OBJECT_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.MethodHandleImpl$Intrinsic;ARRAY_LOAD;java.lang.invoke.MethodHandleImpl$Intrinsic;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_DOUBLE_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
+java.lang.invoke.MethodType;internTable;java.lang.invoke.MethodType$ConcurrentWeakInternSet<java.lang.invoke.MethodType>;true;unknown;false;package
 java.lang.invoke.LambdaForm$BasicType;V_TYPE;java.lang.invoke.LambdaForm$BasicType;true;unknown;false;package
 java.lang.invoke.BoundMethodHandle$Species_LLLLLLLLLIILL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 java.lang.invoke.BoundMethodHandle$Species_LLLLLLLI;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
@@ -29,6 +30,7 @@ java.lang.invoke.MethodHandleImpl$Intrinsic;ARRAY_STORE;java.lang.invoke.MethodH
 java.lang.invoke.LambdaForm$Kind;VARHANDLE_EXACT_INVOKER;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.util.ImmutableCollections$ListN;EMPTY_LIST;java.util.List<?>;false;unknown;false;package
 java.lang.invoke.BoundMethodHandle$Species_LLLLLLL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
+sun.net.www.http.KeepAliveCache;result;int;false;immutable;false;package
 java.lang.invoke.LambdaForm$Kind;PUT_BOOLEAN_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.MethodHandleImpl$Intrinsic;NONE;java.lang.invoke.MethodHandleImpl$Intrinsic;true;unknown;false;package
 java.net.InetAddress;impl;java.net.InetAddressImpl;true;unknown;false;package
@@ -56,10 +58,11 @@ java.lang.invoke.MethodHandleImpl$Intrinsic;IDENTITY;java.lang.invoke.MethodHand
 java.lang.invoke.LambdaForm$Kind;PUT_FLOAT;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.StackWalker$ExtendedOption;LOCALS_AND_OPERANDS;java.lang.StackWalker$ExtendedOption;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_FLOAT;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
-java.lang.invoke.MethodType;internTable;java.lang.invoke.MethodType$ConcurrentWeakInternSet<java.lang.invoke.MethodType>;true;unknown;false;package
+jdk.internal.ref.CleanerImpl$InnocuousThreadFactory;factory;java.util.concurrent.ThreadFactory;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;PUT_DOUBLE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;DIRECT_INVOKE_SPECIAL;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;GET_OBJECT_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
+java.lang.ClassLoader$NativeLibrary$Unloader;UNLOADER;java.lang.ClassLoader$NativeLibrary;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;DIRECT_INVOKE_VIRTUAL;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$BasicType;J_TYPE;java.lang.invoke.LambdaForm$BasicType;true;unknown;false;package
 java.lang.StackWalker;DEFAULT_EMPTY_OPTION;java.util.EnumSet<java.lang.StackWalker$Option>;true;unknown;false;package
@@ -108,10 +111,12 @@ java.util.Comparators$NaturalOrderComparator;INSTANCE;java.util.Comparators$Natu
 java.lang.invoke.LambdaForm$Kind;PUT_INT_VOLATILE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;DIRECT_NEW_INVOKE_SPECIAL;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;LINK_TO_CALL_SITE;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
+sun.net.www.http.KeepAliveStreamCleaner;MAX_DATA_REMAINING;int;false;immutable;false;package
 java.lang.invoke.LambdaForm$Kind;GET_LONG;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.BoundMethodHandle$Species_LLILL;BMH_SPECIES;java.lang.invoke.BoundMethodHandle$SpeciesData;false;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;PUT_SHORT;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;VARHANDLE_LINKER;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
+sun.net.www.http.KeepAliveStreamCleaner;MAX_CAPACITY;int;false;immutable;false;package
 java.lang.invoke.LambdaForm$Kind;PUT_BOOLEAN;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.invoke.LambdaForm$Kind;BOUND_REINVOKER;java.lang.invoke.LambdaForm$Kind;true;unknown;false;package
 java.lang.System;bootLayer;java.lang.ModuleLayer;false;unknown;false;package
