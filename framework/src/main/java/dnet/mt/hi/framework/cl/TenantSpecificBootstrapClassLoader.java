@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoader {
 
-    private static Set<String> systemClasses;
+    private static Set<Class> systemClasses = new HashSet<>();
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
     private static PermissionCollection systemPermissions;
 
@@ -25,12 +25,22 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
             securityManager.checkCreateClassLoader();
         }
 
-        if (systemClasses == null && trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
-            systemClasses = sharedClassNames;
+        if (systemClasses.isEmpty() && trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
+            loadSystemClasses(sharedClassNames);
             createTrustedCodeFileSystem(sharedJarPaths);
             systemPermissions = permissions;
         }
 
+    }
+
+    private static void loadSystemClasses(Set<String> sharedClassNames) {
+        sharedClassNames.forEach(name -> {
+            try {
+                systemClasses.add(Class.forName(name));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private static void createTrustedCodeFileSystem(Path[] sharedJarPaths) {
@@ -48,6 +58,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
     }
 
     public TenantSpecificBootstrapClassLoader(String tenantId, ClassLoader parent, Principal[] principals) {
+
         super(tenantId.concat("_BootstrapClassLoader"), parent);
 
         if (trustedCodeFileSystems.isEmpty() || systemPermissions == null) {
@@ -57,6 +68,22 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
         this.tenantId = tenantId;
         CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
         pd = new ProtectionDomain(cs, systemPermissions, this, principals);
+
+        Module unnamedModule = getUnnamedModule();
+        Module javaBase = ClassLoader.class.getModule();
+        Set<String> sharedPackages = getSharedPackages();
+        sharedPackages.forEach(pkg -> {
+            if (!javaBase.isExported(pkg)) {
+                javaBase.addExports(pkg, unnamedModule);
+            }
+        });
+
+    }
+
+    private Set<String> getSharedPackages() {
+        Set<String> result = new HashSet<>();
+        systemClasses.forEach(clazz -> result.add(clazz.getPackageName()));
+        return result;
     }
 
 
