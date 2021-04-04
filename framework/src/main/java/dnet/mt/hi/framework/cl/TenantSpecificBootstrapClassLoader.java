@@ -69,6 +69,8 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
         CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
         pd = new ProtectionDomain(cs, systemPermissions, this, principals);
 
+        systemClasses.forEach(clazz -> loadedClasses.put(clazz.getCanonicalName(), clazz));
+
         Module unnamedModule = getUnnamedModule();
         Module javaBase = ClassLoader.class.getModule();
         Set<String> sharedPackages = getSharedPackages();
@@ -93,12 +95,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
             if (name != null) {
                 Class<?> c = loadedClasses.get(name);
                 if (c == null) {
-                    if (systemClasses.contains(name)) {
-                        c = super.loadClass(name, resolve);
-                    }
-                    if (c == null) {
-                        c = findClass(name);
-                    }
+                    c = findClass(name);
                     if (c != null) {
                         loadedClasses.put(name, c);
                     }
