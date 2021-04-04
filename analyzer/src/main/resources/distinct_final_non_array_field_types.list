@@ -1,0 +1,126 @@
+java.util.Set<java.lang.Module>
+java.lang.Class<java.lang.Float>
+java.nio.charset.spi.CharsetProvider
+java.util.List<java.lang.String>
+java.util.Map<java.lang.String, java.lang.Boolean>
+java.nio.channels.FileChannel$MapMode
+java.lang.Class<java.lang.Byte>
+java.util.Comparator<java.lang.String>
+java.lang.Runtime$Version
+java.net.Proxy
+java.time.Duration
+jdk.internal.loader.ClassLoaders$BootClassLoader
+java.math.BigInteger
+java.time.ZoneOffset
+java.nio.file.Path
+java.util.EnumSet<java.lang.StackWalker$Option>
+jdk.internal.misc.Unsafe
+java.util.function.BiFunction<java.lang.String, java.util.List<java.lang.Integer>, java.lang.ArrayIndexOutOfBoundsException>
+java.net.NetworkInterface
+jdk.internal.loader.ClassLoaderValue<jdk.internal.module.ServicesCatalog>
+sun.security.util.Debug
+java.nio.ByteOrder
+java.lang.ClassValue$Entry<?>
+java.lang.Class<java.lang.Boolean>
+java.lang.invoke.MemberName
+java.lang.Class<java.lang.Integer>
+java.util.Hashtable<java.lang.String, java.net.ContentHandler>
+java.util.Map<java.lang.String, java.util.jar.Attributes$Name>
+java.util.concurrent.ConcurrentMap<java.lang.Integer, java.time.ZoneOffset>
+java.util.List<java.lang.invoke.MemberName>
+java.time.LocalDateTime
+java.lang.StackWalker
+java.util.Set<java.lang.String>
+java.lang.ThreadLocal<java.lang.Boolean>
+java.util.Map<java.lang.String, java.lang.invoke.VarHandle$AccessMode>
+java.util.concurrent.ConcurrentMap<java.util.ResourceBundle$CacheKey, java.util.ResourceBundle$BundleReference>
+java.util.OptionalLong
+java.util.HashMap<java.lang.invoke.LambdaForm, java.lang.String>
+java.lang.Class<java.lang.Character>
+java.text.AttributedCharacterIterator$Attribute
+java.util.ResourceBundle
+java.util.ResourceBundle$Control
+java.util.jar.Attributes$Name
+java.util.List<java.time.temporal.TemporalUnit>
+java.lang.Class<java.lang.Void>
+java.util.List<java.lang.Throwable>
+java.lang.invoke.BoundMethodHandle$Specializer
+sun.reflect.generics.tree.VoidDescriptor
+java.util.concurrent.ConcurrentMap<java.lang.String, java.net.InetAddress$Addresses>
+java.lang.Class<java.lang.Short>
+java.lang.invoke.MemberName$Factory
+sun.reflect.generics.tree.CharSignature
+java.util.concurrent.atomic.AtomicLong
+java.lang.ref.ReferenceQueue<java.lang.Object>
+java.lang.Module
+sun.reflect.generics.tree.ByteSignature
+java.time.temporal.TemporalQuery<java.time.Period>
+jdk.internal.reflect.ReflectionFactory
+java.time.format.DecimalStyle
+java.util.Map<java.lang.String, java.text.AttributedCharacterIterator$Attribute>
+java.lang.Class<java.lang.Double>
+java.lang.Class<java.lang.Long>
+java.util.Map<java.lang.String, jdk.internal.loader.BuiltinClassLoader$LoadedModule>
+jdk.internal.misc.JavaLangAccess
+java.lang.invoke.MethodType$ConcurrentWeakInternSet<java.lang.invoke.MethodType>
+java.time.chrono.IsoChronology
+java.util.concurrent.atomic.AtomicInteger
+java.util.Locale
+java.time.LocalTime
+java.util.Optional<?>
+jdk.internal.loader.ClassLoaders$PlatformClassLoader
+java.util.Map<java.lang.String, java.security.Provider$EngineDescription>
+java.util.concurrent.ThreadFactory
+jdk.internal.misc.JavaLangInvokeAccess
+java.time.OffsetTime
+java.util.TimeZone
+java.net.InetAddressImpl
+java.time.Instant
+java.nio.file.FileSystem
+java.net.URLStreamHandlerFactory
+java.io.FileSystem
+jdk.internal.loader.ClassLoaders$AppClassLoader
+java.time.OffsetDateTime
+sun.util.calendar.BaseCalendar
+java.time.LocalDate
+sun.reflect.generics.tree.FloatSignature
+java.util.concurrent.ConcurrentMap<java.lang.String, java.time.ZoneOffset>
+java.util.regex.Pattern
+sun.util.locale.LocaleExtensions
+java.util.Locale$Cache
+java.util.Map<java.lang.String, java.lang.String>
+sun.reflect.generics.tree.BooleanSignature
+sun.util.locale.BaseLocale$Cache
+java.util.HashMap<java.lang.String, java.lang.Integer>
+java.util.OptionalDouble
+java.lang.ModuleLayer
+java.util.NavigableSet<java.net.InetAddress$CachedAddresses>
+java.util.OptionalInt
+sun.reflect.generics.tree.IntSignature
+java.util.ResourceBundle$Control$CandidateListCache
+java.time.temporal.TemporalQuery<java.lang.Boolean>
+java.nio.charset.CoderResult
+java.util.Set<java.net.SocketOption<?>>
+java.nio.charset.CodingErrorAction
+java.lang.Boolean
+sun.reflect.generics.tree.BottomSignature
+java.util.Map<java.lang.String, java.net.HttpCookie$CookieAttributeAssignor>
+jdk.internal.misc.JavaUtilZipFileAccess
+java.util.function.Function<java.lang.Object, java.lang.Object>
+java.io.PrintStream
+java.time.Period
+java.util.Set<java.nio.file.OpenOption>
+sun.reflect.generics.tree.LongSignature
+java.lang.ref.Cleaner
+java.util.concurrent.ConcurrentHashMap<java.lang.String, java.lang.Boolean>
+java.util.Map<java.lang.String, java.lang.Class<?>>
+jdk.internal.loader.ClassLoaderValue<java.util.List<java.lang.ModuleLayer>>
+sun.reflect.generics.tree.DoubleSignature
+java.lang.invoke.MethodType
+java.util.concurrent.ConcurrentMap<java.util.Locale, java.time.format.DecimalStyle>
+sun.reflect.generics.tree.ShortSignature
+java.time.format.DateTimeFormatter
+java.io.FileDescriptor
+java.lang.Object
+java.util.List<sun.security.jca.ServiceId>
+java.io.InputStream

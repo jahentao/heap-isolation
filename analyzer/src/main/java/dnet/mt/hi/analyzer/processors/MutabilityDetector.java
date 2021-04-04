@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MutabilityDetector {
 
-    private static List<Class> KNOWN_IMMUTABLE_CLASSES = Arrays.asList(String.class, Integer.class, Long.class,
+    private static List<Class> KNOWN_IMMUTABLE_CLASSES = Arrays.asList(Class.class, String.class, Integer.class, Long.class,
             Character.class, Short.class, Double.class, Float.class, Byte.class, Character.UnicodeBlock.class,
             Character.UnicodeScript.class);
 
