@@ -73,17 +73,25 @@ public class Main {
     }
 
     private static void persistFieldProperties(String outputBase) throws IOException {
-        persist(outputBase, "final_arrays.csv", sfp -> sfp.isArray && sfp.isFinal);
-        persist(outputBase, "nonfinal_arrays.csv", sfp -> sfp.isArray && !sfp.isFinal);
         persist(outputBase, "final_immutables.csv", sfp -> !sfp.isArray && isImmutableFinal(sfp));
-        persist(outputBase, "nonfinal_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
-        persist(outputBase, "final_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
-        persist(outputBase, "nonfinal_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
-        persist(outputBase, "final_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
-        persist(outputBase, "nonfinal_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
-        persist(outputBase, "final_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
-        persist(outputBase, "nonfinal_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
-        persist(outputBase, "final_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
+
+        persist(outputBase, "arrays/final_privates.csv", sfp -> sfp.isArray && sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
+        persist(outputBase, "arrays/nonfinal_privates.csv", sfp -> sfp.isArray && !sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
+        persist(outputBase, "arrays/final_package-privates.csv", sfp -> sfp.isArray && sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
+        persist(outputBase, "arrays/nonfinal_package-privates.csv", sfp -> sfp.isArray && !sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
+        persist(outputBase, "arrays/final_protecteds.csv", sfp -> sfp.isArray && sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
+        persist(outputBase, "arrays/nonfinal_protecteds.csv", sfp -> sfp.isArray && !sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
+        persist(outputBase, "arrays/final_publics.csv", sfp -> sfp.isArray && sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
+        persist(outputBase, "arrays/nonfinal_publics.csv", sfp -> sfp.isArray && !sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
+
+        persist(outputBase, "references/nonfinal_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
+        persist(outputBase, "references/final_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
+        persist(outputBase, "references/nonfinal_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
+        persist(outputBase, "references/final_package-privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PACKAGE));
+        persist(outputBase, "references/nonfinal_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
+        persist(outputBase, "references/final_protecteds.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PROTECTED));
+        persist(outputBase, "references/nonfinal_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
+        persist(outputBase, "references/final_publics.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PUBLIC));
     }
 
     private static boolean isImmutableFinal(StaticFieldProperties sfp) {
