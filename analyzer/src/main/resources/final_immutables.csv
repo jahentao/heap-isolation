@@ -149,6 +149,7 @@ java.nio.charset.CharsetEncoder;$assertionsDisabled;boolean
 java.net.URI;L_ALPHA;long
 java.util.Date;serialVersionUID;long
 jdk.internal.reflect.ReflectionFactory;$assertionsDisabled;boolean
+java.lang.Character;TYPE;java.lang.Class<java.lang.Character>
 java.util.Random;BadBound;java.lang.String
 java.lang.invoke.VarHandle$AccessMode;COMPARE_AND_EXCHANGE_RELEASE;java.lang.invoke.VarHandle$AccessMode
 java.lang.Character;DIRECTIONALITY_NONSPACING_MARK;byte
@@ -184,6 +185,7 @@ java.lang.invoke.MemberName;ANNOTATION;int
 java.math.BigInteger;LONG_MASK;long
 java.io.File;pathSeparator;java.lang.String
 java.lang.System$Logger$Level;OFF;java.lang.System$Logger$Level
+java.lang.Boolean;TYPE;java.lang.Class<java.lang.Boolean>
 java.security.NoSuchProviderException;serialVersionUID;long
 java.io.FilePermission;READLINK;int
 java.lang.invoke.LambdaForm$Kind;GET_LONG;java.lang.invoke.LambdaForm$Kind
@@ -219,6 +221,7 @@ java.time.temporal.ChronoUnit;CENTURIES;java.time.temporal.ChronoUnit
 java.time.Instant;MIN_SECOND;long
 java.security.Provider;ALIAS_LENGTH;int
 java.lang.invoke.DirectMethodHandle;AF_GETSTATIC_INIT;byte
+java.lang.Double;TYPE;java.lang.Class<java.lang.Double>
 java.lang.invoke.VarHandle$AccessMode;SET;java.lang.invoke.VarHandle$AccessMode
 java.time.Month;APRIL;java.time.Month
 java.nio.CharBuffer;$assertionsDisabled;boolean
@@ -250,6 +253,7 @@ java.util.Properties;serialVersionUID;long
 java.lang.invoke.VarHandle$AccessMode;GET_AND_BITWISE_OR_RELEASE;java.lang.invoke.VarHandle$AccessMode
 java.lang.invoke.ClassSpecializer;STABLE;java.lang.String
 java.math.BigInteger;KARATSUBA_THRESHOLD;int
+java.lang.Byte;TYPE;java.lang.Class<java.lang.Byte>
 java.nio.Buffer;SPLITERATOR_CHARACTERISTICS;int
 java.util.concurrent.atomic.AtomicInteger;serialVersionUID;long
 java.lang.ArrayIndexOutOfBoundsException;serialVersionUID;long
@@ -586,6 +590,7 @@ sun.invoke.util.Wrapper;$assertionsDisabled;boolean
 java.lang.reflect.Member;DECLARED;int
 java.util.concurrent.ConcurrentHashMap;TRANSFERINDEX;long
 java.lang.ClassValue$ClassValueMap;CACHE_LOAD_LIMIT;int
+java.lang.Float;TYPE;java.lang.Class<java.lang.Float>
 jdk.internal.misc.Unsafe;ARRAY_LONG_BASE_OFFSET;int
 java.security.Signature;RSA_SIGNATURE;java.lang.String
 javax.crypto.Cipher;S_MAYBE;int
@@ -660,6 +665,7 @@ sun.invoke.util.Wrapper;CHAR;sun.invoke.util.Wrapper
 java.lang.invoke.LambdaForm$Kind;LOOP;java.lang.invoke.LambdaForm$Kind
 java.lang.invoke.LambdaForm$Kind;DELEGATE;java.lang.invoke.LambdaForm$Kind
 java.time.zone.ZoneOffsetTransitionRule$TimeDefinition;WALL;java.time.zone.ZoneOffsetTransitionRule$TimeDefinition
+java.lang.Short;TYPE;java.lang.Class<java.lang.Short>
 java.lang.invoke.LambdaForm$Kind;BOUND_REINVOKER;java.lang.invoke.LambdaForm$Kind
 java.util.concurrent.TimeUnit;SECOND_SCALE;long
 javax.crypto.IllegalBlockSizeException;serialVersionUID;long
@@ -893,6 +899,7 @@ java.lang.Character;DIRECTIONALITY_RIGHT_TO_LEFT_ISOLATE;byte
 java.lang.Double;MAX_EXPONENT;int
 java.time.temporal.ChronoField;MINUTE_OF_HOUR;java.time.temporal.ChronoField
 java.lang.Character;DIRECTIONALITY_PARAGRAPH_SEPARATOR;byte
+java.lang.Integer;TYPE;java.lang.Class<java.lang.Integer>
 java.lang.Character;DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR;byte
 java.lang.invoke.VarHandle$AccessMode;GET_VOLATILE;java.lang.invoke.VarHandle$AccessMode
 java.lang.Character;START_PUNCTUATION;byte
@@ -971,6 +978,7 @@ java.time.LocalTime;NANOS_PER_MINUTE;long
 java.lang.RuntimeException;serialVersionUID;long
 java.lang.invoke.LambdaFormEditor;MIN_CACHE_ARRAY_SIZE;int
 java.util.TimeZone;LONG;int
+java.lang.Void;TYPE;java.lang.Class<java.lang.Void>
 java.util.concurrent.TimeUnit;DAYS;java.util.concurrent.TimeUnit
 java.util.Locale$Category;FORMAT;java.util.Locale$Category
 java.time.DayOfWeek;TUESDAY;java.time.DayOfWeek
@@ -991,6 +999,7 @@ java.io.RandomAccessFile;O_DSYNC;int
 java.lang.Character;DIRECTIONALITY_LEFT_TO_RIGHT_ISOLATE;byte
 java.lang.invoke.DirectMethodHandle;AF_GETFIELD;byte
 java.util.jar.JarFile;META_INF_VERSIONS;java.lang.String
+java.lang.Long;TYPE;java.lang.Class<java.lang.Long>
 java.math.BigInteger;serialVersionUID;long
 java.lang.Character;LOWERCASE_LETTER;byte
 java.time.zone.ZoneOffsetTransitionRule$TimeDefinition;UTC;java.time.zone.ZoneOffsetTransitionRule$TimeDefinition

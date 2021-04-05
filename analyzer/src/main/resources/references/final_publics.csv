@@ -19,21 +19,17 @@ java.util.jar.Attributes$Name;SPECIFICATION_TITLE;java.util.jar.Attributes$Name
 java.util.Locale;TAIWAN;java.util.Locale
 java.math.BigInteger;ZERO;java.math.BigInteger
 java.time.format.DateTimeFormatter;ISO_TIME;java.time.format.DateTimeFormatter
-java.lang.Character;TYPE;java.lang.Class<java.lang.Character>
 java.util.Locale;JAPANESE;java.util.Locale
 java.time.format.DateTimeFormatter;BASIC_ISO_DATE;java.time.format.DateTimeFormatter
 java.math.BigInteger;ONE;java.math.BigInteger
 java.util.Locale;ITALY;java.util.Locale
 java.nio.charset.CodingErrorAction;IGNORE;java.nio.charset.CodingErrorAction
 java.time.OffsetTime;MAX;java.time.OffsetTime
-java.lang.Boolean;TYPE;java.lang.Class<java.lang.Boolean>
 java.nio.channels.FileChannel$MapMode;READ_WRITE;java.nio.channels.FileChannel$MapMode
 java.util.ResourceBundle$Control;FORMAT_CLASS;java.util.List<java.lang.String>
 java.util.jar.Attributes$Name;EXTENSION_NAME;java.util.jar.Attributes$Name
 java.util.Locale;FRENCH;java.util.Locale
-java.lang.Double;TYPE;java.lang.Class<java.lang.Double>
 java.time.format.DateTimeFormatter;ISO_INSTANT;java.time.format.DateTimeFormatter
-java.lang.Byte;TYPE;java.lang.Class<java.lang.Byte>
 java.util.jar.Attributes$Name;SPECIFICATION_VERSION;java.util.jar.Attributes$Name
 java.io.FileDescriptor;err;java.io.FileDescriptor
 java.util.jar.Attributes$Name;IMPLEMENTATION_VENDOR;java.util.jar.Attributes$Name
@@ -65,7 +61,6 @@ java.util.Locale;GERMAN;java.util.Locale
 java.util.Locale;ITALIAN;java.util.Locale
 java.time.OffsetTime;MIN;java.time.OffsetTime
 java.math.BigInteger;TEN;java.math.BigInteger
-java.lang.Float;TYPE;java.lang.Class<java.lang.Float>
 java.time.format.DecimalStyle;STANDARD;java.time.format.DecimalStyle
 java.util.Locale;KOREAN;java.util.Locale
 java.time.LocalDateTime;MIN;java.time.LocalDateTime
@@ -73,7 +68,6 @@ java.time.ZoneOffset;UTC;java.time.ZoneOffset
 java.util.jar.Attributes$Name;MULTI_RELEASE;java.util.jar.Attributes$Name
 java.util.jar.Attributes$Name;MAIN_CLASS;java.util.jar.Attributes$Name
 java.util.Locale;GERMANY;java.util.Locale
-java.lang.Short;TYPE;java.lang.Class<java.lang.Short>
 java.time.format.DateTimeFormatter;RFC_1123_DATE_TIME;java.time.format.DateTimeFormatter
 java.math.BigInteger;TWO;java.math.BigInteger
 java.lang.System;in;java.io.InputStream
@@ -102,7 +96,6 @@ java.time.LocalTime;MIDNIGHT;java.time.LocalTime
 java.util.jar.Attributes$Name;IMPLEMENTATION_VERSION;java.util.jar.Attributes$Name
 java.util.jar.Attributes$Name;IMPLEMENTATION_TITLE;java.util.jar.Attributes$Name
 java.nio.charset.CoderResult;UNDERFLOW;java.nio.charset.CoderResult
-java.lang.Integer;TYPE;java.lang.Class<java.lang.Integer>
 java.util.Locale;ENGLISH;java.util.Locale
 java.util.Locale;JAPAN;java.util.Locale
 java.text.AttributedCharacterIterator$Attribute;READING;java.text.AttributedCharacterIterator$Attribute
@@ -111,11 +104,9 @@ java.util.Locale;US;java.util.Locale
 java.nio.channels.FileChannel$MapMode;PRIVATE;java.nio.channels.FileChannel$MapMode
 java.util.Locale;CHINA;java.util.Locale
 sun.util.locale.LocaleExtensions;NUMBER_THAI;sun.util.locale.LocaleExtensions
-java.lang.Void;TYPE;java.lang.Class<java.lang.Void>
 java.util.jar.Attributes$Name;IMPLEMENTATION_URL;java.util.jar.Attributes$Name
 java.io.FileDescriptor;out;java.io.FileDescriptor
 java.time.chrono.IsoChronology;INSTANCE;java.time.chrono.IsoChronology
-java.lang.Long;TYPE;java.lang.Class<java.lang.Long>
 java.time.LocalDate;EPOCH;java.time.LocalDate
 java.time.LocalDate;MIN;java.time.LocalDate
 java.util.jar.Attributes$Name;CLASS_PATH;java.util.jar.Attributes$Name

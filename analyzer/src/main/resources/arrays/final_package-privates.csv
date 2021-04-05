@@ -1,0 +1,8 @@
+Owner;Name;Type
+java.lang.Integer;sizeTable;int[]
+java.lang.invoke.LambdaForm$BasicType;ALL_TYPES;java.lang.invoke.LambdaForm$BasicType[]
+java.lang.invoke.MethodType;NO_PTYPES;java.lang.Class<?>[]
+java.lang.Integer;DigitTens;byte[]
+java.lang.Integer;digits;char[]
+java.lang.Integer;DigitOnes;byte[]
+java.lang.invoke.LambdaForm$BasicType;ARG_TYPES;java.lang.invoke.LambdaForm$BasicType[]

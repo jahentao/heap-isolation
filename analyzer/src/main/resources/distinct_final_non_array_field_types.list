@@ -1,10 +1,8 @@
 java.util.Set<java.lang.Module>
-java.lang.Class<java.lang.Float>
 java.nio.charset.spi.CharsetProvider
 java.util.List<java.lang.String>
 java.util.Map<java.lang.String, java.lang.Boolean>
 java.nio.channels.FileChannel$MapMode
-java.lang.Class<java.lang.Byte>
 java.util.Comparator<java.lang.String>
 java.lang.Runtime$Version
 java.net.Proxy
@@ -21,9 +19,7 @@ jdk.internal.loader.ClassLoaderValue<jdk.internal.module.ServicesCatalog>
 sun.security.util.Debug
 java.nio.ByteOrder
 java.lang.ClassValue$Entry<?>
-java.lang.Class<java.lang.Boolean>
 java.lang.invoke.MemberName
-java.lang.Class<java.lang.Integer>
 java.util.Hashtable<java.lang.String, java.net.ContentHandler>
 java.util.Map<java.lang.String, java.util.jar.Attributes$Name>
 java.util.concurrent.ConcurrentMap<java.lang.Integer, java.time.ZoneOffset>
@@ -36,18 +32,15 @@ java.util.Map<java.lang.String, java.lang.invoke.VarHandle$AccessMode>
 java.util.concurrent.ConcurrentMap<java.util.ResourceBundle$CacheKey, java.util.ResourceBundle$BundleReference>
 java.util.OptionalLong
 java.util.HashMap<java.lang.invoke.LambdaForm, java.lang.String>
-java.lang.Class<java.lang.Character>
 java.text.AttributedCharacterIterator$Attribute
 java.util.ResourceBundle
 java.util.ResourceBundle$Control
 java.util.jar.Attributes$Name
 java.util.List<java.time.temporal.TemporalUnit>
-java.lang.Class<java.lang.Void>
 java.util.List<java.lang.Throwable>
 java.lang.invoke.BoundMethodHandle$Specializer
 sun.reflect.generics.tree.VoidDescriptor
 java.util.concurrent.ConcurrentMap<java.lang.String, java.net.InetAddress$Addresses>
-java.lang.Class<java.lang.Short>
 java.lang.invoke.MemberName$Factory
 sun.reflect.generics.tree.CharSignature
 java.util.concurrent.atomic.AtomicLong
@@ -58,8 +51,6 @@ java.time.temporal.TemporalQuery<java.time.Period>
 jdk.internal.reflect.ReflectionFactory
 java.time.format.DecimalStyle
 java.util.Map<java.lang.String, java.text.AttributedCharacterIterator$Attribute>
-java.lang.Class<java.lang.Double>
-java.lang.Class<java.lang.Long>
 java.util.Map<java.lang.String, jdk.internal.loader.BuiltinClassLoader$LoadedModule>
 jdk.internal.misc.JavaLangAccess
 java.lang.invoke.MethodType$ConcurrentWeakInternSet<java.lang.invoke.MethodType>
