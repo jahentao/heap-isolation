@@ -73,8 +73,8 @@ public class Main {
     }
 
     private static void persistFieldProperties(String outputBase) throws IOException {
-        persist(outputBase, "arrays_immutable.csv", sfp -> sfp.isArray && sfp.mutabilityStatus.equals(MutabilityStatus.IMMUTABLE));
-        persist(outputBase, "arrays_misc.csv", sfp -> sfp.isArray && !sfp.mutabilityStatus.equals(MutabilityStatus.IMMUTABLE));
+        persist(outputBase, "final_arrays.csv", sfp -> sfp.isArray && sfp.isFinal);
+        persist(outputBase, "nonfinal_arrays.csv", sfp -> sfp.isArray && !sfp.isFinal);
         persist(outputBase, "final_immutables.csv", sfp -> !sfp.isArray && isImmutableFinal(sfp));
         persist(outputBase, "nonfinal_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && !sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
         persist(outputBase, "final_privates.csv", sfp -> !sfp.isArray && !isImmutableFinal(sfp) && sfp.isFinal && sfp.access.equals(AccessModifier.PRIVATE));
