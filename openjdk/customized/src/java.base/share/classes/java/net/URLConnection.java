@@ -955,10 +955,6 @@ public abstract class URLConnection {
      * @see     #getDefaultAllowUserInteraction()
      */
     public static void setDefaultAllowUserInteraction(boolean defaultallowuserinteraction) {
-        SecurityManager sm = System.getSecurityManager();
-        if (sm != null) {
-            sm.checkSetGlobalDefaultValue();
-        }
         defaultAllowUserInteraction = defaultallowuserinteraction;
     }
 
@@ -1064,7 +1060,7 @@ public abstract class URLConnection {
     public void setDefaultUseCaches(boolean defaultusecaches) {
         SecurityManager sm = System.getSecurityManager();
         if (sm != null) {
-            sm.checkSetGlobalDefaultValue();
+            sm.checkPermission(new RuntimePermission("modifyGlobalDefaults"));
         }
         defaultUseCaches = defaultusecaches;
     }
@@ -1082,6 +1078,10 @@ public abstract class URLConnection {
      * @since 9
      */
     public static void setDefaultUseCaches(String protocol, boolean defaultVal) {
+        SecurityManager sm = System.getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(new RuntimePermission("modifyGlobalDefaults"));
+        }
         protocol = protocol.toLowerCase(Locale.US);
         defaultCaching.put(protocol, defaultVal);
     }
