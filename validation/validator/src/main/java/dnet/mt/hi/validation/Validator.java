@@ -11,7 +11,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Paths;
-import java.security.AllPermission;
+import java.security.Permission;
+import java.security.Policy;
+import java.security.ProtectionDomain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
@@ -33,7 +35,16 @@ public class Validator {
          * It is essential to fix the main App permissions before initializing the MultiTenantServiceManager because
          * the latter sets the SecurityManager.
          */
-        Validator.class.getProtectionDomain().getPermissions().add(new AllPermission());
+        Policy.setPolicy(new Policy() {
+            @Override
+            public boolean implies(ProtectionDomain domain, Permission permission) {
+                if (Validator.class.getProtectionDomain().equals(domain)) {
+                    return true;
+                } else {
+                    return super.implies(domain, permission);
+                }
+            }
+        });
 
         MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
                 loadSharedClassNames(props.getProperty("list.shared_classes")),
