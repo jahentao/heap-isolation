@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Paths;
-import java.security.AllPermission;
 import java.security.Permission;
 import java.security.Policy;
 import java.security.ProtectionDomain;
@@ -37,13 +36,13 @@ public class Validator {
          * the latter sets the SecurityManager.
          */
         Policy.setPolicy(new Policy() {
+
+            private ProtectionDomain pd = Validator.class.getProtectionDomain();
+
             @Override
             public boolean implies(ProtectionDomain domain, Permission permission) {
-
-                Permission allPermissions = new AllPermission();
-
-                if (Validator.class.getProtectionDomain().equals(domain)) {
-                    return allPermissions.implies(permission);
+                if (pd.equals(domain)) {
+                    return true;
                 } else {
                     return super.implies(domain, permission);
                 }
