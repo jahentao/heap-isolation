@@ -36,6 +36,7 @@ public class Validator {
          */
         Policy policy = Policy.getPolicy();
         policy.getPermissions(Validator.class.getProtectionDomain()).add(new AllPermission());
+        policy.refresh();
 
         MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
                 loadSharedClassNames(props.getProperty("list.shared_classes")),
