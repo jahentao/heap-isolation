@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.security.Permissions;
 import java.security.Policy;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,8 +18,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MultiTenantServiceManager {
 
     private Map<String, TenantClassLoader> classLoaders = new ConcurrentHashMap<>();
+    private Map<String, Path> tenantFolders = new ConcurrentHashMap<>();
 
     private static MultiTenantServiceManager INSTANCE;
+
+    private PrintStream systemOut, systemErr;
 
     public static MultiTenantServiceManager getInstance(Set<String> sharedClasses, URI... sharedJars) {
         if (INSTANCE == null) {
@@ -32,8 +36,10 @@ public class MultiTenantServiceManager {
         Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
         TenantSpecificBootstrapClassLoader.init(sharedClasses, sharedJarPaths);
 
+        systemOut = System.out;
         MultiTenantPrintStream out = new MultiTenantPrintStream(System.out);
         System.setOut(out);
+        systemErr = System.err;
         MultiTenantPrintStream err = new MultiTenantPrintStream(System.err);
         System.setErr(err);
         System.setIn(null);
@@ -46,8 +52,8 @@ public class MultiTenantServiceManager {
     public void registerTenant(String tenantId, URI tenantJar) throws IOException {
         if (!classLoaders.containsKey(tenantId)) {
 
-
             Path tenantFolder = Files.createDirectories(Path.of(System.getProperty("user.dir"), tenantId));
+            tenantFolders.put(tenantId, tenantFolder);
 
             FilePermission filePermission = new FilePermission(String.format("%s/-", tenantFolder.toString()), "read,write");
             Permissions permissions = new Permissions();
@@ -69,6 +75,23 @@ public class MultiTenantServiceManager {
                     new File(tenantFolder.toString(), tenantId.concat(".err")))));
 
         }
+    }
+
+    public void stop() throws IOException {
+        MultiTenantPrintStream out = (MultiTenantPrintStream) System.out;
+        MultiTenantPrintStream err = (MultiTenantPrintStream) System.err;
+        for (String tenantId : classLoaders.keySet()) {
+            classLoaders.get(tenantId).close();
+            Files.walk(tenantFolders.get(tenantId))
+                    .sorted(Comparator.reverseOrder())
+                    .map(Path::toFile)
+                    .forEach(File::delete);
+            MultiTenantPolicy.getInstance().unregisterTenant(tenantId);
+            out.unregisterTenant(tenantId);
+            err.unregisterTenant(tenantId);
+        }
+        System.setOut(systemOut);
+        System.setErr(systemErr);
     }
 
     TenantClassLoader getTenantClassLoader(String tenantId) {

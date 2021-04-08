@@ -340,4 +340,12 @@ public class MultiTenantPrintStream extends PrintStream {
             super.write(b);
         }
     }
+
+    public void unregisterTenant(String tenantId) {
+        PrintStream tenantStream = tenantStreams.remove(tenantId);
+        if (tenantStream != null) {
+            tenantStream.close();
+        }
+    }
+
 }

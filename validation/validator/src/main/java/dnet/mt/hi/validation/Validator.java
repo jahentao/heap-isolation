@@ -20,31 +20,27 @@ import java.util.concurrent.TimeUnit;
 public class Validator {
 
     public static void main(String[] args) {
-
-        Properties props = new Properties();
         try {
+            Properties props = new Properties();
             props.load(new FileInputStream("config.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
-                loadSharedClassNames(props.getProperty("list.shared_classes")),
-                buildURI(props.getProperty("jar.java.base")));
-        try {
+            MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
+                    loadSharedClassNames(props.getProperty("list.shared_classes")),
+                    buildURI(props.getProperty("jar.java.base")));
             multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));
             multiTenantServiceManager.registerTenant("tenant02", buildURI(props.getProperty("tenants.02.jar")));
+
+            JobLoader jobLoader = new JobLoader();
+            List<Job> jobs = jobLoader.loadJobs(buildURI(props.getProperty("jobs.csv")));
+
+            JobExecutor jobExecutor = new JobExecutor(multiTenantServiceManager);
+            jobExecutor.submit(jobs);
+            jobExecutor.shutdownAfterTerminationOrTimeout(10, TimeUnit.SECONDS);
+
+            multiTenantServiceManager.stop();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        JobLoader jobLoader = new JobLoader();
-        List<Job> jobs = jobLoader.loadJobs(buildURI(props.getProperty("jobs.csv")));
-
-        JobExecutor jobExecutor = new JobExecutor(multiTenantServiceManager);
-        jobExecutor.submit(jobs);
-        jobExecutor.shutdownAfterTerminationOrTimeout(10, TimeUnit.SECONDS);
-
     }
 
     private static Set<String> loadSharedClassNames(String filePath) {

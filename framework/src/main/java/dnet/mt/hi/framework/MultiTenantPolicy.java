@@ -39,4 +39,11 @@ public class MultiTenantPolicy extends Policy {
         return true;
     }
 
+    public void unregisterTenant(String tenantId) {
+        SecurityManager sm = System.getSecurityManager();
+        if (sm != null) {
+            sm.checkPermission(SecurityConstants.GET_PD_PERMISSION);
+        }
+        pds.remove(tenantId);
+    }
 }
