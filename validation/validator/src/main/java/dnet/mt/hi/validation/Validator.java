@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Paths;
+import java.security.AllPermission;
+import java.security.Policy;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
@@ -21,14 +23,19 @@ public class Validator {
 
     public static void main(String[] args) {
 
-        System.out.println(System.getProperty("user.home"));
-
         Properties props = new Properties();
         try {
             props.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        /**
+         * It is essential to fix the main App permissions before initializing the MultiTenantServiceManager because
+         * the latter sets the SecurityManager.
+         */
+        Policy policy = Policy.getPolicy();
+        policy.getPermissions(Validator.class.getProtectionDomain()).add(new AllPermission());
 
         MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
                 loadSharedClassNames(props.getProperty("list.shared_classes")),
