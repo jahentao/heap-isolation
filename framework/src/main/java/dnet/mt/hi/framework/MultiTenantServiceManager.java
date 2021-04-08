@@ -46,7 +46,8 @@ public class MultiTenantServiceManager {
     public void registerTenant(String tenantId, URI tenantJar) throws IOException {
         if (!classLoaders.containsKey(tenantId)) {
 
-            Path tenantFolder = Files.createDirectory(Path.of(System.getProperty("user.home"), tenantId));
+
+            Path tenantFolder = Files.createDirectories(Path.of(System.getProperty("user.dir"), tenantId));
 
             FilePermission filePermission = new FilePermission(String.format("%s/-", tenantFolder.toString()), "read,write");
             Permissions permissions = new Permissions();
