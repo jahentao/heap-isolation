@@ -21,6 +21,8 @@ public class Validator {
 
     public static void main(String[] args) {
 
+        System.out.println(System.getProperty("user.home"));
+
         Properties props = new Properties();
         try {
             props.load(new FileInputStream("config.properties"));
