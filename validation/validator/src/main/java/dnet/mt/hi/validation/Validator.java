@@ -31,8 +31,12 @@ public class Validator {
         MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
                 loadSharedClassNames(props.getProperty("list.shared_classes")),
                 buildURI(props.getProperty("jar.java.base")));
-        multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));
-        multiTenantServiceManager.registerTenant("tenant02", buildURI(props.getProperty("tenants.02.jar")));
+        try {
+            multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));
+            multiTenantServiceManager.registerTenant("tenant02", buildURI(props.getProperty("tenants.02.jar")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         JobLoader jobLoader = new JobLoader();
         List<Job> jobs = jobLoader.loadJobs(buildURI(props.getProperty("jobs.csv")));
