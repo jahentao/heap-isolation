@@ -21,6 +21,8 @@
                     <compilerArgs>
                         <arg>--add-exports</arg>
                         <arg>java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED</arg>
+                        <arg>--add-exports</arg>
+                        <arg>java.base/sun.security.util=ALL-UNNAMED</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>

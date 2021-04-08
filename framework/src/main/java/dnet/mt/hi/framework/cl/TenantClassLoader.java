@@ -1,5 +1,7 @@
 package dnet.mt.hi.framework.cl;
 
+import dnet.mt.hi.framework.MultiTenantPolicy;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
@@ -34,6 +36,7 @@ public final class TenantClassLoader extends AbstractMTClassLoader implements Cl
         try {
             CodeSource cs = new CodeSource(tenantJarPath.toUri().toURL(), (CodeSigner[]) null);
             pd = new ProtectionDomain(cs, permissions, this, principals);
+            MultiTenantPolicy.getInstance().registerTenant(tenantId, pd);
 
             Map<String, String> env = new HashMap<>();
             env.put("create", "true");

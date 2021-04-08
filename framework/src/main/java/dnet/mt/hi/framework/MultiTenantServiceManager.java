@@ -7,8 +7,8 @@ import java.io.*;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.AllPermission;
 import java.security.Permissions;
+import java.security.Policy;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
@@ -30,7 +30,7 @@ public class MultiTenantServiceManager {
     private MultiTenantServiceManager(Set<String> sharedClasses, URI... sharedJars) {
 
         Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
-        TenantSpecificBootstrapClassLoader.init(sharedClasses, sharedJarPaths, (new AllPermission()).newPermissionCollection());
+        TenantSpecificBootstrapClassLoader.init(sharedClasses, sharedJarPaths);
 
         MultiTenantPrintStream out = new MultiTenantPrintStream(System.out);
         System.setOut(out);
@@ -38,6 +38,7 @@ public class MultiTenantServiceManager {
         System.setOut(err);
         System.setIn(null);
 
+        Policy.setPolicy(MultiTenantPolicy.getInstance());
         System.setSecurityManager(new SecurityManager());
 
     }

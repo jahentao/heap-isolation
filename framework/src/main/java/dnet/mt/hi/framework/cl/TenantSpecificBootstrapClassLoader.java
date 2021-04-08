@@ -13,22 +13,19 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
     private static Map<String, Class> systemClasses = new ConcurrentHashMap<>();
     private static final List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
-    private static PermissionCollection systemPermissions;
 
-    private ProtectionDomain pd;
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
 
-    public static void init(Set<String> sharedClassNames, Path[] sharedJarPaths, PermissionCollection permissions) {
+    public static void init(Set<String> sharedClassNames, Path[] sharedJarPaths) {
 
         SecurityManager securityManager = System.getSecurityManager();
         if (securityManager != null) {
             securityManager.checkCreateClassLoader();
         }
 
-        if (systemClasses.isEmpty() && trustedCodeFileSystems.isEmpty() && systemPermissions == null) {
+        if (systemClasses.isEmpty() && trustedCodeFileSystems.isEmpty()) {
             loadSystemClasses(sharedClassNames);
             createTrustedCodeFileSystem(sharedJarPaths);
-            systemPermissions = permissions;
         }
 
     }
@@ -61,12 +58,9 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
         super(tenantId, tenantId.concat("_BootstrapClassLoader"), parent);
 
-        if (trustedCodeFileSystems.isEmpty() || systemPermissions == null) {
+        if (trustedCodeFileSystems.isEmpty()) {
             throw new IllegalStateException("The init method has not been called properly yet.");
         }
-
-        CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
-        pd = new ProtectionDomain(cs, systemPermissions, this, principals);
 
         loadedClasses.putAll(systemClasses);
 
@@ -111,7 +105,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
     @Override
     protected Class<?> findClass(String name) {
         for (FileSystem fs : trustedCodeFileSystems) {
-            Class result = findClass(name, fs, pd);
+            Class result = findClass(name, fs, TenantSpecificBootstrapClassLoader.class.getProtectionDomain());
             if (result != null) {
                 return result;
             }
@@ -132,7 +126,6 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
             }
         });
         trustedCodeFileSystems.clear();
-        systemPermissions = null;
     }
 
 }
