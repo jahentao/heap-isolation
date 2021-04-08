@@ -28,7 +28,7 @@ public class Validator {
             e.printStackTrace();
         }
 
-        MultiTenantServiceManager multiTenantServiceManager = new MultiTenantServiceManager(
+        MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
                 loadSharedClassNames(props.getProperty("list.shared_classes")),
                 buildURI(props.getProperty("jar.java.base")));
         multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));

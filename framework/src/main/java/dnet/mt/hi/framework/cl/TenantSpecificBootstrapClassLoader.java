@@ -59,13 +59,12 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
     public TenantSpecificBootstrapClassLoader(String tenantId, ClassLoader parent, Principal[] principals) {
 
-        super(tenantId.concat("_BootstrapClassLoader"), parent);
+        super(tenantId, tenantId.concat("_BootstrapClassLoader"), parent);
 
         if (trustedCodeFileSystems.isEmpty() || systemPermissions == null) {
             throw new IllegalStateException("The init method has not been called properly yet.");
         }
 
-        this.tenantId = tenantId;
         CodeSource cs = new CodeSource(null, (CodeSigner[]) null);
         pd = new ProtectionDomain(cs, systemPermissions, this, principals);
 

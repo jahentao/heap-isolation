@@ -22,9 +22,7 @@ public final class TenantClassLoader extends AbstractMTClassLoader implements Cl
 
     public TenantClassLoader(String tenantId, ClassLoader parent, Path tenantJarPath, PermissionCollection permissions, Principal[] principals) {
 
-        super(tenantId.concat("_ClassLoader"), parent);
-
-        this.tenantId = tenantId;
+        super(tenantId, tenantId.concat("_ClassLoader"), parent);
 
         if (parent instanceof TenantSpecificBootstrapClassLoader) {
             this.parent = (TenantSpecificBootstrapClassLoader) parent;

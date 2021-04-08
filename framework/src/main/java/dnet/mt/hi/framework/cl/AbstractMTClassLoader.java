@@ -11,8 +11,9 @@ abstract class AbstractMTClassLoader extends ClassLoader {
 
     protected String tenantId;
 
-    AbstractMTClassLoader(String name, ClassLoader parent) {
+    AbstractMTClassLoader(String tenantId, String name, ClassLoader parent) {
         super(name, parent);
+        this.tenantId = tenantId;
     }
 
     Class<?> findClass(String name, FileSystem fs, ProtectionDomain pd) {
@@ -29,6 +30,10 @@ abstract class AbstractMTClassLoader extends ClassLoader {
             //e.printStackTrace();
         }
         return null;
+    }
+
+    public String getTenantId() {
+        return tenantId;
     }
 
 }

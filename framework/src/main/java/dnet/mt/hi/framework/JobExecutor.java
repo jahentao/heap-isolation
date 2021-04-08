@@ -4,12 +4,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class JobExecutor {
 
-    private ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(4);
+    private ScheduledExecutorService scheduledExecutorService = new MultiTenantScheduledThreadPoolExecutor(4);
     private MultiTenantServiceManager multiTenantServiceManager;
 
     public JobExecutor(MultiTenantServiceManager multiTenantServiceManager) {
