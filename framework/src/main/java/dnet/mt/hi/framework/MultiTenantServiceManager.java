@@ -82,13 +82,13 @@ public class MultiTenantServiceManager {
         MultiTenantPrintStream err = (MultiTenantPrintStream) System.err;
         for (String tenantId : classLoaders.keySet()) {
             classLoaders.get(tenantId).close();
+            out.unregisterTenant(tenantId);
+            err.unregisterTenant(tenantId);
             Files.walk(tenantFolders.get(tenantId))
                     .sorted(Comparator.reverseOrder())
                     .map(Path::toFile)
                     .forEach(File::delete);
             MultiTenantPolicy.getInstance().unregisterTenant(tenantId);
-            out.unregisterTenant(tenantId);
-            err.unregisterTenant(tenantId);
         }
         System.setOut(systemOut);
         System.setErr(systemErr);
