@@ -35,7 +35,7 @@ public class MultiTenantServiceManager {
         MultiTenantPrintStream out = new MultiTenantPrintStream(System.out);
         System.setOut(out);
         MultiTenantPrintStream err = new MultiTenantPrintStream(System.err);
-        System.setOut(err);
+        System.setErr(err);
         System.setIn(null);
 
         Policy.setPolicy(MultiTenantPolicy.getInstance());
