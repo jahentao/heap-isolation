@@ -1,9 +1,6 @@
 package dnet.mt.hi.validation;
 
-import dnet.mt.hi.framework.Job;
-import dnet.mt.hi.framework.JobExecutor;
-import dnet.mt.hi.framework.JobLoader;
-import dnet.mt.hi.framework.MultiTenantServiceManager;
+import dnet.mt.hi.framework.*;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -24,7 +21,9 @@ public class Validator {
             Properties props = new Properties();
             props.load(new FileInputStream("config.properties"));
 
+
             MultiTenantServiceManager multiTenantServiceManager = MultiTenantServiceManager.getInstance(
+                    Validator.class.getProtectionDomain().getCodeSource(),
                     loadSharedClassNames(props.getProperty("list.shared_classes")),
                     buildURI(props.getProperty("jar.java.base")));
             multiTenantServiceManager.registerTenant("tenant01", buildURI(props.getProperty("tenants.01.jar")));

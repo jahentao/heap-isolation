@@ -2,11 +2,13 @@ package dnet.mt.hi.framework;
 
 import dnet.mt.hi.framework.cl.TenantClassLoader;
 import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
+import sun.security.util.SecurityConstants;
 
 import java.io.*;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.CodeSource;
 import java.security.Permissions;
 import java.security.Policy;
 import java.util.Arrays;
@@ -23,14 +25,14 @@ public class MultiTenantServiceManager {
 
     private PrintStream systemOut, systemErr;
 
-    public static MultiTenantServiceManager getInstance(Set<String> sharedClasses, URI... sharedJars) {
+    public static MultiTenantServiceManager getInstance(CodeSource applicationCodeSource, Set<String> sharedClasses, URI... sharedJars) {
         if (INSTANCE == null) {
-            INSTANCE = new MultiTenantServiceManager(sharedClasses, sharedJars);
+            INSTANCE = new MultiTenantServiceManager(applicationCodeSource, sharedClasses, sharedJars);
         }
         return INSTANCE;
     }
 
-    private MultiTenantServiceManager(Set<String> sharedClasses, URI... sharedJars) {
+    private MultiTenantServiceManager(CodeSource applicationCodeSource, Set<String> sharedClasses, URI... sharedJars) {
 
         Path[] sharedJarPaths = Arrays.stream(sharedJars).map(Path::of).toArray(Path[]::new);
         TenantSpecificBootstrapClassLoader.init(sharedClasses, sharedJarPaths);
@@ -43,7 +45,9 @@ public class MultiTenantServiceManager {
         System.setErr(err);
         System.setIn(null);
 
-        Policy.setPolicy(MultiTenantPolicy.getInstance());
+        MultiTenantPolicy policy = MultiTenantPolicy.getInstance();
+        policy.registerTrustedCode(applicationCodeSource, SecurityConstants.ALL_PERMISSION.newPermissionCollection());
+        Policy.setPolicy(policy);
         System.setSecurityManager(new SecurityManager());
 
     }
