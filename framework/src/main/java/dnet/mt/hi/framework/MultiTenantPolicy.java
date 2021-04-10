@@ -14,7 +14,7 @@ public class MultiTenantPolicy extends Policy {
 
     private static MultiTenantPolicy INSTANCE;
 
-    public static MultiTenantPolicy getInstance() {
+    public static synchronized MultiTenantPolicy getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new MultiTenantPolicy();
         }
@@ -34,6 +34,7 @@ public class MultiTenantPolicy extends Policy {
     @Override
     public boolean implies(ProtectionDomain domain, Permission permission) {
         if (pds.entrySet().contains(domain)) {
+            System.out.println("Before checking tenant permission...");
             return super.implies(domain, permission);
         }
         return true;

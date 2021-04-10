@@ -79,12 +79,8 @@ public final class TenantClassLoader extends AbstractMTClassLoader implements Cl
                     ("Prohibited package name: " +
                             name.substring(0, name.lastIndexOf('.')));
         } else {
-            Class result = findClass(name, tenantFileSystem, pd);
-            if (result != null) {
-                return result;
-            }
+            return findClass(name, tenantFileSystem, pd);
         }
-        return null;
     }
 
     @Override
