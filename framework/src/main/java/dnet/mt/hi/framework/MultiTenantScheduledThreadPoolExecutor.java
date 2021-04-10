@@ -28,6 +28,7 @@ public class MultiTenantScheduledThreadPoolExecutor extends ScheduledThreadPoolE
     private Runnable retrieveTenantRunnable(Runnable r) {
         Runnable tenantRunnable = null;
         try {
+            System.out.println(r.getClass().toGenericString());
             Field field = r.getClass().getField("callable");
             field.setAccessible(true);
             Object object = field.get(r);
