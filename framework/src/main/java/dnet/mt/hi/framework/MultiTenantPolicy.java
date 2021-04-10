@@ -14,6 +14,8 @@ public class MultiTenantPolicy extends Policy {
     private Map<String, CodeSource> css = new ConcurrentHashMap<>();
     private Map<CodeSource, PermissionCollection> pcs = new ConcurrentHashMap<>();
 
+    private static final PermissionCollection ALL_PERMISSION_COLLECTION = SecurityConstants.ALL_PERMISSION.newPermissionCollection();
+
     private static MultiTenantPolicy INSTANCE;
 
     public static synchronized MultiTenantPolicy getInstance() {
@@ -22,6 +24,7 @@ public class MultiTenantPolicy extends Policy {
             sm.checkPermission(SecurityConstants.GET_POLICY_PERMISSION);
         }
         if (INSTANCE == null) {
+            ALL_PERMISSION_COLLECTION.add(SecurityConstants.ALL_PERMISSION);
             INSTANCE = new MultiTenantPolicy();
         }
         return INSTANCE;
@@ -31,17 +34,13 @@ public class MultiTenantPolicy extends Policy {
 
     @Override
     public PermissionCollection getPermissions(CodeSource cs) {
-        System.out.println(pcs.get(cs));
-        return pcs.get(cs);
+        PermissionCollection result = pcs.get(cs);
+        return result == null ? ALL_PERMISSION_COLLECTION : result;
     }
 
     @Override
     public PermissionCollection getPermissions(ProtectionDomain domain) {
         return getPermissions(domain.getCodeSource());
-    }
-
-    public void registerTrustedCode(CodeSource cs, PermissionCollection pc) {
-        pcs.putIfAbsent(cs, pc);
     }
 
     public void registerTenant(String tenantId, CodeSource cs, PermissionCollection pc) {

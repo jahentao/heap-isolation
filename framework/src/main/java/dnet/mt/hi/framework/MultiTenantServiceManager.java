@@ -2,14 +2,12 @@ package dnet.mt.hi.framework;
 
 import dnet.mt.hi.framework.cl.TenantClassLoader;
 import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
-import sun.security.util.SecurityConstants;
 
 import java.io.*;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.CodeSource;
-import java.security.PermissionCollection;
 import java.security.Permissions;
 import java.security.Policy;
 import java.util.Arrays;
@@ -46,11 +44,7 @@ public class MultiTenantServiceManager {
         System.setErr(err);
         System.setIn(null);
 
-        MultiTenantPolicy policy = MultiTenantPolicy.getInstance();
-        PermissionCollection pc = SecurityConstants.ALL_PERMISSION.newPermissionCollection();
-        pc.add(SecurityConstants.ALL_PERMISSION);
-        policy.registerTrustedCode(applicationCodeSource, pc);
-        Policy.setPolicy(policy);
+        Policy.setPolicy(MultiTenantPolicy.getInstance());
         System.setSecurityManager(new SecurityManager());
 
     }

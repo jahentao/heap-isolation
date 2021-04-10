@@ -1,25 +1,19 @@
 package dnet.mt.hi.framework.cl;
 
-import dnet.mt.hi.framework.MultiTenantPolicy;
-import sun.security.util.SecurityConstants;
-
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.security.*;
+import java.security.Principal;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoader {
 
-    private static PermissionCollection ALL_PERMISSION_COLLECTION = SecurityConstants.ALL_PERMISSION.newPermissionCollection();
-
     private static Map<String, Class> sharedClasses = new ConcurrentHashMap<>();
-    private static Map<CodeSource, FileSystem> trustedCode = new ConcurrentHashMap<>();
+    private static List<FileSystem> trustedCodeFileSystems = new LinkedList<>();
 
-    private Map<CodeSource, ProtectionDomain> pds = new ConcurrentHashMap<>();
     private Map<String, Class> loadedClasses = new ConcurrentHashMap<>();
 
 
@@ -30,10 +24,9 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
             securityManager.checkCreateClassLoader();
         }
 
-        if (sharedClasses.isEmpty() && trustedCode.isEmpty()) {
+        if (sharedClasses.isEmpty() && trustedCodeFileSystems.isEmpty()) {
             loadSharedClasses(sharedClassNames);
             initTrustedCode(sharedJarPaths);
-            ALL_PERMISSION_COLLECTION.add(SecurityConstants.ALL_PERMISSION);
         }
 
     }
@@ -54,9 +47,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
         try {
             for (Path jarPath : sharedJarPaths) {
-                CodeSource cs = new CodeSource(jarPath.toUri().toURL(), (CodeSigner[]) null);
-                MultiTenantPolicy.getInstance().registerTrustedCode(cs, ALL_PERMISSION_COLLECTION);
-                trustedCode.put(cs, FileSystems.newFileSystem(URI.create(String.format("jar:%s", jarPath.toUri().toString())), env));
+                trustedCodeFileSystems.add(FileSystems.newFileSystem(URI.create(String.format("jar:%s", jarPath.toUri().toString())), env));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,13 +58,9 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
         super(tenantId, tenantId.concat("_BootstrapClassLoader"), parent);
 
-        if (trustedCode.isEmpty()) {
+        if (trustedCodeFileSystems.isEmpty()) {
             throw new IllegalStateException("The init method has not been called properly yet.");
         }
-
-        trustedCode.forEach((cs, fs) -> {
-            pds.put(cs, new ProtectionDomain(cs, ALL_PERMISSION_COLLECTION, this, principals));
-        });
 
         loadedClasses.putAll(sharedClasses);
 
@@ -117,8 +104,8 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
     @Override
     protected Class<?> findClass(String name) {
-        for (CodeSource cs : trustedCode.keySet()) {
-            Class result = findClass(name, trustedCode.get(cs), pds.get(cs));
+        for (FileSystem fs : trustedCodeFileSystems) {
+            Class result = findClass(name, fs, TenantSpecificBootstrapClassLoader.class.getProtectionDomain());
             if (result != null) {
                 return result;
             }
@@ -131,14 +118,14 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
         if (securityManager != null) {
             securityManager.checkCreateClassLoader();
         }
-        trustedCode.values().forEach(fs -> {
+        trustedCodeFileSystems.forEach(fs -> {
             try {
                 fs.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
-        trustedCode.clear();
+        trustedCodeFileSystems.clear();
     }
 
 }
