@@ -84,10 +84,6 @@ public class MultiTenantServiceManager {
             classLoaders.get(tenantId).close();
             out.unregisterTenant(tenantId);
             err.unregisterTenant(tenantId);
-            /*Files.walk(tenantFolders.get(tenantId))
-                    .sorted(Comparator.reverseOrder())
-                    .map(Path::toFile)
-                    .forEach(File::delete);*/
             MultiTenantPolicy.getInstance().unregisterTenant(tenantId);
         }
         System.setOut(systemOut);
