@@ -33,6 +33,7 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
         if (sharedClasses.isEmpty() && trustedCode.isEmpty()) {
             loadSharedClasses(sharedClassNames);
             initTrustedCode(sharedJarPaths);
+            ALL_PERMISSION_COLLECTION.add(SecurityConstants.ALL_PERMISSION);
         }
 
     }
