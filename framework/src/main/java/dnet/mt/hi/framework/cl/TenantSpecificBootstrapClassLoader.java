@@ -1,11 +1,16 @@
 package dnet.mt.hi.framework.cl;
 
+import dnet.mt.hi.framework.MultiTenantPolicy;
+import sun.security.util.SecurityConstants;
+
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.security.*;
+import java.security.CodeSigner;
+import java.security.CodeSource;
+import java.security.Principal;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -46,6 +51,8 @@ public final class TenantSpecificBootstrapClassLoader extends AbstractMTClassLoa
 
         try {
             for (Path jarPath : sharedJarPaths) {
+                CodeSource cs = new CodeSource(jarPath.toUri().toURL(), (CodeSigner[]) null);
+                MultiTenantPolicy.getInstance().registerTrustedCode(cs, SecurityConstants.ALL_PERMISSION.newPermissionCollection());
                 trustedCodeFileSystems.add(FileSystems.
                         newFileSystem(URI.create(String.format("jar:%s", jarPath.toUri().toString())), env));
             }

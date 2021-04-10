@@ -33,6 +33,10 @@ public class MultiTenantPolicy extends Policy {
         return pcs.get(cs);
     }
 
+    public void registerTrustedCode(CodeSource cs, PermissionCollection pc) {
+        pcs.putIfAbsent(cs, pc);
+    }
+
     public void registerTenant(String tenantId, CodeSource cs, PermissionCollection pc) {
         css.putIfAbsent(tenantId, cs);
         pcs.putIfAbsent(cs, pc);
