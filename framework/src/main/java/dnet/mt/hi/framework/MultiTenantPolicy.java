@@ -31,7 +31,7 @@ public class MultiTenantPolicy extends Policy {
 
     @Override
     public PermissionCollection getPermissions(CodeSource cs) {
-        System.out.println(cs);
+        System.out.println(pcs.get(cs));
         return pcs.get(cs);
     }
 
