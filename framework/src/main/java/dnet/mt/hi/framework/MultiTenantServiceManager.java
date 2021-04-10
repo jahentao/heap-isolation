@@ -10,7 +10,6 @@ import java.nio.file.Path;
 import java.security.Permissions;
 import java.security.Policy;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -84,10 +83,10 @@ public class MultiTenantServiceManager {
             classLoaders.get(tenantId).close();
             out.unregisterTenant(tenantId);
             err.unregisterTenant(tenantId);
-            Files.walk(tenantFolders.get(tenantId))
+            /*Files.walk(tenantFolders.get(tenantId))
                     .sorted(Comparator.reverseOrder())
                     .map(Path::toFile)
-                    .forEach(File::delete);
+                    .forEach(File::delete);*/
             MultiTenantPolicy.getInstance().unregisterTenant(tenantId);
         }
         System.setOut(systemOut);
