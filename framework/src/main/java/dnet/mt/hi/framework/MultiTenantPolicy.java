@@ -5,6 +5,7 @@ import sun.security.util.SecurityConstants;
 import java.security.CodeSource;
 import java.security.PermissionCollection;
 import java.security.Policy;
+import java.security.ProtectionDomain;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -31,6 +32,11 @@ public class MultiTenantPolicy extends Policy {
     @Override
     public PermissionCollection getPermissions(CodeSource cs) {
         return pcs.get(cs);
+    }
+
+    @Override
+    public PermissionCollection getPermissions(ProtectionDomain domain) {
+        return getPermissions(domain.getCodeSource());
     }
 
     public void registerTrustedCode(CodeSource cs, PermissionCollection pc) {
