@@ -36,7 +36,7 @@ public final class TenantClassLoader extends AbstractMTClassLoader implements Cl
         try {
             CodeSource cs = new CodeSource(tenantJarPath.toUri().toURL(), (CodeSigner[]) null);
             pd = new ProtectionDomain(cs, permissions, this, principals);
-            MultiTenantPolicy.getInstance().registerTenant(tenantId, pd);
+            MultiTenantPolicy.getInstance().registerTenant(tenantId, cs, permissions);
 
             Map<String, String> env = new HashMap<>();
             env.put("create", "true");

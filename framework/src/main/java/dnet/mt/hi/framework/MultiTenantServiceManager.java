@@ -8,6 +8,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.Permissions;
+import java.security.Policy;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
@@ -42,7 +43,7 @@ public class MultiTenantServiceManager {
         System.setErr(err);
         System.setIn(null);
 
-        //Policy.setPolicy(MultiTenantPolicy.getInstance());
+        Policy.setPolicy(MultiTenantPolicy.getInstance());
         System.setSecurityManager(new SecurityManager());
 
     }
