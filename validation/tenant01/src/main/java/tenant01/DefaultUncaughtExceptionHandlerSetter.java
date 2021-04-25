@@ -1,6 +1,6 @@
 package tenant01;
 
-public class DefaultUncaughtExceptionHndlerSetter implements Runnable {
+public class DefaultUncaughtExceptionHandlerSetter implements Runnable {
 
     @Override
     public void run() {
