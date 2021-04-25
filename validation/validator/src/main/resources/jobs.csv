@@ -8,6 +8,10 @@
 8,tenant02,tenant02.FileNameMapSetter
 9,tenant01,tenant01.DefaultUncaughtExceptionHandlerSetter
 10,tenant02,tenant02.NativeLibraryLoader
-11,tenant01,tenant01.DefaultUseCachesModifier
 12,tenant02,tenant02.ServerSocketFactorySetter
 13,tenant01,tenant01.PackageDefinitionInvalidator
+14,tenant02,tenant02.SystemOutSetter
+15,tenant01,tenant01.SocketImplFactorySetter
+16,tenant02,tenant02.SystemPropertyModifier
+17,tenant01,tenant01.SystemErrSetter
+18,tenant02,tenant02.URLStreamHandlerFactorySetter
