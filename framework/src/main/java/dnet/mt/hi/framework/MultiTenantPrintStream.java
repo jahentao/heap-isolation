@@ -27,6 +27,7 @@ public class MultiTenantPrintStream extends PrintStream {
         if (threadOwnerId != null && tenantStreams.containsKey(threadOwnerId)) {
             tenantStreams.get(threadOwnerId).flush();
         } else {
+            tenantStreams.values().forEach(PrintStream::flush);
             super.flush();
         }
     }
@@ -37,6 +38,7 @@ public class MultiTenantPrintStream extends PrintStream {
         if (threadOwnerId != null && tenantStreams.containsKey(threadOwnerId)) {
             tenantStreams.get(threadOwnerId).close();
         } else {
+            tenantStreams.values().forEach(PrintStream::close);
             super.close();
         }
     }
