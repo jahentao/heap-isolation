@@ -6,8 +6,7 @@
 6,tenant02,tenant02.DefaultLocaleSetter
 7,tenant01,tenant01.DefaultTimeZoneSetter
 8,tenant02,tenant02.FileNameMapSetter
-9,tenant01,tenant01.DefaultUncaughtExceptionHandlerSetter
-10,tenant02,tenant02.NativeLibraryLoader
+11,tenant01,tenant01.DefaultUseCachesModifier
 12,tenant02,tenant02.ServerSocketFactorySetter
 13,tenant01,tenant01.PackageDefinitionInvalidator
 14,tenant02,tenant02.SystemOutSetter
