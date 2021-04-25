@@ -1,13 +1,13 @@
 package tenant01;
 
-import java.util.TimeZone;
+import java.net.URLClassLoader;
 
-public class DefaultTimeZoneSetter implements Runnable {
+public class ClassLoaderCreator implements Runnable {
 
     @Override
     public void run() {
         try {
-            TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+            ClassLoader cl = new URLClassLoader(null);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }

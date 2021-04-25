@@ -1,13 +1,13 @@
 package tenant01;
 
-import java.util.TimeZone;
+import java.net.Socket;
 
-public class DefaultTimeZoneSetter implements Runnable {
+public class SocketImplFactorySetter implements Runnable {
 
     @Override
     public void run() {
         try {
-            TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+            Socket.setSocketImplFactory(null);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }

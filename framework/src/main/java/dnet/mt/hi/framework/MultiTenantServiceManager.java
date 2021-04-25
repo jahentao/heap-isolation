@@ -4,6 +4,7 @@ import dnet.mt.hi.framework.cl.TenantClassLoader;
 import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 
 import java.io.*;
+import java.net.SocketPermission;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -56,8 +57,10 @@ public class MultiTenantServiceManager {
             tenantFolders.put(tenantId, tenantFolder);
 
             FilePermission filePermission = new FilePermission(String.format("%s/-", tenantFolder.toString()), "read,write");
+            SocketPermission socketPermission = new SocketPermission("*", "resolve,connect");
             Permissions permissions = new Permissions();
             permissions.add(filePermission);
+            permissions.add(socketPermission);
 
             TenantSpecificBootstrapClassLoader bootstrapClassLoader = new TenantSpecificBootstrapClassLoader(
                     tenantId, MultiTenantServiceManager.class.getClassLoader(), null);

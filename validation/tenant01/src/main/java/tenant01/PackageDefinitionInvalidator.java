@@ -1,13 +1,13 @@
 package tenant01;
 
-import java.util.TimeZone;
+import java.security.Security;
 
-public class DefaultTimeZoneSetter implements Runnable {
+public class PackageDefinitionInvalidator implements Runnable {
 
     @Override
     public void run() {
         try {
-            TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+            Security.setProperty("key", "value");
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }

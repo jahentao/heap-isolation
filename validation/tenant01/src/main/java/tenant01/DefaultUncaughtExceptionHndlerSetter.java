@@ -1,13 +1,11 @@
 package tenant01;
 
-import java.util.TimeZone;
-
-public class DefaultTimeZoneSetter implements Runnable {
+public class DefaultUncaughtExceptionHndlerSetter implements Runnable {
 
     @Override
     public void run() {
         try {
-            TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+            Thread.setDefaultUncaughtExceptionHandler(null);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }

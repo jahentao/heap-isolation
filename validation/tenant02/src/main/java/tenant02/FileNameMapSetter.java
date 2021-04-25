@@ -1,12 +1,13 @@
 package tenant02;
 
-import java.util.TimeZone;
+import java.net.URLConnection;
 
-public class DefaultTimeZoneSetter implements Runnable {
+public class FileNameMapSetter implements Runnable {
 
+    @Override
     public void run() {
         try {
-            TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
+            URLConnection.setFileNameMap(null);
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
