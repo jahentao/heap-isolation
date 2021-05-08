@@ -3,22 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>validation</artifactId>
+        <artifactId>memory-footprint</artifactId>
         <groupId>dnet.mt</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>validator</artifactId>
+    <artifactId>process-best</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>dnet.mt</groupId>
-            <artifactId>framework</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
@@ -29,7 +21,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>hi.validation.Validator</mainClass>
+                            <mainClass>dnet.mt.hi.eval.mf.process.BestCaseMemoryFootprintGenerator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

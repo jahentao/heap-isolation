@@ -18,6 +18,7 @@
         <module>framework</module>
         <module>validation</module>
         <module>analyzer</module>
+        <module>evaluation</module>
     </modules>
 
 </project>

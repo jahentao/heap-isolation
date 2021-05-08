@@ -1,4 +1,4 @@
-package dnet.mt.hi.framework;
+package hi.framework;
 
 import java.io.IOException;
 import java.net.URI;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>evaluation</artifactId>
+        <groupId>dnet.mt</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>memory-footprint</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>thread-best</module>
+        <module>thread-worst</module>
+        <module>mf-utils</module>
+        <module>process-best</module>
+        <module>process-worst</module>
+        <module>tenant_01</module>
+        <module>tenant_02</module>
+        <module>tenant_03</module>
+        <module>tenant_04</module>
+        <module>tenant_05</module>
+    </modules>
+
+
+</project>
