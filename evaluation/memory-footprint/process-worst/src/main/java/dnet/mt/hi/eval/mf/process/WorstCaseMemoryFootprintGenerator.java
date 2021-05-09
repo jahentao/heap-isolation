@@ -12,7 +12,7 @@ public class WorstCaseMemoryFootprintGenerator {
             try {
                 Class.forName(className);
             } catch (ClassNotFoundException e) {
-                System.err.println(className);
+                System.err.println(e.getMessage());
             }
         }
         System.out.println("I'm ready for docker stat!");

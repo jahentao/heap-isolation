@@ -1,12 +1,14 @@
 package dnet.mt.hi.eval.mf.thread;
 
 import dnet.mt.hi.framework.MultiTenantServiceManager;
+import dnet.mt.hi.jrt.JRTUtil;
 import dnet.mt.hi.shared.SharedClassUtil;
 
 import javax.xml.validation.Validator;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class WorstCaseMemoryFootprintGenerator {
 
@@ -25,10 +27,20 @@ public class WorstCaseMemoryFootprintGenerator {
                 SharedClassUtil.loadSharedClassNames("shared_classes.list"),
                 buildURI("java.base.jar"));
 
+        List<String> javaBaseClassNames = JRTUtil.getAllJavaBaseClassNames();
+        String tenantId;
         for (int i = 1; i < tenants + 1; i++) {
-            multiTenantServiceManager.registerTenant(String.format("tenant_0%d", i),
+            tenantId = String.format("tenant_0%d", i);
+            multiTenantServiceManager.registerTenant(tenantId,
                     buildURI(String.format("tenant_0%d-1.0-SNAPSHOT.jar", i)));
-            // TODO load all java.base classes (framework should be changed, rebuilt and the base docker image should be updated)
+            ClassLoader tenantClassLoader = multiTenantServiceManager.getTenantClassLoader(tenantId);
+            for (String javaBaseClassName : javaBaseClassNames) {
+                try {
+                    tenantClassLoader.loadClass(javaBaseClassName);
+                } catch (ClassNotFoundException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
         }
 
         System.out.println("I'm ready for docker stat!");
