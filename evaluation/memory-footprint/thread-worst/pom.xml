@@ -39,7 +39,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        dnet.mt.hi.eval.mf.thread.BestCaseMemoryFootprintGenerator
+                                        dnet.mt.hi.eval.mf.thread.WorstCaseMemoryFootprintGenerator
                                     </mainClass>
                                 </manifest>
                             </archive>
