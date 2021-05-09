@@ -1,9 +1,4 @@
 # Project exclude paths
 /.idea/
-/framework/target/
-/tenant-initializer/target/
-/asmifier/target/
-/analyzer/target/
-/validation/tenant01/target/
-/validation/tenant02/target/
-/validation/validator/target/
+target/
+*.iml

@@ -1,4 +1,4 @@
-package hi.framework;
+package dnet.mt.hi.framework;
 
 public class Job {
 

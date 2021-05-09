@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class JobExecutor {
 
-    private ScheduledExecutorService scheduledExecutorService = new MultiTenantScheduledThreadPoolExecutor(4);
+    private ScheduledExecutorService scheduledExecutorService = new dnet.mt.hi.framework.MultiTenantScheduledThreadPoolExecutor(4);
     private MultiTenantServiceManager multiTenantServiceManager;
 
     public JobExecutor(MultiTenantServiceManager multiTenantServiceManager) {

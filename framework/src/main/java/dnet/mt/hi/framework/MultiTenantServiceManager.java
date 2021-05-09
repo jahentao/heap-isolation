@@ -1,7 +1,7 @@
-package hi.framework;
+package dnet.mt.hi.framework;
 
-import hi.framework.cl.TenantClassLoader;
-import hi.framework.cl.TenantSpecificBootstrapClassLoader;
+import dnet.mt.hi.framework.cl.TenantClassLoader;
+import dnet.mt.hi.framework.cl.TenantSpecificBootstrapClassLoader;
 
 import java.io.*;
 import java.net.SocketPermission;
