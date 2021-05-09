@@ -32,7 +32,7 @@ public class WorstCaseMemoryFootprintGenerator {
         for (int i = 1; i < tenants + 1; i++) {
             tenantId = String.format("tenant_0%d", i);
             multiTenantServiceManager.registerTenant(tenantId,
-                    buildURI(String.format("tenant_0%d-1.0-SNAPSHOT.jar", i)));
+                    buildURI(String.format("tenant_0%d.jar", i)));
             ClassLoader tenantClassLoader = multiTenantServiceManager.getTenantClassLoader(tenantId);
             for (String javaBaseClassName : javaBaseClassNames) {
                 try {

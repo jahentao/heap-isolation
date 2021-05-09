@@ -17,11 +17,6 @@
         <module>mf-utils</module>
         <module>process-best</module>
         <module>process-worst</module>
-        <module>tenant_01</module>
-        <module>tenant_02</module>
-        <module>tenant_03</module>
-        <module>tenant_04</module>
-        <module>tenant_05</module>
     </modules>
 
 

@@ -27,7 +27,7 @@ public class BestCaseMemoryFootprintGenerator {
 
         for (int i = 1; i < tenants + 1; i++) {
             multiTenantServiceManager.registerTenant(String.format("tenant_0%d", i),
-                    buildURI(String.format("tenant_0%d-1.0-SNAPSHOT.jar", i)));
+                    buildURI(String.format("tenant_0%d.jar", i)));
         }
 
         System.out.println("I'm ready for docker stats!");
