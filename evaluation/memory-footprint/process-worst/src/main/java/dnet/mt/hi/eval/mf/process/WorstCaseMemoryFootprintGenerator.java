@@ -11,7 +11,7 @@ public class WorstCaseMemoryFootprintGenerator {
         for (String className : classNames) {
             try {
                 Class.forName(className);
-            } catch (ClassNotFoundException e) {
+            } catch (Throwable e) {
                 System.err.println(e.getMessage());
             }
         }

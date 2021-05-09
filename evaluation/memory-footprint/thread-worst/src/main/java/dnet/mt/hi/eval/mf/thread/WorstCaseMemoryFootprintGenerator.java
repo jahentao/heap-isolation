@@ -37,7 +37,7 @@ public class WorstCaseMemoryFootprintGenerator {
             for (String javaBaseClassName : javaBaseClassNames) {
                 try {
                     tenantClassLoader.loadClass(javaBaseClassName);
-                } catch (ClassNotFoundException e) {
+                } catch (Throwable e) {
                     System.err.println(e.getMessage());
                 }
             }
