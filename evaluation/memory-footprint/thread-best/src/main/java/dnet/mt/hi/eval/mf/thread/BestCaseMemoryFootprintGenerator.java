@@ -30,7 +30,7 @@ public class BestCaseMemoryFootprintGenerator {
                     buildURI(String.format("tenant_0%d-1.0-SNAPSHOT.jar", i)));
         }
 
-        System.out.println("I'm ready for docker stat!");
+        System.out.println("I'm ready for docker stats!");
         while (true) ;
     }
 

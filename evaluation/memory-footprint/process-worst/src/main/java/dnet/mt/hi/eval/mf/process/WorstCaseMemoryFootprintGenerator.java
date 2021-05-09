@@ -15,7 +15,7 @@ public class WorstCaseMemoryFootprintGenerator {
                 System.err.println(e.getMessage());
             }
         }
-        System.out.println("I'm ready for docker stat!");
+        System.out.println("I'm ready for docker stats!");
         while (true);
     }
 
