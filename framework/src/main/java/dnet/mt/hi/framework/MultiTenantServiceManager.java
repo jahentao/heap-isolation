@@ -93,7 +93,7 @@ public class MultiTenantServiceManager {
         System.setErr(systemErr);
     }
 
-    TenantClassLoader getTenantClassLoader(String tenantId) {
+    public ClassLoader getTenantClassLoader(String tenantId) {
         return classLoaders.get(tenantId);
     }
 
