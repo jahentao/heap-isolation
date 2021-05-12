@@ -1,7 +1,0 @@
-Successful and necessary changes:
- - oops/instanceKlass.cpp
-     check_prohibited_package
- - classfile/systemDictionary.cpp
-     check_constraints
- - prims/nativeLookup.cpp
-     lookup_style
