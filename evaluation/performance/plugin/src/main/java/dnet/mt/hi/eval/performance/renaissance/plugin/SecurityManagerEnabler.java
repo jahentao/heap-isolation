@@ -8,19 +8,10 @@ public class SecurityManagerEnabler implements Plugin {
 
     public SecurityManagerEnabler() {
         Policy.setPolicy(new Policy() {
-
-            private PermissionCollection ALL_PERMISSION_COLLECTION = new AllPermission().newPermissionCollection();
-
             @Override
-            public PermissionCollection getPermissions(CodeSource cs) {
-                return ALL_PERMISSION_COLLECTION;
+            public boolean implies(ProtectionDomain domain, Permission permission) {
+                return true;
             }
-
-            @Override
-            public PermissionCollection getPermissions(ProtectionDomain domain) {
-                return getPermissions(domain.getCodeSource());
-            }
-            
         });
         System.setSecurityManager(new SecurityManager());
     }
